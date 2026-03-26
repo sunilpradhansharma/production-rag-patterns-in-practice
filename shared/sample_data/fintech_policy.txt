@@ -1,0 +1,208 @@
+MERIDIAN BANK — CONSUMER LENDING POLICY
+Version 4.2 | Effective Date: January 1, 2025
+Classification: Internal Use Only
+
+================================================================================
+SECTION 1: PURPOSE AND SCOPE
+================================================================================
+
+1.1 Purpose
+This policy establishes the standards and procedures for the origination,
+underwriting, and management of consumer lending products at Meridian Bank
+("the Bank"). It applies to all personal loans, auto loans, home equity lines
+of credit (HELOCs), and unsecured revolving credit products.
+
+1.2 Scope
+This policy applies to:
+  a) All Bank employees involved in the lending process
+  b) Third-party originators operating under a Meridian Bank agreement
+  c) Automated decision systems processing consumer loan applications
+
+1.3 Regulatory Framework
+The Bank's consumer lending activities are governed by:
+  - Equal Credit Opportunity Act (ECOA) and Regulation B
+  - Fair Housing Act (FHA)
+  - Truth in Lending Act (TILA) and Regulation Z
+  - Fair Credit Reporting Act (FCRA)
+  - Community Reinvestment Act (CRA)
+
+================================================================================
+SECTION 2: CREDIT ELIGIBILITY CRITERIA
+================================================================================
+
+2.1 Minimum Eligibility Requirements
+All applicants must meet the following minimum requirements at the time of
+application:
+
+  | Criterion              | Minimum Standard         | Notes                        |
+  |------------------------|--------------------------|------------------------------|
+  | Credit Score (FICO 8)  | 620                      | Applies to primary applicant |
+  | Debt-to-Income (DTI)   | ≤ 43%                    | See Section 2.3 for calc     |
+  | Employment Status      | Employed or self-employed| Min. 2 years history         |
+  | Age                    | 18 years or older        | Legal minimum                |
+  | Residency              | US resident              | Valid SSN required           |
+
+2.2 Credit Score Tiers
+The Bank uses a tiered pricing model based on the primary applicant's FICO 8
+score at the time of application:
+
+  | Tier | FICO Range | Risk Category | Rate Adjustment |
+  |------|-----------|---------------|-----------------|
+  | A+   | 780–850   | Exceptional   | –1.50%          |
+  | A    | 740–779   | Very Good     | –0.75%          |
+  | B    | 700–739   | Good          | Base Rate       |
+  | C    | 660–699   | Fair          | +1.25%          |
+  | D    | 620–659   | Poor          | +2.50%          |
+  | NQ   | < 620     | Non-Qualifying| Not eligible    |
+
+2.3 Debt-to-Income Calculation
+DTI is calculated as monthly debt obligations divided by gross monthly income.
+Monthly debt obligations include:
+  - Monthly payment on the proposed loan
+  - Minimum payments on all revolving credit accounts
+  - Scheduled payments on all installment loans
+  - Monthly rent or mortgage payment (for rental properties, net rental income
+    may offset up to 75% of the obligation)
+
+2.4 Income Documentation Requirements
+  a) W-2 employees: Two most recent pay stubs AND most recent W-2
+  b) Self-employed: Two years of signed federal tax returns AND current
+     year profit/loss statement prepared by a CPA
+  c) Social Security/pension: Award letter dated within 12 months
+  d) Investment income: Two years of 1099 statements
+
+================================================================================
+SECTION 3: PRODUCT PARAMETERS
+================================================================================
+
+3.1 Personal Loan
+  - Loan amounts: $2,500 – $50,000
+  - Term: 24 – 84 months
+  - Minimum FICO: 660 (Tier C)
+  - Maximum DTI: 40%
+  - No collateral required
+  - Origination fee: 1.0% – 6.0% (deducted from proceeds)
+  - Prepayment penalty: None
+
+3.2 Auto Loan (New Vehicle)
+  - Loan amounts: $5,000 – $100,000
+  - Term: 24 – 84 months
+  - Minimum FICO: 620 (Tier D, but rate adjusted)
+  - Maximum LTV: 110% (includes taxes, fees, and GAP insurance)
+  - Maximum DTI: 43%
+  - Vehicle age: New vehicles only (model year current or previous)
+
+3.3 Auto Loan (Used Vehicle)
+  - Loan amounts: $5,000 – $75,000
+  - Term: 24 – 72 months
+  - Minimum FICO: 640
+  - Maximum LTV: 100%
+  - Vehicle age: 7 years or newer; mileage ≤ 100,000
+
+3.4 Home Equity Line of Credit (HELOC)
+  - Credit line amounts: $25,000 – $500,000
+  - Draw period: 10 years
+  - Repayment period: 20 years
+  - Minimum FICO: 680
+  - Maximum CLTV: 85%
+  - Maximum DTI: 43%
+  - Appraisal required for lines ≥ $250,000
+
+================================================================================
+SECTION 4: UNDERWRITING PROCESS
+================================================================================
+
+4.1 Automated Underwriting
+The Bank's proprietary Automated Underwriting System (AUS) evaluates all
+incoming applications against the criteria in Section 2. Applications
+receiving an AUS "Approve" decision and meeting all product parameters in
+Section 3 may be funded without manual review.
+
+4.2 Manual Review Triggers
+The following conditions require escalation to a human underwriter:
+  a) AUS decision of "Refer" or "Refer with Caution"
+  b) FICO score < 660 for personal loans
+  c) DTI between 40% and 43% for any product
+  d) Self-employment income > 50% of qualifying income
+  e) Loan amount > $75,000 for unsecured products
+  f) Any derogatory credit event within 24 months of application
+     (foreclosure, bankruptcy discharge, repossession, charge-off)
+
+4.3 Adverse Action Procedures
+When an application is denied, the Bank must:
+  1. Provide written notice within 30 days of the credit decision
+  2. State the specific reasons for the adverse action (minimum 4 reasons
+     from the ECOA Appendix C list)
+  3. Provide the applicant's credit score and the range of scores used
+  4. Provide contact information for all credit bureaus queried
+
+================================================================================
+SECTION 5: FAIR LENDING AND COMPLIANCE
+================================================================================
+
+5.1 Prohibited Bases for Credit Decisions
+Lending decisions may not be based on:
+  - Race, color, religion, national origin, sex
+  - Marital status or familial status
+  - Age (provided the applicant is of legal age to contract)
+  - Receipt of income from public assistance programs
+  - Exercise of rights under the Consumer Credit Protection Act
+
+5.2 Annual Fair Lending Review
+The Compliance Department conducts an annual statistical analysis of:
+  a) Application approval rates by protected class
+  b) Pricing disparities by protected class
+  c) Geographic distribution of approvals (CRA compliance)
+
+Results are reported to the Board Risk Committee no later than March 31
+of each calendar year.
+
+5.3 CRA Assessment Area
+Meridian Bank's primary CRA assessment area includes all MSAs in which the
+Bank maintains a physical branch presence. Lending activity outside the
+assessment area is tracked separately but does not count toward CRA credit.
+
+================================================================================
+SECTION 6: EXCEPTIONS AND OVERRIDES
+================================================================================
+
+6.1 Policy Exception Authority
+Exceptions to the minimum eligibility criteria may be granted as follows:
+
+  | Exception Type         | Approval Authority         | Max Frequency        |
+  |------------------------|----------------------------|----------------------|
+  | FICO 580–619           | Regional Credit Officer    | 5% of monthly volume |
+  | DTI 43%–50%            | Chief Credit Officer       | 2% of monthly volume |
+  | LTV > 110% (auto)      | Regional Credit Officer    | Not permitted        |
+  | Income documentation   | Branch Manager + Underwriter| Case by case        |
+
+6.2 Compensating Factors
+When granting exceptions, underwriters must document at least two of the
+following compensating factors:
+  - Liquid reserves ≥ 6 months of loan payments
+  - Stable employment at same employer ≥ 5 years
+  - Low utilization ratio (< 20%) on revolving accounts
+  - Strong payment history (no 30-day late payments in 36 months)
+  - Co-applicant with FICO ≥ 740
+
+================================================================================
+SECTION 7: DOCUMENT RETENTION
+================================================================================
+
+7.1 Retention Schedule
+  - Approved loan files: 7 years from origination date
+  - Denied applications: 25 months from date of adverse action notice
+  - AUS findings: 3 years from date of credit decision
+  - Fair lending analysis: Permanently retained
+
+7.2 Electronic Records
+All loan documentation may be retained in electronic form provided:
+  a) Records are stored in an approved Document Management System (DMS)
+  b) Records are protected against alteration after loan closing
+  c) Records can be reproduced in legible paper form within 3 business days
+
+================================================================================
+END OF DOCUMENT
+Policy Owner: Chief Credit Officer | Review Cycle: Annual
+Next Review Date: January 1, 2026
+================================================================================

@@ -1,0 +1,166 @@
+BASEL III CAPITAL ADEQUACY FRAMEWORK — SELECTED PROVISIONS
+Synthetic Regulatory Excerpt for Workshop Use
+Based on: Basel Committee on Banking Supervision, "Basel III: A global regulatory
+framework for more resilient banks and banking systems" (Revised June 2011)
+
+================================================================================
+PART I: CAPITAL REQUIREMENTS
+================================================================================
+
+Article 1 — Minimum Capital Requirements
+
+1.1 Banks must maintain a minimum Common Equity Tier 1 (CET1) ratio of 4.5% of
+risk-weighted assets (RWA) at all times. This represents the highest quality of
+regulatory capital, defined as common shares plus retained earnings minus
+regulatory deductions.
+
+1.2 The minimum Tier 1 capital ratio is set at 6.0% of RWA. Tier 1 capital
+includes CET1 capital plus Additional Tier 1 (AT1) instruments that satisfy
+the criteria in Article 4.
+
+1.3 The minimum Total Capital ratio is set at 8.0% of RWA. Total Capital
+includes Tier 1 capital plus Tier 2 capital instruments that satisfy the
+criteria in Article 5.
+
+1.4 In addition to the minimum requirements, banks are required to maintain
+a capital conservation buffer of 2.5% of RWA, composed entirely of CET1
+capital. Failure to maintain this buffer restricts distributions of earnings
+and discretionary bonus payments as described in Article 8.
+
+Summary of Minimum Capital Ratios:
+
+  | Capital Component          | Minimum Ratio | Including Buffer |
+  |----------------------------|---------------|-----------------|
+  | Common Equity Tier 1 (CET1)| 4.5%          | 7.0%            |
+  | Tier 1 Capital             | 6.0%          | 8.5%            |
+  | Total Capital (Tier 1 + 2) | 8.0%          | 10.5%           |
+
+================================================================================
+PART II: COUNTERCYCLICAL CAPITAL BUFFER
+================================================================================
+
+Article 2 — Countercyclical Buffer Requirement
+
+2.1 National supervisory authorities may require banks under their jurisdiction
+to hold an additional countercyclical buffer of up to 2.5% of RWA during
+periods of excessive credit growth. The purpose of the countercyclical buffer
+is to ensure that banking sector capital requirements take account of the
+macrofinancial environment in which banks operate.
+
+2.2 The buffer rate is set by the relevant national authority based on:
+  (a) The credit-to-GDP gap (actual ratio minus long-run trend)
+  (b) Other indicators of credit cycle position deemed relevant by the authority
+  (c) Guidance provided by the Basel Committee
+
+2.3 Banks must monitor the buffer requirements of each jurisdiction in which
+they have private sector credit exposures. The bank-specific countercyclical
+buffer requirement is a weighted average of the buffer rates in place in
+jurisdictions to which the bank has credit exposures.
+
+2.4 When a buffer is reduced, whether due to a change in buffer rates or
+because of a bank's credit portfolio evolving, there is no restriction on
+the distribution of earnings.
+
+================================================================================
+PART III: LEVERAGE RATIO
+================================================================================
+
+Article 3 — Non-Risk-Based Leverage Constraint
+
+3.1 The minimum Tier 1 leverage ratio is 3.0%, defined as Tier 1 capital
+divided by total exposure. This requirement acts as a backstop to the
+risk-based capital framework and constrains the buildup of excessive leverage.
+
+3.2 The leverage ratio exposure measure includes:
+  (a) On-balance sheet items, net of specific provisions and valuation
+      adjustments
+  (b) Derivative exposures, measured using the Standardised Approach for
+      Counterparty Credit Risk (SA-CCR)
+  (c) Securities financing transaction exposures
+  (d) Off-balance sheet items, including unconditionally cancellable
+      commitments at a credit conversion factor of 10%
+
+3.3 Global Systemically Important Banks (G-SIBs) are subject to an additional
+leverage ratio buffer requirement equal to 50% of their G-SIB risk-weighted
+higher loss absorbency requirement. For a bank with a 2.0% G-SIB surcharge,
+this implies a leverage ratio buffer of 1.0%, resulting in a total minimum
+leverage ratio of 4.0%.
+
+================================================================================
+PART IV: LIQUIDITY STANDARDS
+================================================================================
+
+Article 6 — Liquidity Coverage Ratio (LCR)
+
+6.1 The Liquidity Coverage Ratio requires banks to maintain an adequate stock
+of unencumbered High Quality Liquid Assets (HQLA) that can be converted to
+cash to meet liquidity needs in a 30-day stress scenario.
+
+6.2 The minimum LCR is 100%, defined as:
+
+    LCR = (Stock of HQLA) / (Total Net Cash Outflows over next 30 days) ≥ 100%
+
+6.3 HQLA are classified into two categories:
+  Level 1 Assets (no haircut):
+    - Coins and banknotes
+    - Central bank reserves
+    - Marketable securities guaranteed by sovereigns with 0% risk weight
+  Level 2 Assets (subject to haircut):
+    - Level 2A: 15% haircut (e.g., non-0% sovereign securities rated AA– or above)
+    - Level 2B: 25–50% haircut (e.g., RMBS rated AA or above, corporate bonds rated A+)
+
+6.4 Level 2 assets may not exceed 40% of the total HQLA stock (after haircuts).
+Level 2B assets may not exceed 15% of HQLA stock (after haircuts).
+
+Article 7 — Net Stable Funding Ratio (NSFR)
+
+7.1 The Net Stable Funding Ratio requires banks to maintain a stable funding
+profile relative to the composition of their assets and off-balance sheet
+activities. It is defined as:
+
+    NSFR = (Available Stable Funding) / (Required Stable Funding) ≥ 100%
+
+7.2 Available Stable Funding (ASF) is the weighted sum of a bank's capital
+and liabilities. Higher weights are applied to more stable funding sources:
+  - Tier 1 and Tier 2 capital: 100% ASF factor
+  - Retail deposits with residual maturity ≥ 1 year: 95% ASF factor
+  - Retail demand deposits and term deposits < 1 year: 90–95% ASF factor
+  - Wholesale funding with residual maturity ≥ 1 year: 50–100% ASF factor
+
+7.3 Required Stable Funding (RSF) reflects the liquidity characteristics of
+assets. Illiquid assets require more stable funding:
+  - Encumbered assets with residual maturity ≥ 1 year: 100% RSF factor
+  - Unencumbered loans to non-financial corporates, residual maturity < 1 yr: 50%
+  - Unencumbered high-quality HQLA Level 1: 5% RSF factor
+  - Unencumbered HQLA Level 2A: 15% RSF factor
+
+================================================================================
+PART V: SYSTEMICALLY IMPORTANT BANKS
+================================================================================
+
+Article 9 — G-SIB Surcharge
+
+9.1 Global Systemically Important Banks are subject to additional CET1 capital
+surcharges based on their systemic importance score. The surcharge scale:
+
+  | G-SIB Bucket | Systemic Importance Score | CET1 Surcharge |
+  |--------------|--------------------------|----------------|
+  | Bucket 5     | 530+                     | 3.5%           |
+  | Bucket 4     | 430–529                  | 2.5%           |
+  | Bucket 3     | 330–429                  | 2.0%           |
+  | Bucket 2     | 230–329                  | 1.5%           |
+  | Bucket 1     | 130–229                  | 1.0%           |
+
+9.2 The systemic importance score is calculated using five equally weighted
+indicator categories:
+  (a) Cross-jurisdictional activity (20%)
+  (b) Size (20%)
+  (c) Interconnectedness (20%)
+  (d) Substitutability / financial institution infrastructure (20%)
+  (e) Complexity (20%)
+
+================================================================================
+END OF EXCERPT
+This document is a synthetic educational excerpt. For actual regulatory requirements,
+refer to the official Basel Committee publications at bis.org.
+================================================================================

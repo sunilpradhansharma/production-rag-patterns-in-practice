@@ -1,0 +1,171 @@
+ISDA MASTER AGREEMENT — SYNTHETIC EXCERPT
+2002 ISDA Master Agreement (Synthetic Version for Workshop Use)
+Based on structure of the standard ISDA 2002 Master Agreement
+
+================================================================================
+SECTION 1. INTERPRETATION
+================================================================================
+
+1(a) Definitions. As used in this Agreement:—
+
+"Affiliate" means, in relation to any person, any entity controlled, directly
+or indirectly, by the person, any entity that controls, directly or indirectly,
+the person or any entity directly or indirectly under common control with the
+person. For this purpose, "control" of any entity or person means ownership
+of a majority of the voting power of the entity or person.
+
+"Agreement" means this ISDA Master Agreement together with its Schedule and
+all Confirmations exchanged between the parties.
+
+"Applicable Rate" means:—
+  (i) in respect of obligations payable or deliverable (or which would have
+      been but for Section 2(a)(iii)) by a Defaulting Party, the Default
+      Rate; and
+  (ii) in all other cases, the Non-default Rate.
+
+"Automatic Early Termination" has the meaning specified in Section 6(a).
+
+"Burdened Party" has the meaning specified in Section 5(b)(iv).
+
+"Change in Tax Law" means the enactment, promulgation, execution or ratification
+of, or any change in or amendment to, any law (or in the application or official
+interpretation of any law) that occurs after the date on which the relevant
+Transaction is entered into.
+
+"Close-out Amount" means, with respect to each Terminated Transaction or each
+group of Terminated Transactions and a Determining Party, the amount of the
+losses or costs of the Determining Party that are or would be incurred under
+then prevailing circumstances in replacing, or in providing for the Determining
+Party the economic equivalent of, (a) the material terms of that Terminated
+Transaction or group of Terminated Transactions, including the payments and
+deliveries by the parties under Section 2(a)(i) in respect of that Terminated
+Transaction or group of Terminated Transactions that would, but for the
+occurrence of the relevant Early Termination Date, have been required after that
+date (assuming satisfaction of the conditions precedent in Section 2(a)(iii))
+and (b) the option rights of the parties in respect of that Terminated
+Transaction or group of Terminated Transactions.
+
+"Confirmation" means one or more documents and other confirming evidence
+exchanged between the parties or otherwise effective for the purpose of confirming
+or evidencing a Transaction.
+
+================================================================================
+SECTION 2. OBLIGATIONS
+================================================================================
+
+2(a) General Conditions.
+  (i) Each party will make each payment or delivery specified in each
+      Confirmation to be made by it, subject to the other provisions of this
+      Agreement.
+
+  (ii) Payments under this Agreement will be made on the due date for value
+       on that date in the place of the account specified in the relevant
+       Confirmation or otherwise pursuant to this Agreement, in freely
+       transferable funds and in the manner customary for payments in the
+       required currency. Where settlement is by delivery, that delivery will
+       be made for receipt on the due date in the manner customary for the
+       relevant obligation unless otherwise specified in the relevant
+       Confirmation or elsewhere in this Agreement.
+
+  (iii) Each obligation of each party under Section 2(a)(i) is subject to
+        (1) the condition precedent that no Event of Default or Potential Event
+        of Default with respect to the other party has occurred and is
+        continuing, (2) the condition precedent that no Early Termination Date
+        in respect of the relevant Transaction has occurred or been effectively
+        designated and (3) each other applicable condition precedent specified
+        in this Agreement.
+
+================================================================================
+SECTION 5. EVENTS OF DEFAULT AND TERMINATION EVENTS
+================================================================================
+
+5(a) Events of Default. The occurrence at any time with respect to a party or,
+if applicable, any Credit Support Provider of such party or any Specified Entity
+of such party of any of the following events constitutes an event of default:—
+
+  (i) Failure to Pay or Deliver. Failure by the party to make, when due, any
+      payment under this Agreement or delivery under Section 2(a)(i) or
+      2(e) required to be made by it if such failure is not remedied on or
+      before the first Local Business Day after notice of such failure is given
+      to the party.
+
+  (ii) Breach of Agreement; Repudiation of Agreement.
+       (1) Failure by the party to comply with or perform any agreement or
+           obligation (other than an obligation to make any payment under this
+           Agreement or delivery under Section 2(a)(i) or 2(e) or to give
+           notice of a Termination Event or any agreement or obligation under
+           Section 4(a)(i), 4(a)(iii) or 4(d)) to be complied with or
+           performed by the party in accordance with this Agreement if such
+           failure is not remedied within 30 days after notice of such failure
+           is given to the party.
+
+  (iii) Credit Support Default.
+        (1) Failure by the party or any Credit Support Provider of such party
+            to comply with or perform any agreement or obligation to be
+            complied with or performed by it in accordance with any Credit
+            Support Document if such failure is continuing after any applicable
+            grace period has elapsed.
+        (2) The expiration or termination of, or the failing or ceasing of,
+            any Credit Support Document supporting the obligations of the party
+            under this Agreement to be in full force and effect for the purposes
+            of this Agreement (in each case other than in accordance with its
+            terms) prior to the satisfaction of all obligations of such party
+            under each Transaction to which such Credit Support Document
+            relates.
+
+  (iv) Misrepresentation. A representation (other than a representation under
+       Section 3(e) or 3(f)) made or repeated or deemed to have been made or
+       repeated by the party or any Credit Support Provider of such party in
+       this Agreement or any Credit Support Document proves to have been
+       incorrect or misleading in any material respect when made or repeated
+       or deemed to have been made or repeated.
+
+  (v) Default under Specified Transaction. The party, any Credit Support
+      Provider of such party or any applicable Specified Entity:—
+      (1) defaults under a Specified Transaction and, after giving effect to any
+          applicable notice requirement or grace period, there occurs a
+          liquidation of, an acceleration of obligations under, or an early
+          termination of, that Specified Transaction;
+      (2) defaults, after giving effect to any applicable notice requirement or
+          grace period, in making any payment or delivery due on the last payment,
+          delivery or exchange date of, or any payment on early termination of,
+          a Specified Transaction; or
+      (3) disaffirms, disclaims, repudiates or rejects, in whole or in part, or
+          challenges the validity of, a Specified Transaction.
+
+================================================================================
+SECTION 6. EARLY TERMINATION; CLOSE-OUT NETTING
+================================================================================
+
+6(a) Right to Terminate Following Event of Default.
+If at any time an Event of Default with respect to a party (the "Defaulting
+Party") has occurred and is then continuing, the other party (the "Non-defaulting
+Party") may, by not more than 20 days notice to the Defaulting Party specifying
+the relevant Event of Default, designate a day not earlier than the day such
+notice is effective as an Early Termination Date in respect of all outstanding
+Transactions.
+
+6(e) Payments on Early Termination.
+If an Early Termination Date occurs, the following provisions shall apply based
+on the "Termination Currency" elected in the Schedule:
+
+  (i) Statement. On or as soon as reasonably practicable following the
+      occurrence of an Early Termination Date, each party will make the
+      calculations on its part, if any, contemplated by Section 6(e) and will
+      provide to the other party a statement showing, in reasonable detail,
+      such calculations.
+
+  (ii) Two Way Payments. Subject to Section 6(f) and any other applicable
+       provision of this Agreement, an amount calculated as being due in respect
+       of any Early Termination Date under Section 6(e)(i) will be payable on
+       the day that notice of the amount payable is effective (in the case of an
+       Early Termination Date which is designated or occurs as a result of an
+       Event of Default) or two Local Business Days after such notice is
+       effective (in all other cases).
+
+================================================================================
+END OF EXCERPT
+This document is a synthetic educational excerpt for RAG pattern demonstration.
+Not for use in any actual financial transaction. For real ISDA documentation,
+visit isda.org.
+================================================================================

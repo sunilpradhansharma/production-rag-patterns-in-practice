@@ -1,0 +1,164 @@
+APEX PAYMENTS INC.
+QUARTERLY EARNINGS REPORT — Q3 2025
+FOR THE THREE AND NINE MONTHS ENDED SEPTEMBER 30, 2025
+(Synthetic document for RAG workshop use)
+
+================================================================================
+EXECUTIVE SUMMARY
+================================================================================
+
+Apex Payments Inc. ("Apex" or "the Company") reported strong third-quarter
+results driven by growth in its Buy Now, Pay Later (BNPL) segment and continued
+expansion of its B2B payment processing vertical. Total revenue reached $847.3
+million for Q3 2025, representing a 23.4% year-over-year increase. Net income
+attributable to common stockholders was $112.8 million, or $0.89 per diluted
+share, compared to $74.1 million, or $0.59 per diluted share, in Q3 2024.
+
+"We delivered another record quarter," said CEO Miranda Chen. "Our merchant
+network now exceeds 2.1 million active partners globally, and BNPL originations
+crossed $3 billion for the first time in a single quarter. We remain on track
+to achieve our full-year revenue guidance of $3.2–3.3 billion."
+
+================================================================================
+CONSOLIDATED STATEMENTS OF OPERATIONS (UNAUDITED)
+In millions, except per share data
+================================================================================
+
+                                    Three Months Ended     Nine Months Ended
+                                    Sept 30,  Sept 30,    Sept 30,  Sept 30,
+                                    2025      2024        2025      2024
+                                    -------   -------     --------  --------
+REVENUE
+  Payment processing fees           $412.1    $341.8      $1,198.4  $987.6
+  BNPL origination fees             $218.4    $152.3      $607.1    $404.5
+  Subscription and SaaS revenue     $143.7    $117.2      $416.3    $329.8
+  Interest income on BNPL loans     $73.1     $48.9       $202.4    $130.1
+  -----------------------------------------------------------------------
+  Total Revenue                     $847.3    $660.2      $2,424.2  $1,852.0
+
+OPERATING EXPENSES
+  Cost of revenue                   $289.4    $231.1      $836.2    $655.4
+  Sales and marketing               $142.6    $118.3      $413.7    $336.1
+  Technology and development        $98.3     $79.2       $282.1    $221.4
+  General and administrative        $67.1     $58.4       $196.3    $165.8
+  Credit losses (BNPL portfolio)    $62.4     $48.7       $174.8    $129.3
+  -----------------------------------------------------------------------
+  Total Operating Expenses          $659.8    $535.7      $1,903.1  $1,508.0
+
+Operating Income                    $187.5    $124.5      $521.1    $344.0
+  Interest expense                  ($31.2)   ($24.8)     ($91.4)   ($72.1)
+  Other income (expense), net       $4.1      ($1.2)      $9.3      ($3.4)
+                                    -------   -------     --------  --------
+Income before income taxes          $160.4    $98.5       $439.0    $268.5
+  Income tax expense                ($47.6)   ($24.4)     ($130.2)  ($67.1)
+Net income                          $112.8    $74.1       $308.8    $201.4
+  Less: net income attributable to
+  noncontrolling interest           ($0.4)    ($0.2)      ($1.1)    ($0.6)
+Net income attributable to Apex     $112.4    $73.9       $307.7    $200.8
+
+Earnings per share:
+  Basic                             $0.90     $0.60       $2.47     $1.63
+  Diluted                           $0.89     $0.59       $2.44     $1.61
+
+================================================================================
+SELECTED BALANCE SHEET DATA (UNAUDITED)
+In millions
+================================================================================
+
+                                    Sept 30,  Dec 31,     Sept 30,
+                                    2025      2024        2024
+                                    -------   -------     -------
+ASSETS
+  Cash and cash equivalents         $1,843.2  $1,402.7    $1,187.4
+  BNPL loan portfolio, net          $4,127.8  $3,241.9    $2,876.3
+  Goodwill and intangibles          $2,341.1  $2,288.4    $2,301.7
+  Other assets                      $1,618.4  $1,347.2    $1,293.6
+  Total assets                      $9,930.5  $8,280.2    $7,659.0
+
+LIABILITIES AND EQUITY
+  Funding facilities (BNPL)         $3,241.8  $2,518.4    $2,241.6
+  Senior notes                      $1,200.0  $1,200.0    $1,200.0
+  Other liabilities                 $1,887.3  $1,592.1    $1,498.2
+  Total stockholders' equity        $3,601.4  $2,969.7    $2,719.2
+  Total liabilities and equity      $9,930.5  $8,280.2    $7,659.0
+
+================================================================================
+MANAGEMENT'S DISCUSSION AND ANALYSIS
+================================================================================
+
+Business Segment Performance
+
+PAYMENT PROCESSING
+Payment processing revenue grew 20.6% year-over-year to $412.1 million.
+Total Payment Volume (TPV) reached $89.4 billion for the quarter, up 24.1%
+from $72.0 billion in Q3 2024. Take rate declined modestly from 0.474% to
+0.461% due to mix shift toward enterprise merchants who receive volume-based
+pricing. The Company added 127,000 net new merchant accounts during the quarter,
+bringing the total active merchant base to 2.1 million globally.
+
+International markets now represent 31% of payment processing revenue, up from
+24% in the prior year period, driven primarily by expansion in Southeast Asia
+and continued growth in the UK and Germany.
+
+BUY NOW, PAY LATER
+BNPL originations of $3.04 billion for Q3 2025 exceeded the $3 billion milestone
+for the first time in a single quarter, representing 47.2% growth versus
+$2.07 billion in Q3 2024. Active BNPL users reached 18.7 million, up 38.1%
+year-over-year.
+
+Credit performance has remained within our underwriting targets. The 30-day+
+delinquency rate on the managed BNPL portfolio was 2.84% at September 30, 2025,
+compared to 2.91% at June 30, 2025 and 2.67% at September 30, 2024. Net charge-off
+rate for the trailing twelve months was 4.12%, consistent with our full-year
+guidance of 4.0%–4.5%.
+
+The Company completed a $1.5 billion BNPL whole loan sale to institutional
+investors during the quarter, generating a gain on sale of $18.4 million and
+recycling capital for new originations.
+
+SUBSCRIPTIONS AND SAAS
+Subscription revenue grew 22.6% year-over-year to $143.7 million. Annual
+Recurring Revenue (ARR) reached $596 million at quarter end, up from $476 million
+one year prior. Net Revenue Retention (NRR) was 118%, indicating strong expansion
+within existing accounts. The Company launched its new AI-powered fraud detection
+module in August 2025, which has been adopted by 847 enterprise clients to date.
+
+Liquidity and Capital Resources
+At September 30, 2025, the Company had $1.84 billion in unrestricted cash and
+$750 million in undrawn capacity on its revolving credit facility, providing
+total liquidity of approximately $2.59 billion. The Company repurchased 1.4 million
+shares for $98.2 million during the quarter at an average price of $70.14 per share.
+$401.8 million remains available under the current repurchase authorization.
+
+================================================================================
+GUIDANCE
+================================================================================
+
+Full Year 2025 Guidance (updated):
+  Total Revenue:          $3.20–3.30 billion   (prior: $3.10–3.25 billion)
+  Adjusted EBITDA margin: 27%–29%               (prior: 26%–28%)
+  Diluted EPS:            $3.30–3.45            (prior: $3.15–3.35)
+  BNPL originations:      $11.0–11.5 billion    (prior: $10.5–11.0 billion)
+  Net charge-off rate:    4.0%–4.5%             (unchanged)
+
+Q4 2025 Guidance:
+  Total Revenue:          $840–870 million
+  Diluted EPS:            $0.86–0.91
+
+================================================================================
+FORWARD-LOOKING STATEMENTS
+================================================================================
+
+This report contains forward-looking statements within the meaning of Section
+27A of the Securities Act of 1933 and Section 21E of the Securities Exchange
+Act of 1934. These statements involve known and unknown risks, uncertainties
+and other factors which may cause the Company's actual results, performance or
+achievements to be materially different from any future results, performances
+or achievements expressed or implied by the forward-looking statements.
+[Standard boilerplate omitted for brevity — this is a synthetic document.]
+
+================================================================================
+END OF REPORT
+Apex Payments Inc. is a fictional company created for educational purposes.
+All financial figures are synthetic and do not represent any real company.
+================================================================================
