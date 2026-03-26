@@ -202,6 +202,72 @@ All loan documentation may be retained in electronic form provided:
   c) Records can be reproduced in legible paper form within 3 business days
 
 ================================================================================
+SECTION 8: DEFAULT REMEDIATION PROCESS
+================================================================================
+
+8.1 Definition of Default
+A personal loan account is considered in default when it is 90 or more calendar
+days past due (DPD) on any scheduled payment. For auto loans secured by
+collateral, the default threshold is 60 DPD. Default status triggers immediate
+credit bureau reporting and activates the remediation workflow described below.
+
+8.2 Early-Stage Delinquency (1–59 DPD)
+The Bank's Loan Servicing team initiates the following outreach sequence:
+
+  Day 5:   Automated SMS and email payment reminder
+  Day 15:  Outbound call attempt (up to 3 per week, compliant with TCPA)
+  Day 30:  Formal written notice of delinquency mailed to address of record
+  Day 45:  Offer of hardship accommodation presented (see Section 8.3)
+  Day 55:  Final pre-charge-off notice; account flagged for collection referral
+
+8.3 Hardship Accommodation Programs
+Borrowers demonstrating financial hardship may qualify for one of the following
+programs, subject to underwriter approval:
+
+  | Program              | Modification                        | Maximum Duration |
+  |----------------------|-------------------------------------|-----------------|
+  | Rate Reduction       | APR reduced by up to 5.0%           | 12 months        |
+  | Payment Deferral     | 1–2 payments moved to end of term   | One-time only    |
+  | Term Extension       | Loan term extended by up to 6 months| Once per lifetime|
+  | Interest-Only Period | Principal payments suspended        | 3 months         |
+
+Borrowers must submit a Hardship Certification Form and supporting documentation
+(e.g., unemployment notice, medical bill, reduced income evidence). Accounts in
+active hardship accommodation are not eligible for additional credit products.
+
+8.4 Charge-Off Policy
+Personal loan accounts that reach 120 DPD without an approved hardship plan are
+charged off as uncollectable. Auto loans are charged off at 90 DPD or upon
+repossession of the vehicle, whichever occurs first. Charge-off does not extinguish
+the legal obligation to repay; the Bank retains all collection rights.
+
+The charge-off entry:
+  a) Reduces the gross loan receivable on the balance sheet
+  b) Reduces the Allowance for Credit Losses (ACL) by the charged-off amount
+  c) Triggers Form 1099-C issuance to the borrower if forgiveness of $600+
+     occurs in a subsequent calendar year
+
+8.5 Post-Charge-Off Collections
+After charge-off, accounts are managed through one of two paths:
+
+  Path A — Internal Collections Unit: Accounts with a remaining balance ≤ $5,000
+  are transferred to the Bank's internal collections team. Staff may offer
+  settlement at 50%–70% of outstanding principal plus accrued interest.
+
+  Path B — Third-Party Debt Sale: Accounts with balance > $5,000 that show no
+  payment activity for 180 days post-charge-off are sold to a licensed debt
+  purchaser via competitive bid. The Bank must ensure the purchaser complies
+  with the Fair Debt Collection Practices Act (FDCPA).
+
+8.6 Credit Bureau Reporting
+Delinquency is reported to all three major credit bureaus (Equifax, Experian,
+TransUnion) monthly using the Metro 2 Format. Charge-off status is reported
+within 30 days of the charge-off date. Accounts that are subsequently paid in
+full or settled are updated to reflect the resolution, but the derogatory
+history remains on the consumer's credit report for seven years from the date
+of first delinquency.
+
+================================================================================
 END OF DOCUMENT
 Policy Owner: Chief Credit Officer | Review Cycle: Annual
 Next Review Date: January 1, 2026

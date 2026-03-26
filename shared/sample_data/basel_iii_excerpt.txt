@@ -135,7 +135,68 @@ assets. Illiquid assets require more stable funding:
   - Unencumbered HQLA Level 2A: 15% RSF factor
 
 ================================================================================
-PART V: SYSTEMICALLY IMPORTANT BANKS
+PART V: RISK-WEIGHTED ASSET CALCULATION
+================================================================================
+
+Article 8 — Standardised Approach to Credit Risk
+
+8.1 Under the Standardised Approach (SA), banks assign a risk weight to each
+on-balance sheet exposure based on the exposure class and, where permitted, the
+external credit rating of the counterparty. Risk-weighted assets are calculated
+as the product of the exposure value and the applicable risk weight.
+
+    RWA = Exposure Value × Risk Weight
+    Minimum Capital Required = RWA × 8.0%
+
+8.2 Exposure Class Risk Weights
+The following risk weights apply under the SA for credit risk:
+
+  | Exposure Class                      | Risk Weight     | Notes                              |
+  |-------------------------------------|-----------------|------------------------------------|
+  | Central governments (AAA to AA–)    | 0%              | Domestic currency exposures        |
+  | Central governments (A+ to A–)      | 20%             |                                    |
+  | Central governments (BBB+ to BB–)   | 50%             |                                    |
+  | Central governments (below BB–)     | 150%            |                                    |
+  | Banks (AAA to AA–)                  | 20%             | Short-term: 20%                    |
+  | Banks (A+ to BBB–)                  | 50%             | Short-term: 20–50%                 |
+  | Corporate (AAA to AA–)              | 20%             |                                    |
+  | Corporate (BBB+ to BBB–)            | 75%             |                                    |
+  | Corporate (below BB–)               | 150%            |                                    |
+  | Retail (regulatory retail portfolio)| 75%             | Granularity criteria must be met   |
+  | Residential mortgage (LTV ≤ 60%)    | 20%             |                                    |
+  | Residential mortgage (LTV 80–90%)   | 50%             |                                    |
+  | Commercial real estate              | 100%            | Subject to national discretion     |
+  | Non-performing loans                | 150%            | Net of specific provisions         |
+  | Equity exposures                    | 100–250%        | Listed vs. unlisted                |
+
+8.3 Credit Conversion Factors (CCF) for Off-Balance Sheet Items
+Off-balance sheet exposures are converted to credit exposure equivalents before
+applying risk weights. The CCF represents the fraction of the undrawn commitment
+expected to be drawn at default.
+
+  | Off-Balance Sheet Category                           | CCF  |
+  |------------------------------------------------------|------|
+  | Unconditionally cancellable commitments              | 10%  |
+  | Short-term self-liquidating trade finance            | 20%  |
+  | Medium/long-term commitments (residual maturity > 1yr)| 40%  |
+  | Direct credit substitutes (e.g., financial guarantees)| 100% |
+  | Performance bonds and warranties                    | 50%  |
+
+8.4 Internal Ratings-Based Approach (IRB)
+Banks approved by their national supervisor may use the Internal Ratings-Based
+(IRB) approach instead of the SA. Under IRB, risk weights are derived from
+bank-supplied estimates of:
+  - PD (Probability of Default)
+  - LGD (Loss Given Default) — Foundation IRB uses supervisory LGD values
+  - EAD (Exposure at Default)
+  - M (Effective Maturity)
+
+The IRB risk weight formula produces a capital requirement that covers unexpected
+losses at a 99.9% confidence level over a one-year horizon. Banks using the
+Advanced IRB (A-IRB) approach may additionally estimate their own LGD and EAD.
+
+================================================================================
+PART VI: SYSTEMICALLY IMPORTANT BANKS
 ================================================================================
 
 Article 9 — G-SIB Surcharge

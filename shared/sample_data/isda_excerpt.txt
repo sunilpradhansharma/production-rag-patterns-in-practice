@@ -50,6 +50,96 @@ exchanged between the parties or otherwise effective for the purpose of confirmi
 or evidencing a Transaction.
 
 ================================================================================
+SECTION 1A. CREDIT SUPPORT ANNEX — MARGIN AND COLLATERAL PROVISIONS
+================================================================================
+
+This Credit Support Annex ("CSA") supplements and forms part of the ISDA Master
+Agreement between the parties. In the event of any inconsistency between the
+CSA and the Agreement, the CSA will prevail for purposes of collateral and
+margin obligations.
+
+1A(a) Variation Margin Obligations.
+
+  (i) Calculation Agent. The party designated as Calculation Agent in the
+      Schedule shall calculate the Credit Support Amount on each Valuation Date
+      and deliver a Valuation Notice to the other party by the Notification Time
+      (11:00 a.m. local time in the jurisdiction of the Calculation Agent).
+
+  (ii) Margin Call Trigger Conditions. A party is obliged to Transfer Eligible
+       Collateral (a "Margin Call") when the following conditions are met:
+
+       (A) Delivery Obligation: The Credit Support Amount exceeds the Pledgor's
+           Credit Support Balance by more than the Minimum Transfer Amount
+           (MTA) of USD 500,000 (or equivalent). In this case the Pledgor must
+           deliver collateral equal to the Delivery Amount on the next Local
+           Business Day following the Valuation Date.
+
+       (B) Return Obligation: The Pledgor's Credit Support Balance exceeds the
+           Credit Support Amount by more than the MTA. In this case the Secured
+           Party must return collateral equal to the Return Amount on the next
+           Local Business Day following the Valuation Date.
+
+       The Credit Support Amount is calculated as:
+           Credit Support Amount = max(0, VM Exposure − Threshold) + IM Required
+
+       Where VM Exposure is the net mark-to-market value of all Transactions
+       under the Agreement, and Threshold is the unsecured credit exposure each
+       party is willing to tolerate before requiring collateral (as specified
+       in the Schedule; default is zero for dealer-to-dealer transactions).
+
+  (iii) Frequency. Variation margin is calculated on each Valuation Date, which
+        is every Local Business Day unless otherwise specified in the Schedule.
+
+1A(b) Initial Margin Obligations.
+
+For Transactions subject to mandatory initial margin requirements under
+applicable law (including EMIR, CFTC, or equivalent), each party shall:
+
+  (i) Calculate the Initial Margin Required (IMR) using the ISDA SIMM
+      (Standard Initial Margin Model) or an approved grid-based schedule.
+      The IMR is updated on each Valuation Date.
+
+  (ii) Post the IMR to a third-party custodian. Initial margin may not be
+       rehypothecated (used or pledged by the collecting party). It must be
+       held in a bankruptcy-remote, segregated account.
+
+  (iii) For Equity derivatives and Commodity transactions, the IMR is determined
+        by the product-specific sensitivity deltas and vega inputs defined in
+        the ISDA SIMM methodology documentation, version 2.6.
+
+1A(c) Eligible Collateral.
+
+The following assets constitute Eligible Collateral under this CSA, subject
+to the applicable haircuts:
+
+  | Collateral Type                          | Haircut | Eligible for IM | Eligible for VM |
+  |------------------------------------------|---------|-----------------|-----------------|
+  | Cash (USD)                               | 0%      | Yes             | Yes             |
+  | Cash (EUR, GBP, JPY)                     | 0–1%    | Yes             | Yes             |
+  | US Treasury Bills (< 1 yr)               | 0.5%    | Yes             | Yes             |
+  | US Treasury Notes/Bonds (1–10 yr)        | 2.0%    | Yes             | Yes             |
+  | US Treasury Bonds (> 10 yr)              | 4.0%    | Yes             | Yes             |
+  | Agency MBS (Fannie, Freddie)             | 4.0%    | No              | Yes             |
+  | Investment-grade corporate bonds (≥ A–)  | 6.0%    | No              | Yes             |
+  | Equities (S&P 500 constituents)          | 15.0%   | No              | No              |
+
+Non-eligible collateral tendered by a Pledgor must be returned within one
+Local Business Day of the Secured Party's discovery that the asset does not
+qualify. Haircutted market value is used to compute the Credit Support Balance.
+
+1A(d) Dispute Resolution.
+
+If a party disputes a Valuation Notice:
+  (i) The disputing party must notify the other party by the Notification Time
+      on the Local Business Day following receipt of the notice.
+  (ii) The parties shall consult in good faith for two Local Business Days to
+       resolve the dispute.
+  (iii) If unresolved, each party shall obtain mark-to-market valuations from
+        two Reference Market-makers and the average shall be used.
+  (iv) The undisputed portion of any Delivery Amount remains payable on its
+       original due date.
+
+================================================================================
 SECTION 2. OBLIGATIONS
 ================================================================================
 
