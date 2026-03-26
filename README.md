@@ -3,7 +3,6 @@
 **A hands-on workshop covering all 26 RAG patterns — from Naive to Agentic — with runnable notebooks, architecture diagrams, and fintech examples.**
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Patterns: 26](https://img.shields.io/badge/RAG_patterns-26-purple.svg)](#the-26-rag-patterns)
 
 ---
