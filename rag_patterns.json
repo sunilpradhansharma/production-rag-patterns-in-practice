@@ -1,0 +1,1481 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "total_patterns": 26,
+    "categories": 6,
+    "last_updated": "2026-03-25",
+    "workshop_title": "RAG Patterns in Practice \u2014 From Naive to Agentic",
+    "target_duration_minutes": 90
+  },
+  "categories": {
+    "foundational": {
+      "label": "Foundational",
+      "order": 1,
+      "suggested_time_minutes": 10,
+      "description": "Baseline patterns every other pattern builds upon"
+    },
+    "retrieval_enhancement": {
+      "label": "Retrieval Enhancement",
+      "order": 2,
+      "suggested_time_minutes": 15,
+      "description": "Techniques that improve what gets retrieved and how"
+    },
+    "indexing_chunking": {
+      "label": "Indexing & Chunking Strategies",
+      "order": 3,
+      "suggested_time_minutes": 15,
+      "description": "How documents are stored and structured for optimal retrieval"
+    },
+    "reasoning_self_correction": {
+      "label": "Reasoning & Self-Correction",
+      "order": 4,
+      "suggested_time_minutes": 15,
+      "description": "Patterns that reflect, verify, and iteratively improve answers"
+    },
+    "architectural": {
+      "label": "Architectural Patterns",
+      "order": 5,
+      "suggested_time_minutes": 15,
+      "description": "Structural approaches for composing RAG pipelines"
+    },
+    "specialized": {
+      "label": "Specialized Patterns",
+      "order": 6,
+      "suggested_time_minutes": 10,
+      "description": "Domain-specific or modality-specific retrieval techniques"
+    }
+  },
+  "patterns": [
+    {
+      "id": "01_naive_rag",
+      "name": "Naive RAG",
+      "short_name": "naive_rag",
+      "category": "foundational",
+      "module_order": 1,
+      "status": "not_started",
+      "skill_path": "modules/01_naive_rag/SKILL.md",
+      "notebook_path": "modules/01_naive_rag/demo.ipynb",
+      "slides_path": "modules/01_naive_rag/slides.md",
+      "source_paper": "Lewis et al., 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks', NeurIPS 2020",
+      "source_url": "https://arxiv.org/abs/2005.11401",
+      "core_concept": "Chunk documents \u2192 embed chunks \u2192 store in vector DB \u2192 embed query \u2192 retrieve top-k \u2192 generate answer",
+      "key_innovation": "Baseline: combines parametric (LLM) + non-parametric (retriever) knowledge",
+      "fintech_use_cases": [
+        "FAQ answering over product documentation",
+        "Basic policy document Q&A",
+        "Customer support knowledge base"
+      ],
+      "key_libraries": [
+        "langchain",
+        "chromadb",
+        "openai"
+      ],
+      "complexity_rating": 1,
+      "latency_rating": 4,
+      "retrieval_quality_rating": 2,
+      "fintech_relevance_rating": 3,
+      "workshop_demo_query": "What are the eligibility requirements for a personal loan?",
+      "common_failure_modes": [
+        "Chunk boundary cuts important context",
+        "Semantic drift between query and answer phrasing",
+        "No handling for unanswerable questions"
+      ],
+      "pairs_well_with": [
+        "02_advanced_rag",
+        "03_hybrid_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup: pip installs, env vars",
+        "Data: load fintech PDF (loan policy)",
+        "Chunk + embed: RecursiveCharacterTextSplitter + OpenAIEmbeddings",
+        "Retrieve: Chroma similarity search top-5",
+        "Generate: Claude with retrieved context",
+        "Fintech angle: compliance policy lookup"
+      ],
+      "eval_criteria": {
+        "retrieval_check": "chunks_returned > 0",
+        "answer_check": "answer_length > 50",
+        "latency_check": "total_time < 5.0"
+      },
+      "workshop_tier": 1,
+      "difficulty": "beginner",
+      "primary_goal": "Baseline: combines parametric (LLM) + non-parametric (retriever) knowledge"
+    },
+    {
+      "id": "02_advanced_rag",
+      "name": "Advanced RAG",
+      "short_name": "advanced_rag",
+      "category": "foundational",
+      "module_order": 2,
+      "status": "not_started",
+      "skill_path": "modules/02_advanced_rag/SKILL.md",
+      "notebook_path": "modules/02_advanced_rag/demo.ipynb",
+      "slides_path": "modules/02_advanced_rag/slides.md",
+      "source_paper": "Gao et al., 'Retrieval-Augmented Generation for Large Language Models: A Survey', 2023",
+      "source_url": "https://arxiv.org/abs/2312.10997",
+      "core_concept": "Pre-retrieval (query rewriting/expansion) + post-retrieval (re-ranking, context compression)",
+      "key_innovation": "Adds processing stages before and after retrieval to fix naive RAG failures",
+      "fintech_use_cases": [
+        "Regulatory document search with query expansion",
+        "Re-ranked risk report retrieval",
+        "Compressed context for earnings call Q&A"
+      ],
+      "key_libraries": [
+        "langchain",
+        "cohere",
+        "flashrank"
+      ],
+      "complexity_rating": 2,
+      "latency_rating": 3,
+      "retrieval_quality_rating": 4,
+      "fintech_relevance_rating": 4,
+      "workshop_demo_query": "What capital requirements apply to tier 1 banks under Basel III?",
+      "common_failure_modes": [
+        "Over-compressed context loses key details",
+        "Query rewriting changes user intent",
+        "Re-ranker adds 300\u2013600ms latency"
+      ],
+      "pairs_well_with": [
+        "03_hybrid_rag",
+        "17_corrective_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Data: Basel III regulatory text",
+        "Query rewriting: LLM generates 3 query variants",
+        "Retrieve: top-10 candidates",
+        "Re-rank: Cohere rerank API \u2192 top-3",
+        "Context compression: LLMChainExtractor",
+        "Generate + compare naive vs advanced"
+      ],
+      "eval_criteria": {
+        "rerank_check": "reranked_docs[0].score > 0.7",
+        "compression_check": "len(compressed) < len(original) * 0.6"
+      },
+      "workshop_tier": 1,
+      "difficulty": "beginner",
+      "primary_goal": "Adds processing stages before and after retrieval to fix naive RAG failures"
+    },
+    {
+      "id": "03_hybrid_rag",
+      "name": "Hybrid RAG",
+      "short_name": "hybrid_rag",
+      "category": "retrieval_enhancement",
+      "module_order": 3,
+      "status": "not_started",
+      "skill_path": "modules/03_hybrid_rag/SKILL.md",
+      "notebook_path": "modules/03_hybrid_rag/demo.ipynb",
+      "slides_path": "modules/03_hybrid_rag/slides.md",
+      "source_paper": "Ma et al., 'Hybrid Search with BM25 and Dense Retrieval', 2023",
+      "source_url": "https://arxiv.org/abs/2301.07895",
+      "core_concept": "BM25 sparse retrieval + dense vector retrieval fused via Reciprocal Rank Fusion (RRF)",
+      "key_innovation": "Combines exact keyword matching with semantic similarity for maximum recall",
+      "fintech_use_cases": [
+        "Regulatory text search (exact clause references + semantic context)",
+        "Contract review (exact term lookup + conceptual search)",
+        "SWIFT/ISO messaging standard lookup"
+      ],
+      "key_libraries": [
+        "rank_bm25",
+        "langchain",
+        "chromadb"
+      ],
+      "complexity_rating": 2,
+      "latency_rating": 3,
+      "retrieval_quality_rating": 5,
+      "fintech_relevance_rating": 5,
+      "workshop_demo_query": "Find all references to 'margin call' triggers in the ISDA agreement",
+      "common_failure_modes": [
+        "RRF weight tuning required per domain",
+        "BM25 index doesn't update incrementally",
+        "Two separate indexes to maintain"
+      ],
+      "pairs_well_with": [
+        "04_rag_fusion",
+        "09_ensemble_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Data: ISDA master agreement text",
+        "Build BM25 index with rank_bm25",
+        "Build dense Chroma index",
+        "RRF fusion: combine ranked lists",
+        "Compare: BM25-only vs dense-only vs hybrid",
+        "Fintech: regulatory clause lookup"
+      ],
+      "eval_criteria": {
+        "hybrid_improvement": "hybrid_mrr > max(bm25_mrr, dense_mrr)",
+        "fusion_check": "len(fused_results) == k"
+      },
+      "workshop_tier": 1,
+      "difficulty": "beginner",
+      "primary_goal": "Combines exact keyword matching with semantic similarity for maximum recall"
+    },
+    {
+      "id": "04_rag_fusion",
+      "name": "RAG Fusion",
+      "short_name": "rag_fusion",
+      "category": "retrieval_enhancement",
+      "module_order": 4,
+      "status": "not_started",
+      "skill_path": "modules/04_rag_fusion/SKILL.md",
+      "notebook_path": "modules/04_rag_fusion/demo.ipynb",
+      "slides_path": "modules/04_rag_fusion/slides.md",
+      "source_paper": "Shi et al., 'RAG-Fusion: A New Take on Retrieval-Augmented Generation', 2024",
+      "source_url": "https://arxiv.org/abs/2402.03367",
+      "core_concept": "LLM generates N query variants \u2192 retrieve for each \u2192 merge all results via RRF \u2192 generate",
+      "key_innovation": "Multi-perspective querying exposes docs that a single query would miss",
+      "fintech_use_cases": [
+        "Comprehensive risk exposure queries (synonyms: exposure, liability, risk)",
+        "AML pattern detection across varied terminology",
+        "Multi-angle regulatory compliance checks"
+      ],
+      "key_libraries": [
+        "langchain",
+        "openai"
+      ],
+      "complexity_rating": 2,
+      "latency_rating": 2,
+      "retrieval_quality_rating": 4,
+      "fintech_relevance_rating": 4,
+      "workshop_demo_query": "What are the reporting obligations for suspicious transactions?",
+      "common_failure_modes": [
+        "N * retrieval cost \u2014 gets expensive at scale",
+        "LLM-generated queries can drift from user intent",
+        "Duplicate chunks in fused results without dedup"
+      ],
+      "pairs_well_with": [
+        "05_multi_query_rag",
+        "03_hybrid_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Data: AML policy documents",
+        "Generate 4 query variants with Claude",
+        "Retrieve top-5 for each variant",
+        "RRF fusion across all result sets",
+        "Dedup + generate",
+        "Fintech: AML synonym coverage"
+      ],
+      "eval_criteria": {
+        "variant_count": "len(query_variants) >= 3",
+        "dedup_check": "len(set(doc_ids)) == len(fused_docs)"
+      },
+      "workshop_tier": 2,
+      "difficulty": "beginner",
+      "primary_goal": "Multi-perspective querying exposes docs that a single query would miss"
+    },
+    {
+      "id": "05_multi_query_rag",
+      "name": "Multi-Query RAG",
+      "short_name": "multi_query_rag",
+      "category": "retrieval_enhancement",
+      "module_order": 5,
+      "status": "not_started",
+      "skill_path": "modules/05_multi_query_rag/SKILL.md",
+      "notebook_path": "modules/05_multi_query_rag/demo.ipynb",
+      "slides_path": "modules/05_multi_query_rag/slides.md",
+      "source_paper": "LangChain MultiQueryRetriever documentation + underlying research, 2023",
+      "source_url": "https://python.langchain.com/docs/modules/data_connection/retrievers/MultiQueryRetriever",
+      "core_concept": "Generate 3\u20135 query perspectives \u2192 retrieve for each \u2192 union + deduplicate results",
+      "key_innovation": "Compensates for embedding space limitations by generating diverse phrasings",
+      "fintech_use_cases": [
+        "Portfolio risk queries phrased multiple ways",
+        "Customer complaint categorization",
+        "Insurance policy coverage lookup"
+      ],
+      "key_libraries": [
+        "langchain"
+      ],
+      "complexity_rating": 2,
+      "latency_rating": 3,
+      "retrieval_quality_rating": 4,
+      "fintech_relevance_rating": 3,
+      "workshop_demo_query": "Can I get a refund on my investment product?",
+      "common_failure_modes": [
+        "Generates semantically similar (not diverse) queries",
+        "Union of results can overwhelm context window",
+        "No scoring across perspectives"
+      ],
+      "pairs_well_with": [
+        "04_rag_fusion",
+        "02_advanced_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Data: investment product terms",
+        "MultiQueryRetriever with Claude as query generator",
+        "Log all generated queries",
+        "Union + dedup retrieved docs",
+        "Generate with full context",
+        "Fintech: refund / withdrawal policy lookup"
+      ],
+      "eval_criteria": {
+        "diversity_check": "len(set(queries)) >= 3",
+        "union_check": "len(union_docs) > len(single_query_docs)"
+      },
+      "workshop_tier": 2,
+      "difficulty": "beginner",
+      "primary_goal": "Compensates for embedding space limitations by generating diverse phrasings"
+    },
+    {
+      "id": "06_hyde",
+      "name": "HyDE (Hypothetical Document Embeddings)",
+      "short_name": "hyde",
+      "category": "retrieval_enhancement",
+      "module_order": 6,
+      "status": "not_started",
+      "skill_path": "modules/06_hyde/SKILL.md",
+      "notebook_path": "modules/06_hyde/demo.ipynb",
+      "slides_path": "modules/06_hyde/slides.md",
+      "source_paper": "Gao et al., 'Precise Zero-Shot Dense Retrieval without Relevance Labels', ACL 2023",
+      "source_url": "https://arxiv.org/abs/2212.10496",
+      "core_concept": "Generate a hypothetical ideal answer \u2192 embed it \u2192 use that embedding to retrieve real docs",
+      "key_innovation": "Bridges the gap between short query embeddings and long document embeddings",
+      "fintech_use_cases": [
+        "Zero-shot retrieval over new regulatory domains",
+        "Low-query-volume product FAQs",
+        "First-time domain coverage without training data"
+      ],
+      "key_libraries": [
+        "langchain",
+        "openai"
+      ],
+      "complexity_rating": 2,
+      "latency_rating": 3,
+      "retrieval_quality_rating": 4,
+      "fintech_relevance_rating": 3,
+      "workshop_demo_query": "How does open banking affect data sharing consent?",
+      "common_failure_modes": [
+        "Hypothetical answer can hallucinate facts",
+        "Works less well when LLM knows nothing about domain",
+        "Double LLM call adds latency"
+      ],
+      "pairs_well_with": [
+        "07_step_back_rag",
+        "02_advanced_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Data: Open Banking API docs",
+        "Generate hypothetical answer with Claude",
+        "Embed hypothetical answer",
+        "Retrieve using hypothetical embedding",
+        "Compare: query embedding vs HyDE embedding",
+        "Fintech: PSD2 / open banking Q&A"
+      ],
+      "eval_criteria": {
+        "hyde_vs_naive": "hyde_top1_relevance > naive_top1_relevance",
+        "hallucination_guard": "hypothetical_sources_not_cited_in_final_answer"
+      },
+      "workshop_tier": 1,
+      "difficulty": "beginner",
+      "primary_goal": "Bridges the gap between short query embeddings and long document embeddings"
+    },
+    {
+      "id": "07_step_back_rag",
+      "name": "Step-Back RAG",
+      "short_name": "step_back_rag",
+      "category": "retrieval_enhancement",
+      "module_order": 7,
+      "status": "not_started",
+      "skill_path": "modules/07_step_back_rag/SKILL.md",
+      "notebook_path": "modules/07_step_back_rag/demo.ipynb",
+      "slides_path": "modules/07_step_back_rag/slides.md",
+      "source_paper": "Zheng et al., 'Take a Step Back: Evoking Reasoning via Abstraction in Large Language Models', ICLR 2024",
+      "source_url": "https://arxiv.org/abs/2310.06117",
+      "core_concept": "Rewrite query to a higher-level abstraction \u2192 retrieve on abstract query \u2192 use for grounded generation",
+      "key_innovation": "Handles overly specific queries by finding the general principle first",
+      "fintech_use_cases": [
+        "Specific tax code questions \u2192 general tax principles",
+        "Edge-case insurance claims \u2192 general coverage rules",
+        "Niche derivative product queries \u2192 general instrument class"
+      ],
+      "key_libraries": [
+        "langchain",
+        "openai"
+      ],
+      "complexity_rating": 2,
+      "latency_rating": 3,
+      "retrieval_quality_rating": 4,
+      "fintech_relevance_rating": 3,
+      "workshop_demo_query": "Is a knock-in barrier option with a 0.65 delta ITM at expiry exercisable?",
+      "common_failure_modes": [
+        "Step-back abstraction can be too vague",
+        "Loses important specifics from original query",
+        "Requires LLM with strong abstraction capability"
+      ],
+      "pairs_well_with": [
+        "06_hyde",
+        "20_adaptive_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Data: options trading rulebook",
+        "Abstraction prompt: rewrite to general form",
+        "Retrieve on abstract query",
+        "Retrieve on original query",
+        "Combine both contexts for generation",
+        "Fintech: derivatives knowledge base"
+      ],
+      "eval_criteria": {
+        "abstraction_check": "len(abstract_query) < len(original_query)",
+        "context_improvement": "combined_relevance > single_query_relevance"
+      },
+      "workshop_tier": 2,
+      "difficulty": "beginner",
+      "primary_goal": "Handles overly specific queries by finding the general principle first"
+    },
+    {
+      "id": "08_flare",
+      "name": "FLARE (Forward-Looking Active Retrieval)",
+      "short_name": "flare",
+      "category": "retrieval_enhancement",
+      "module_order": 8,
+      "status": "not_started",
+      "skill_path": "modules/08_flare/SKILL.md",
+      "notebook_path": "modules/08_flare/demo.ipynb",
+      "slides_path": "modules/08_flare/slides.md",
+      "source_paper": "Jiang et al., 'Active Retrieval Augmented Generation', EMNLP 2023",
+      "source_url": "https://arxiv.org/abs/2305.06983",
+      "core_concept": "Generate tentative next tokens; if confidence below threshold, pause and retrieve before continuing",
+      "key_innovation": "Retrieval is triggered dynamically during generation, not just at the start",
+      "fintech_use_cases": [
+        "Long-form regulatory report generation with on-demand fact retrieval",
+        "Dynamic earnings commentary generation",
+        "Multi-paragraph risk narrative with embedded citations"
+      ],
+      "key_libraries": [
+        "langchain",
+        "openai"
+      ],
+      "complexity_rating": 4,
+      "latency_rating": 2,
+      "retrieval_quality_rating": 5,
+      "fintech_relevance_rating": 3,
+      "workshop_demo_query": "Write a 3-paragraph risk summary for our Q3 credit portfolio.",
+      "common_failure_modes": [
+        "Token probability access not available in all APIs",
+        "Can loop excessively on low-confidence domains",
+        "Latency increases significantly with multiple retrieval pauses"
+      ],
+      "pairs_well_with": [
+        "16_self_rag",
+        "18_ircot"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Data: credit risk guidelines",
+        "Implement confidence threshold checker",
+        "FLARE generation loop",
+        "Trigger retrieval at low-confidence tokens",
+        "Continue generation with retrieved context",
+        "Fintech: risk summary generation"
+      ],
+      "eval_criteria": {
+        "retrieval_triggered": "retrieval_count >= 1",
+        "generation_complete": "final_output is not None"
+      },
+      "workshop_tier": 3,
+      "difficulty": "advanced",
+      "primary_goal": "Retrieval is triggered dynamically during generation, not just at the start"
+    },
+    {
+      "id": "09_ensemble_rag",
+      "name": "Ensemble RAG",
+      "short_name": "ensemble_rag",
+      "category": "retrieval_enhancement",
+      "module_order": 9,
+      "status": "not_started",
+      "skill_path": "modules/09_ensemble_rag/SKILL.md",
+      "notebook_path": "modules/09_ensemble_rag/demo.ipynb",
+      "slides_path": "modules/09_ensemble_rag/slides.md",
+      "source_paper": "LangChain EnsembleRetriever + foundational ensemble IR literature",
+      "source_url": "https://python.langchain.com/docs/modules/data_connection/retrievers/ensemble",
+      "core_concept": "Run multiple independent retrievers (BM25, dense, graph) and combine results via weighted voting",
+      "key_innovation": "Robustness through diversity \u2014 no single retriever failure tanks the whole pipeline",
+      "fintech_use_cases": [
+        "Multi-source regulatory intelligence (FINRA + SEC + CFTC)",
+        "Cross-asset risk data retrieval",
+        "Vendor-agnostic document search"
+      ],
+      "key_libraries": [
+        "langchain",
+        "rank_bm25",
+        "chromadb"
+      ],
+      "complexity_rating": 3,
+      "latency_rating": 2,
+      "retrieval_quality_rating": 5,
+      "fintech_relevance_rating": 4,
+      "workshop_demo_query": "What sanctions screening requirements apply to correspondent banking?",
+      "common_failure_modes": [
+        "Weight tuning required \u2014 wrong weights can hurt",
+        "Parallel retrieval adds infra complexity",
+        "Inconsistent document formats across retrievers"
+      ],
+      "pairs_well_with": [
+        "03_hybrid_rag",
+        "21_modular_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Data: 3 regulatory data sources",
+        "Initialize BM25 + Chroma + keyword retrievers",
+        "EnsembleRetriever with weights [0.4, 0.4, 0.2]",
+        "Compare individual vs ensemble retrieval",
+        "Generate with ensemble context",
+        "Fintech: multi-regulator compliance search"
+      ],
+      "eval_criteria": {
+        "retriever_count": "len(retrievers) >= 2",
+        "ensemble_improvement": "ensemble_recall >= max(individual_recalls)"
+      },
+      "workshop_tier": 3,
+      "difficulty": "intermediate",
+      "primary_goal": "Robustness through diversity \u2014 no single retriever failure tanks the whole pipeline"
+    },
+    {
+      "id": "10_parent_document",
+      "name": "Parent Document Retrieval",
+      "short_name": "parent_document",
+      "category": "indexing_chunking",
+      "module_order": 10,
+      "status": "not_started",
+      "skill_path": "modules/10_parent_document/SKILL.md",
+      "notebook_path": "modules/10_parent_document/demo.ipynb",
+      "slides_path": "modules/10_parent_document/slides.md",
+      "source_paper": "LangChain ParentDocumentRetriever pattern, Harrison Chase, 2023",
+      "source_url": "https://python.langchain.com/docs/modules/data_connection/retrievers/parent_document_retriever",
+      "core_concept": "Index small child chunks for precision retrieval; at query time return the full parent chunk for rich context",
+      "key_innovation": "Separates retrieval granularity from generation context size",
+      "fintech_use_cases": [
+        "Long compliance documents: retrieve specific clause, return full article",
+        "Prospectus Q&A: find sentence, return full section",
+        "Annual report navigation"
+      ],
+      "key_libraries": [
+        "langchain",
+        "chromadb"
+      ],
+      "complexity_rating": 2,
+      "latency_rating": 3,
+      "retrieval_quality_rating": 4,
+      "fintech_relevance_rating": 5,
+      "workshop_demo_query": "What does the document say about early repayment penalties?",
+      "common_failure_modes": [
+        "Parent chunks can overflow context window if too large",
+        "Requires two storage tiers (vector DB + doc store)",
+        "Parent boundary choice is critical"
+      ],
+      "pairs_well_with": [
+        "11_sentence_window",
+        "13_contextual_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Data: mortgage loan agreement PDF",
+        "Split into parent (512 tokens) + child (128 token) chunks",
+        "Store: child embeddings in Chroma, parents in InMemoryStore",
+        "Retrieve: child match \u2192 return parent",
+        "Compare: child-only vs parent retrieval",
+        "Fintech: loan agreement Q&A"
+      ],
+      "eval_criteria": {
+        "child_match": "child_chunk_found",
+        "parent_returned": "len(parent_chunk) > len(child_chunk) * 2"
+      },
+      "workshop_tier": 1,
+      "difficulty": "beginner",
+      "primary_goal": "Separates retrieval granularity from generation context size"
+    },
+    {
+      "id": "11_sentence_window",
+      "name": "Sentence Window Retrieval",
+      "short_name": "sentence_window",
+      "category": "indexing_chunking",
+      "module_order": 11,
+      "status": "not_started",
+      "skill_path": "modules/11_sentence_window/SKILL.md",
+      "notebook_path": "modules/11_sentence_window/demo.ipynb",
+      "slides_path": "modules/11_sentence_window/slides.md",
+      "source_paper": "LlamaIndex SentenceWindowNodeParser, Jerry Liu, 2023",
+      "source_url": "https://docs.llamaindex.ai/en/stable/examples/node_postprocessor/MetadataReplacementDemo/",
+      "core_concept": "Embed individual sentences for precise matching; at retrieval expand to surrounding \u00b1k sentence window",
+      "key_innovation": "Fine-grained embedding precision with rich generation context",
+      "fintech_use_cases": [
+        "Term sheet extraction: find exact clause, return paragraph",
+        "Earnings call transcript search",
+        "KYC document sentence-level fact lookup"
+      ],
+      "key_libraries": [
+        "llama-index"
+      ],
+      "complexity_rating": 2,
+      "latency_rating": 4,
+      "retrieval_quality_rating": 4,
+      "fintech_relevance_rating": 4,
+      "workshop_demo_query": "What is the interest rate reset mechanism in this term sheet?",
+      "common_failure_modes": [
+        "Window boundary can cut important context",
+        "Sentence segmentation errors affect indexing",
+        "Metadata replacement adds complexity"
+      ],
+      "pairs_well_with": [
+        "10_parent_document",
+        "14_multi_vector_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Data: corporate bond term sheet",
+        "SentenceWindowNodeParser with window_size=3",
+        "Build sentence-level index",
+        "MetadataReplacementPostProcessor to expand window",
+        "Compare: sentence-only vs window expansion",
+        "Fintech: term sheet structured extraction"
+      ],
+      "eval_criteria": {
+        "window_expansion": "len(window_text) > len(sentence_text) * 2",
+        "sentence_precision": "top_sentence_relevance > top_chunk_relevance"
+      },
+      "workshop_tier": 2,
+      "difficulty": "beginner",
+      "primary_goal": "Fine-grained embedding precision with rich generation context"
+    },
+    {
+      "id": "12_raptor",
+      "name": "RAPTOR",
+      "short_name": "raptor",
+      "category": "indexing_chunking",
+      "module_order": 12,
+      "status": "not_started",
+      "skill_path": "modules/12_raptor/SKILL.md",
+      "notebook_path": "modules/12_raptor/demo.ipynb",
+      "slides_path": "modules/12_raptor/slides.md",
+      "source_paper": "Sarthi et al., 'RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval', ICLR 2024",
+      "source_url": "https://arxiv.org/abs/2401.18059",
+      "core_concept": "Cluster leaf chunks \u2192 summarize clusters \u2192 build tree \u2192 query at any abstraction level",
+      "key_innovation": "Enables both detail retrieval and high-level thematic retrieval from the same index",
+      "fintech_use_cases": [
+        "Annual report: high-level themes + specific figures",
+        "Regulatory corpus: overarching rules + specific clauses",
+        "Multi-document fund prospectus analysis"
+      ],
+      "key_libraries": [
+        "langchain",
+        "sklearn",
+        "umap-learn"
+      ],
+      "complexity_rating": 4,
+      "latency_rating": 2,
+      "retrieval_quality_rating": 5,
+      "fintech_relevance_rating": 4,
+      "workshop_demo_query": "What are the main risk themes across all our fund prospectuses?",
+      "common_failure_modes": [
+        "UMAP + clustering is non-deterministic",
+        "Summary quality depends heavily on LLM",
+        "Tree can get very deep for large corpora"
+      ],
+      "pairs_well_with": [
+        "15_long_context_rag",
+        "24_graph_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Data: 3 fund prospectus PDFs",
+        "Leaf chunking + embedding",
+        "GMM clustering with optimal K",
+        "Summarize each cluster with Claude",
+        "Recursive tree construction (2 levels)",
+        "Collapsed + tree retrieval comparison",
+        "Fintech: cross-fund thematic risk query"
+      ],
+      "eval_criteria": {
+        "tree_depth": "tree_levels >= 2",
+        "cluster_count": "n_clusters >= 3",
+        "thematic_query_improvement": "raptor_recall > flat_recall"
+      },
+      "workshop_tier": 2,
+      "difficulty": "advanced",
+      "primary_goal": "Enables both detail retrieval and high-level thematic retrieval from the same index"
+    },
+    {
+      "id": "13_contextual_rag",
+      "name": "Contextual RAG",
+      "short_name": "contextual_rag",
+      "category": "indexing_chunking",
+      "module_order": 13,
+      "status": "not_started",
+      "skill_path": "modules/13_contextual_rag/SKILL.md",
+      "notebook_path": "modules/13_contextual_rag/demo.ipynb",
+      "slides_path": "modules/13_contextual_rag/slides.md",
+      "source_paper": "Anthropic, 'Introducing Contextual Retrieval', Technical Blog, 2024",
+      "source_url": "https://www.anthropic.com/news/contextual-retrieval",
+      "core_concept": "For each chunk, use Claude to generate a short context summary of where it sits in the doc, then prepend to chunk before embedding",
+      "key_innovation": "Chunk embeddings now encode document-level context, drastically reducing retrieval failures",
+      "fintech_use_cases": [
+        "Long regulatory documents where clause meaning depends on earlier definitions",
+        "Multi-section loan agreements",
+        "Sequential policy documents with cross-references"
+      ],
+      "key_libraries": [
+        "anthropic",
+        "langchain",
+        "chromadb"
+      ],
+      "complexity_rating": 3,
+      "latency_rating": 3,
+      "retrieval_quality_rating": 5,
+      "fintech_relevance_rating": 5,
+      "workshop_demo_query": "What are the consequences of missing a scheduled payment under Section 7?",
+      "common_failure_modes": [
+        "Context generation adds per-chunk LLM cost at index time",
+        "Context quality varies \u2014 short docs need less context",
+        "Prompt caching essential for cost control"
+      ],
+      "pairs_well_with": [
+        "10_parent_document",
+        "03_hybrid_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Data: complex loan agreement PDF",
+        "Chunk document",
+        "Context generation: Claude situates each chunk",
+        "Prepend context + embed contextualized chunks",
+        "Retrieve and compare: plain chunks vs contextualized",
+        "Cost analysis: prompt caching impact",
+        "Fintech: contract clause with cross-reference awareness"
+      ],
+      "eval_criteria": {
+        "context_generated": "all(chunk.context is not None for chunk in chunks)",
+        "retrieval_improvement": "contextual_recall > plain_recall * 1.2"
+      },
+      "workshop_tier": 1,
+      "difficulty": "intermediate",
+      "primary_goal": "Chunk embeddings now encode document-level context, drastically reducing retrieval failures"
+    },
+    {
+      "id": "14_multi_vector_rag",
+      "name": "Multi-Vector RAG",
+      "short_name": "multi_vector_rag",
+      "category": "indexing_chunking",
+      "module_order": 14,
+      "status": "not_started",
+      "skill_path": "modules/14_multi_vector_rag/SKILL.md",
+      "notebook_path": "modules/14_multi_vector_rag/demo.ipynb",
+      "slides_path": "modules/14_multi_vector_rag/slides.md",
+      "source_paper": "LangChain MultiVectorRetriever, 2023",
+      "source_url": "https://python.langchain.com/docs/modules/data_connection/retrievers/multi_vector",
+      "core_concept": "Store multiple embeddings per document: full text, summary, and hypothetical questions, all pointing to the same source doc",
+      "key_innovation": "Different query types match different embeddings of the same document",
+      "fintech_use_cases": [
+        "Product docs: retrieve by name, description, or FAQ format",
+        "Research reports: match by title, abstract, or findings",
+        "Policy docs: match intent-based or clause-based queries"
+      ],
+      "key_libraries": [
+        "langchain",
+        "chromadb"
+      ],
+      "complexity_rating": 3,
+      "latency_rating": 3,
+      "retrieval_quality_rating": 4,
+      "fintech_relevance_rating": 3,
+      "workshop_demo_query": "What investment products have capital protection?",
+      "common_failure_modes": [
+        "Storage overhead 3x per document",
+        "Summary generation adds index-time cost",
+        "Hypothetical questions can drift from actual content"
+      ],
+      "pairs_well_with": [
+        "06_hyde",
+        "11_sentence_window"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Data: investment product brochures",
+        "Generate: summary + hypothetical questions per doc",
+        "Embed all vectors \u2192 InMemoryByteStore for doc lookup",
+        "Query: match different vector types",
+        "Compare: which vector type matches best per query style",
+        "Fintech: product query routing"
+      ],
+      "eval_criteria": {
+        "vector_types": "len(vector_types_per_doc) >= 3",
+        "diverse_match": "different_queries_match_different_vectors"
+      },
+      "workshop_tier": 2,
+      "difficulty": "intermediate",
+      "primary_goal": "Different query types match different embeddings of the same document"
+    },
+    {
+      "id": "15_long_context_rag",
+      "name": "Long-Context RAG",
+      "short_name": "long_context_rag",
+      "category": "indexing_chunking",
+      "module_order": 15,
+      "status": "not_started",
+      "skill_path": "modules/15_long_context_rag/SKILL.md",
+      "notebook_path": "modules/15_long_context_rag/demo.ipynb",
+      "slides_path": "modules/15_long_context_rag/slides.md",
+      "source_paper": "Anthropic Claude 200k context + 'Lost in the Middle', Liu et al., ACL 2024",
+      "source_url": "https://arxiv.org/abs/2307.03172",
+      "core_concept": "Retrieve broadly (top-20 to top-50) and stuff all retrieved context into 100k+ context window; no chunking needed",
+      "key_innovation": "Eliminates chunk boundary failures; lets LLM reason holistically over all context",
+      "fintech_use_cases": [
+        "Full 10-K annual report analysis",
+        "Entire regulatory rulebook Q&A",
+        "Complete audit trail review"
+      ],
+      "key_libraries": [
+        "anthropic",
+        "langchain"
+      ],
+      "complexity_rating": 1,
+      "latency_rating": 2,
+      "retrieval_quality_rating": 4,
+      "fintech_relevance_rating": 5,
+      "workshop_demo_query": "Summarize all risk factors mentioned in this 10-K filing.",
+      "common_failure_modes": [
+        "'Lost in the middle' \u2014 LLM ignores middle of context",
+        "High cost per query",
+        "Still needs retrieval for very large corpora"
+      ],
+      "pairs_well_with": [
+        "12_raptor",
+        "13_contextual_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Data: full 10-K filing (50+ pages)",
+        "Retrieve top-30 chunks",
+        "Stuff all into Claude 200k context",
+        "Generate comprehensive answer",
+        "Demonstrate 'lost in the middle' effect",
+        "Mitigation: reorder chunks by relevance score",
+        "Fintech: 10-K risk factor extraction"
+      ],
+      "eval_criteria": {
+        "context_size": "total_tokens > 20000",
+        "answer_completeness": "all_risk_factors_mentioned"
+      },
+      "workshop_tier": 3,
+      "difficulty": "beginner",
+      "primary_goal": "Eliminates chunk boundary failures; lets LLM reason holistically over all context"
+    },
+    {
+      "id": "16_self_rag",
+      "name": "Self-RAG",
+      "short_name": "self_rag",
+      "category": "reasoning_self_correction",
+      "module_order": 16,
+      "status": "not_started",
+      "skill_path": "modules/16_self_rag/SKILL.md",
+      "notebook_path": "modules/16_self_rag/demo.ipynb",
+      "slides_path": "modules/16_self_rag/slides.md",
+      "source_paper": "Asai et al., 'Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection', NeurIPS 2023",
+      "source_url": "https://arxiv.org/abs/2310.11511",
+      "core_concept": "Model generates special reflection tokens (ISREL, ISSUP, ISUSE) to decide whether to retrieve, whether retrieved doc is relevant, and whether the generation is grounded",
+      "key_innovation": "Turns retrieval decision into part of the generation process, not a fixed preprocessing step",
+      "fintech_use_cases": [
+        "Compliance answers that must cite specific regulations",
+        "Audit-trail generation with grounded citations",
+        "Decisions that need to flag when insufficient data"
+      ],
+      "key_libraries": [
+        "langchain",
+        "langgraph"
+      ],
+      "complexity_rating": 4,
+      "latency_rating": 3,
+      "retrieval_quality_rating": 5,
+      "fintech_relevance_rating": 5,
+      "workshop_demo_query": "Is this transaction pattern consistent with known money laundering typologies?",
+      "common_failure_modes": [
+        "Original paper requires fine-tuned model for reflection tokens",
+        "Approximated with prompted LLM \u2014 less precise",
+        "Can reject all retrieved docs and still generate (hallucinate)"
+      ],
+      "pairs_well_with": [
+        "17_corrective_rag",
+        "20_adaptive_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Data: AML typology database",
+        "Implement RETRIEVE decision token with Claude",
+        "Implement ISREL relevance check",
+        "Implement ISSUP support check",
+        "Implement ISUSE utility score",
+        "Full Self-RAG loop",
+        "Fintech: AML typology grounded answer"
+      ],
+      "eval_criteria": {
+        "reflection_tokens_generated": "all(['ISREL', 'ISSUP', 'ISUSE'] in output)",
+        "grounding_check": "final_answer_supported_by_retrieved_docs"
+      },
+      "workshop_tier": 1,
+      "difficulty": "advanced",
+      "primary_goal": "Turns retrieval decision into part of the generation process, not a fixed preprocessing step"
+    },
+    {
+      "id": "17_corrective_rag",
+      "name": "Corrective RAG (CRAG)",
+      "short_name": "corrective_rag",
+      "category": "reasoning_self_correction",
+      "module_order": 17,
+      "status": "not_started",
+      "skill_path": "modules/17_corrective_rag/SKILL.md",
+      "notebook_path": "modules/17_corrective_rag/demo.ipynb",
+      "slides_path": "modules/17_corrective_rag/slides.md",
+      "source_paper": "Yan et al., 'Corrective Retrieval Augmented Generation', ICLR 2024",
+      "source_url": "https://arxiv.org/abs/2401.15884",
+      "core_concept": "Grade retrieved documents for relevance; if below threshold fall back to web search and knowledge refinement before generation",
+      "key_innovation": "Detects and corrects bad retrieval in-loop without human intervention",
+      "fintech_use_cases": [
+        "Real-time regulatory lookups where internal docs may be outdated",
+        "Market data queries with web fallback",
+        "Compliance Q&A needing verified current regulation"
+      ],
+      "key_libraries": [
+        "langchain",
+        "langgraph",
+        "tavily-python"
+      ],
+      "complexity_rating": 3,
+      "latency_rating": 3,
+      "retrieval_quality_rating": 5,
+      "fintech_relevance_rating": 5,
+      "workshop_demo_query": "What is the current Dodd-Frank reporting threshold for swap dealers?",
+      "common_failure_modes": [
+        "Web search fallback adds latency and cost",
+        "Grader threshold tuning required per domain",
+        "Web results may be less structured than internal docs"
+      ],
+      "pairs_well_with": [
+        "16_self_rag",
+        "22_agentic_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup with Tavily web search API",
+        "Data: internal Dodd-Frank policy docs",
+        "Build retrieval grader with Claude",
+        "LangGraph: RETRIEVE \u2192 GRADE \u2192 branch(GENERATE | WEB_SEARCH)",
+        "Web search knowledge refinement node",
+        "Final generation node",
+        "Trace execution path",
+        "Fintech: compliance query with web fallback"
+      ],
+      "eval_criteria": {
+        "grader_fires": "relevance_score is not None",
+        "fallback_triggered": "web_search_called_when_low_relevance"
+      },
+      "workshop_tier": 1,
+      "difficulty": "intermediate",
+      "primary_goal": "Detects and corrects bad retrieval in-loop without human intervention"
+    },
+    {
+      "id": "18_ircot",
+      "name": "IRCoT (Interleaved Retrieval + CoT)",
+      "short_name": "ircot",
+      "category": "reasoning_self_correction",
+      "module_order": 18,
+      "status": "not_started",
+      "skill_path": "modules/18_ircot/SKILL.md",
+      "notebook_path": "modules/18_ircot/demo.ipynb",
+      "slides_path": "modules/18_ircot/slides.md",
+      "source_paper": "Trivedi et al., 'Interleaving Retrieval with Chain-of-Thought Reasoning for Knowledge-Intensive Multi-Step Questions', ACL 2023",
+      "source_url": "https://arxiv.org/abs/2212.10509",
+      "core_concept": "Alternate between chain-of-thought reasoning steps and retrieval steps; each CoT sentence can trigger a new retrieval",
+      "key_innovation": "Reasoning and retrieval inform each other iteratively rather than retrieval being one-shot",
+      "fintech_use_cases": [
+        "Multi-step credit risk assessment (income \u2192 credit history \u2192 debt ratio \u2192 decision)",
+        "Sequential regulatory compliance checks",
+        "Complex financial product suitability assessment"
+      ],
+      "key_libraries": [
+        "langchain",
+        "langgraph"
+      ],
+      "complexity_rating": 4,
+      "latency_rating": 2,
+      "retrieval_quality_rating": 5,
+      "fintech_relevance_rating": 4,
+      "workshop_demo_query": "Is this client eligible for a tier-3 structured product given their investment history and current risk profile?",
+      "common_failure_modes": [
+        "Can loop excessively for simple queries",
+        "Cost grows with number of CoT steps",
+        "Reasoning trace can drift from original question"
+      ],
+      "pairs_well_with": [
+        "23_multi_hop_rag",
+        "22_agentic_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Data: suitability rules + client profile docs",
+        "Implement CoT step generator",
+        "Implement retrieval trigger detector",
+        "IRCoT loop: CoT \u2192 detect trigger \u2192 retrieve \u2192 continue CoT",
+        "Produce final answer with reasoning trace",
+        "Fintech: suitability assessment walkthrough"
+      ],
+      "eval_criteria": {
+        "cot_steps": "len(reasoning_steps) >= 3",
+        "retrieval_interleaved": "retrieval_happened_mid_cot",
+        "trace_complete": "final_answer_references_retrieved_docs"
+      },
+      "workshop_tier": 3,
+      "difficulty": "advanced",
+      "primary_goal": "Reasoning and retrieval inform each other iteratively rather than retrieval being one-shot"
+    },
+    {
+      "id": "19_speculative_rag",
+      "name": "Speculative RAG",
+      "short_name": "speculative_rag",
+      "category": "reasoning_self_correction",
+      "module_order": 19,
+      "status": "not_started",
+      "skill_path": "modules/19_speculative_rag/SKILL.md",
+      "notebook_path": "modules/19_speculative_rag/demo.ipynb",
+      "slides_path": "modules/19_speculative_rag/slides.md",
+      "source_paper": "Wang et al., 'Speculative RAG: Enhancing Retrieval Augmented Generation through Drafting', 2024",
+      "source_url": "https://arxiv.org/abs/2407.08223",
+      "core_concept": "Draft a speculative answer using a small LLM without retrieval; retrieve docs to verify/correct it with a larger LLM",
+      "key_innovation": "Reduces latency on easy queries by using retrieval only for verification not generation",
+      "fintech_use_cases": [
+        "High-volume FAQ answering with accuracy verification",
+        "Fast first-response with compliance check",
+        "Draft financial summaries with fact verification"
+      ],
+      "key_libraries": [
+        "anthropic",
+        "langchain"
+      ],
+      "complexity_rating": 3,
+      "latency_rating": 4,
+      "retrieval_quality_rating": 4,
+      "fintech_relevance_rating": 3,
+      "workshop_demo_query": "What are the standard T+2 settlement rules for equities?",
+      "common_failure_modes": [
+        "Draft can confidently hallucinate, confusing the verifier",
+        "Two model calls required even for simple queries",
+        "Verification LLM may not correct draft strongly enough"
+      ],
+      "pairs_well_with": [
+        "20_adaptive_rag",
+        "16_self_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Data: settlement rules and market structure docs",
+        "Draft generation: haiku model, no retrieval",
+        "Retrieve: top-5 docs for the query",
+        "Verify/correct draft with Claude Sonnet",
+        "Compare: draft vs corrected answer",
+        "Latency analysis: speculative vs standard RAG",
+        "Fintech: settlement rule verification"
+      ],
+      "eval_criteria": {
+        "draft_generated": "draft is not None",
+        "correction_check": "final_answer != draft or confidence_increased",
+        "latency_improvement": "speculative_latency <= standard_rag_latency * 0.8"
+      },
+      "workshop_tier": 2,
+      "difficulty": "intermediate",
+      "primary_goal": "Reduces latency on easy queries by using retrieval only for verification not generation"
+    },
+    {
+      "id": "20_adaptive_rag",
+      "name": "Adaptive RAG",
+      "short_name": "adaptive_rag",
+      "category": "reasoning_self_correction",
+      "module_order": 20,
+      "status": "not_started",
+      "skill_path": "modules/20_adaptive_rag/SKILL.md",
+      "notebook_path": "modules/20_adaptive_rag/demo.ipynb",
+      "slides_path": "modules/20_adaptive_rag/slides.md",
+      "source_paper": "Jeong et al., 'Adaptive-RAG: Learning to Adapt Retrieval-Augmented Large Language Models through Question Complexity', NAACL 2024",
+      "source_url": "https://arxiv.org/abs/2403.14403",
+      "core_concept": "Classify query complexity first; route to no-retrieval (simple), single-step RAG (medium), or multi-step RAG (complex)",
+      "key_innovation": "Right tool for the right query \u2014 avoids over-engineering simple questions",
+      "fintech_use_cases": [
+        "Mixed-complexity financial assistant (simple balance check \u2192 complex portfolio analysis)",
+        "Customer service triage",
+        "Regulatory query routing"
+      ],
+      "key_libraries": [
+        "langchain",
+        "langgraph"
+      ],
+      "complexity_rating": 3,
+      "latency_rating": 4,
+      "retrieval_quality_rating": 5,
+      "fintech_relevance_rating": 5,
+      "workshop_demo_query": "Route these 5 queries and show the routing decisions.",
+      "common_failure_modes": [
+        "Classifier errors route complex queries to simple path",
+        "Classification adds latency for all queries",
+        "Boundary between complexity tiers is fuzzy"
+      ],
+      "pairs_well_with": [
+        "22_agentic_rag",
+        "17_corrective_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Data: mixed financial knowledge base",
+        "Build complexity classifier (0 = no retrieval, 1 = single, 2 = multi)",
+        "LangGraph router: 3 branches",
+        "Branch 0: direct LLM answer",
+        "Branch 1: standard RAG",
+        "Branch 2: multi-hop RAG",
+        "Demo: 5 queries across complexity levels",
+        "Fintech: financial assistant routing"
+      ],
+      "eval_criteria": {
+        "routing_accuracy": "routing_correct_on_test_queries >= 0.8",
+        "cost_reduction": "adaptive_avg_cost < single_strategy_cost"
+      },
+      "workshop_tier": 1,
+      "difficulty": "intermediate",
+      "primary_goal": "Right tool for the right query \u2014 avoids over-engineering simple questions"
+    },
+    {
+      "id": "21_modular_rag",
+      "name": "Modular RAG",
+      "short_name": "modular_rag",
+      "category": "architectural",
+      "module_order": 21,
+      "status": "not_started",
+      "skill_path": "modules/21_modular_rag/SKILL.md",
+      "notebook_path": "modules/21_modular_rag/demo.ipynb",
+      "slides_path": "modules/21_modular_rag/slides.md",
+      "source_paper": "Gao et al., 'Modular RAG: Transforming RAG Systems into LEGO-like Reconfigurable Frameworks', 2024",
+      "source_url": "https://arxiv.org/abs/2407.21059",
+      "core_concept": "Decompose RAG into independent, swappable modules (indexing, retrieval, reranking, generation) that can be combined like building blocks",
+      "key_innovation": "Each component is independently upgradeable and testable \u2014 enterprise-grade pipeline design",
+      "fintech_use_cases": [
+        "Production RAG pipelines requiring A/B testing of components",
+        "Multi-team ownership of different pipeline stages",
+        "Compliance-enforced component substitutability"
+      ],
+      "key_libraries": [
+        "langchain",
+        "llama-index"
+      ],
+      "complexity_rating": 3,
+      "latency_rating": 3,
+      "retrieval_quality_rating": 4,
+      "fintech_relevance_rating": 5,
+      "workshop_demo_query": "Swap the retriever and re-ranker components live and compare results.",
+      "common_failure_modes": [
+        "Interface contracts between modules must be strict",
+        "More code to maintain than a monolithic pipeline",
+        "Debugging requires tracing across module boundaries"
+      ],
+      "pairs_well_with": [
+        "09_ensemble_rag",
+        "22_agentic_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Define module interface: Retriever, Reranker, Generator protocols",
+        "Implement BM25Retriever + ChromaRetriever (swappable)",
+        "Implement CohereReranker + FlashrankReranker (swappable)",
+        "Pipeline assembly with dependency injection",
+        "Live component swap demo",
+        "Benchmark: 4 pipeline configurations",
+        "Fintech: production pipeline architecture"
+      ],
+      "eval_criteria": {
+        "swap_works": "pipeline_runs_after_component_swap",
+        "interface_compliance": "all_modules_satisfy_protocol"
+      },
+      "workshop_tier": 2,
+      "difficulty": "intermediate",
+      "primary_goal": "Each component is independently upgradeable and testable \u2014 enterprise-grade pipeline design"
+    },
+    {
+      "id": "22_agentic_rag",
+      "name": "Agentic RAG",
+      "short_name": "agentic_rag",
+      "category": "architectural",
+      "module_order": 22,
+      "status": "not_started",
+      "skill_path": "modules/22_agentic_rag/SKILL.md",
+      "notebook_path": "modules/22_agentic_rag/demo.ipynb",
+      "slides_path": "modules/22_agentic_rag/slides.md",
+      "source_paper": "Anthropic + LangGraph Agentic RAG pattern, 2024",
+      "source_url": "https://langchain-ai.github.io/langgraph/tutorials/rag/langgraph_agentic_rag/",
+      "core_concept": "ReAct agent with retrieval tool(s) \u2014 agent decides which tools to call, in what order, across multiple steps",
+      "key_innovation": "Retrieval becomes a tool call in an agentic loop, not a fixed preprocessing step",
+      "fintech_use_cases": [
+        "Complex multi-source financial analysis (Bloomberg + internal docs + regulatory DB)",
+        "Portfolio construction with multi-step reasoning",
+        "Fraud investigation agent"
+      ],
+      "key_libraries": [
+        "langgraph",
+        "langchain",
+        "anthropic"
+      ],
+      "complexity_rating": 4,
+      "latency_rating": 2,
+      "retrieval_quality_rating": 5,
+      "fintech_relevance_rating": 5,
+      "workshop_demo_query": "Analyze whether this client's portfolio is aligned with their stated ESG preferences and risk tolerance.",
+      "common_failure_modes": [
+        "Agent can loop excessively without stopping condition",
+        "Tool selection errors are hard to debug",
+        "Higher cost from multiple LLM calls"
+      ],
+      "pairs_well_with": [
+        "17_corrective_rag",
+        "23_multi_hop_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup LangGraph",
+        "Data: client profile + ESG ratings DB + portfolio holdings",
+        "Define tools: retrieve_esg_ratings, retrieve_risk_profile, retrieve_holdings",
+        "Build ReAct agent graph",
+        "Add stopping condition",
+        "Trace agent tool calls",
+        "Fintech: ESG portfolio alignment analysis"
+      ],
+      "eval_criteria": {
+        "multi_tool_calls": "len(tool_calls) >= 2",
+        "agent_terminates": "agent_reached_final_state",
+        "answer_grounded": "answer_cites_retrieved_sources"
+      },
+      "workshop_tier": 1,
+      "difficulty": "advanced",
+      "primary_goal": "Retrieval becomes a tool call in an agentic loop, not a fixed preprocessing step"
+    },
+    {
+      "id": "23_multi_hop_rag",
+      "name": "Multi-Hop RAG",
+      "short_name": "multi_hop_rag",
+      "category": "architectural",
+      "module_order": 23,
+      "status": "not_started",
+      "skill_path": "modules/23_multi_hop_rag/SKILL.md",
+      "notebook_path": "modules/23_multi_hop_rag/demo.ipynb",
+      "slides_path": "modules/23_multi_hop_rag/slides.md",
+      "source_paper": "Yang et al., 'HotpotQA: A Dataset for Diverse, Explainable Multi-hop Question Answering', EMNLP 2018",
+      "source_url": "https://arxiv.org/abs/1809.09600",
+      "core_concept": "Each retrieved document provides a bridge entity that seeds the next retrieval hop; chain continues until the full reasoning path is complete",
+      "key_innovation": "Answers questions that require connecting information spread across multiple documents",
+      "fintech_use_cases": [
+        "Counterparty risk: company \u2192 parent entity \u2192 jurisdiction \u2192 regulatory rules",
+        "Supply chain finance: supplier \u2192 buyer \u2192 creditworthiness chain",
+        "KYC chain: individual \u2192 company \u2192 UBO \u2192 sanctions list"
+      ],
+      "key_libraries": [
+        "langchain",
+        "neo4j"
+      ],
+      "complexity_rating": 4,
+      "latency_rating": 2,
+      "retrieval_quality_rating": 5,
+      "fintech_relevance_rating": 5,
+      "workshop_demo_query": "What sanctions regulations apply to the ultimate beneficial owner of TechCorp Ltd?",
+      "common_failure_modes": [
+        "Bridge entity extraction can fail on ambiguous names",
+        "Hop limit required to prevent infinite loops",
+        "Latency grows linearly with hop count"
+      ],
+      "pairs_well_with": [
+        "24_graph_rag",
+        "22_agentic_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Data: corporate hierarchy docs + sanctions DB",
+        "Implement bridge entity extractor",
+        "Multi-hop retrieval loop with hop limit=3",
+        "Build reasoning chain",
+        "Final generation with full chain context",
+        "Fintech: KYC / UBO resolution chain"
+      ],
+      "eval_criteria": {
+        "hops_executed": "hop_count >= 2",
+        "bridge_entities_found": "all(hop.bridge_entity for hop in hops)",
+        "final_answer_uses_all_hops": true
+      },
+      "workshop_tier": 2,
+      "difficulty": "advanced",
+      "primary_goal": "Answers questions that require connecting information spread across multiple documents"
+    },
+    {
+      "id": "24_graph_rag",
+      "name": "Graph RAG",
+      "short_name": "graph_rag",
+      "category": "specialized",
+      "module_order": 24,
+      "status": "not_started",
+      "skill_path": "modules/24_graph_rag/SKILL.md",
+      "notebook_path": "modules/24_graph_rag/demo.ipynb",
+      "slides_path": "modules/24_graph_rag/slides.md",
+      "source_paper": "Edge et al., 'From Local to Global: A Graph RAG Approach to Query-Focused Summarization', Microsoft Research, 2024",
+      "source_url": "https://arxiv.org/abs/2404.16130",
+      "core_concept": "Extract entities and relationships from docs into a knowledge graph; combine graph traversal with vector search for richer retrieval",
+      "key_innovation": "Captures entity relationships and global document themes that pure vector search misses",
+      "fintech_use_cases": [
+        "Counterparty network risk: entity relationships + exposure data",
+        "Regulatory knowledge graph (rules \u2192 entities \u2192 obligations)",
+        "Financial statement relationship extraction"
+      ],
+      "key_libraries": [
+        "langchain",
+        "neo4j",
+        "networkx"
+      ],
+      "complexity_rating": 5,
+      "latency_rating": 2,
+      "retrieval_quality_rating": 5,
+      "fintech_relevance_rating": 4,
+      "workshop_demo_query": "What entities are connected to the Lehman Brothers bankruptcy and what were the downstream exposures?",
+      "common_failure_modes": [
+        "Graph construction is slow and expensive",
+        "Entity disambiguation is hard",
+        "Graph schema design is critical and domain-specific"
+      ],
+      "pairs_well_with": [
+        "23_multi_hop_rag",
+        "12_raptor"
+      ],
+      "notebook_cells_outline": [
+        "Setup networkx + neo4j (local)",
+        "Data: financial news corpus",
+        "Entity + relationship extraction with Claude",
+        "Build knowledge graph",
+        "Graph traversal: local (entity neighborhood) + global (community summaries)",
+        "Hybrid: graph traversal + vector retrieval",
+        "Generate with graph-enriched context",
+        "Fintech: counterparty exposure network"
+      ],
+      "eval_criteria": {
+        "graph_nodes": "G.number_of_nodes() > 10",
+        "graph_edges": "G.number_of_edges() > 15",
+        "hybrid_improvement": "graph_rag_recall > vector_only_recall"
+      },
+      "workshop_tier": 3,
+      "difficulty": "advanced",
+      "primary_goal": "Captures entity relationships and global document themes that pure vector search misses"
+    },
+    {
+      "id": "25_multimodal_rag",
+      "name": "Multi-Modal RAG",
+      "short_name": "multimodal_rag",
+      "category": "specialized",
+      "module_order": 25,
+      "status": "not_started",
+      "skill_path": "modules/25_multimodal_rag/SKILL.md",
+      "notebook_path": "modules/25_multimodal_rag/demo.ipynb",
+      "slides_path": "modules/25_multimodal_rag/slides.md",
+      "source_paper": "Chen et al., 'MMRet: Multi-Modal Retrieval with Vision-Language Models', 2024",
+      "source_url": "https://arxiv.org/abs/2407.01004",
+      "core_concept": "Index and retrieve images, tables, and charts alongside text; use vision-language models for cross-modal queries",
+      "key_innovation": "Answers questions that require understanding charts, tables, or figures in documents",
+      "fintech_use_cases": [
+        "PDF financial report Q&A with chart understanding",
+        "Prospectus table extraction and querying",
+        "Trading dashboard screenshot analysis"
+      ],
+      "key_libraries": [
+        "anthropic",
+        "unstructured",
+        "langchain"
+      ],
+      "complexity_rating": 4,
+      "latency_rating": 2,
+      "retrieval_quality_rating": 4,
+      "fintech_relevance_rating": 5,
+      "workshop_demo_query": "What does the revenue trend chart show for Q3 2024 in this earnings PDF?",
+      "common_failure_modes": [
+        "Image extraction from PDFs can be lossy",
+        "Table parsing accuracy varies by PDF quality",
+        "Vision model calls are expensive"
+      ],
+      "pairs_well_with": [
+        "15_long_context_rag",
+        "13_contextual_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup unstructured + anthropic",
+        "Data: earnings PDF with charts and tables",
+        "Extract: text, images, tables separately",
+        "Embed: text via OpenAI, images via Claude vision descriptions",
+        "Unified index with modality metadata",
+        "Multi-modal retrieval + generate",
+        "Fintech: earnings report visual Q&A"
+      ],
+      "eval_criteria": {
+        "image_extracted": "len(images) > 0",
+        "table_extracted": "len(tables) > 0",
+        "cross_modal_answer": "answer_references_chart_data"
+      },
+      "workshop_tier": 3,
+      "difficulty": "advanced",
+      "primary_goal": "Answers questions that require understanding charts, tables, or figures in documents"
+    },
+    {
+      "id": "26_temporal_rag",
+      "name": "Temporal RAG",
+      "short_name": "temporal_rag",
+      "category": "specialized",
+      "module_order": 26,
+      "status": "not_started",
+      "skill_path": "modules/26_temporal_rag/SKILL.md",
+      "notebook_path": "modules/26_temporal_rag/demo.ipynb",
+      "slides_path": "modules/26_temporal_rag/slides.md",
+      "source_paper": "Dhingra et al., 'Time-Aware Language Models as Temporal Knowledge Bases', TACL 2022",
+      "source_url": "https://arxiv.org/abs/2106.15110",
+      "core_concept": "Attach timestamps to all indexed documents; apply time-decay weighting or hard time-filters at retrieval; version-aware indexing for changing docs",
+      "key_innovation": "Prevents stale regulatory or market data from appearing in answers; enables time-scoped queries",
+      "fintech_use_cases": [
+        "Regulatory change tracking (retrieve latest version of a rule)",
+        "Market data Q&A with time-bounded context",
+        "Policy document versioning and audit trail"
+      ],
+      "key_libraries": [
+        "langchain",
+        "chromadb"
+      ],
+      "complexity_rating": 2,
+      "latency_rating": 4,
+      "retrieval_quality_rating": 4,
+      "fintech_relevance_rating": 5,
+      "workshop_demo_query": "What was the capital adequacy requirement before and after the 2023 Basel IV update?",
+      "common_failure_modes": [
+        "Timestamps missing from many documents",
+        "Hard time filters can exclude still-valid older docs",
+        "Recency bias can miss historically important docs"
+      ],
+      "pairs_well_with": [
+        "17_corrective_rag",
+        "21_modular_rag"
+      ],
+      "notebook_cells_outline": [
+        "Setup",
+        "Data: Basel regulations across 2019-2024 versions",
+        "Index with timestamp metadata",
+        "Implement time-decay scoring function",
+        "Time-filtered retrieval: before/after date",
+        "Version-aware retrieval: latest supersedes older",
+        "Compare: recency-weighted vs flat retrieval",
+        "Fintech: regulatory change timeline Q&A"
+      ],
+      "eval_criteria": {
+        "timestamps_indexed": "all(doc.metadata.get('date') for doc in docs)",
+        "recency_ranking": "newest_doc_ranks_first_for_current_query",
+        "time_filter_works": "post_2023_filter_excludes_pre_2023_docs"
+      },
+      "workshop_tier": 3,
+      "difficulty": "beginner",
+      "primary_goal": "Prevents stale regulatory or market data from appearing in answers; enables time-scoped queries"
+    }
+  ]
+}
