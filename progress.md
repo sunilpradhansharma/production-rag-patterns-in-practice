@@ -9,13 +9,13 @@ Session count: 1
 
 | Category | Patterns | Done | In progress | Not started |
 |----------|----------|------|-------------|-------------|
-| Foundational | 2 | 0 | 0 | 2 |
+| Foundational | 2 | 1 | 0 | 1 |
 | Retrieval Enhancement | 7 | 0 | 0 | 7 |
 | Indexing & Chunking | 6 | 0 | 0 | 6 |
 | Reasoning & Self-Correction | 5 | 0 | 0 | 5 |
 | Architectural | 3 | 0 | 0 | 3 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **0** | **0** | **26** |
+| **TOTAL** | **26** | **1** | **0** | **25** |
 
 ---
 
@@ -25,7 +25,7 @@ Session count: 1
 > Tier 1 = core workshop path (build first). Tier 2 = extended reference. Tier 3 = specialized.
 
 ### Foundational
-- [ ] `01_naive_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
+- [x] `01_naive_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes | tests
 - [ ] `02_advanced_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 
 ### Retrieval enhancement
@@ -77,6 +77,18 @@ Session count: 1
 - Updated: rag_patterns.json (fixed skill_path references, added workshop_tier + difficulty fields)
 - Updated: progress.md (tier labels added to all modules)
 - Status: Foundation documents complete. No GoF references remain. Ready to build modules.
+
+### Session 3 — 2026-03-26
+- Built shared/ Python package (types.py, config.py, utils.py, pipeline.py, builders.py, + 9 supporting files)
+- Created all 4 synthetic sample data documents (fintech_policy.txt, basel_iii_excerpt.txt, isda_excerpt.txt, earnings_report.txt)
+- Completed module 01_naive_rag — all phases (A/B/C/D):
+  - SKILL.md (11 sections, Lewis et al. NeurIPS 2020 source)
+  - slides.md (289 words, 5 slides)
+  - README.md (speaker notes, timing, 3 Q&A, transition)
+  - demo.ipynb (6-cell standard: setup, data, core, run, inspect, fintech)
+  - tests/test_naive_rag.py (notebook structure, chunking, scoring, prompt, integration)
+- Validation pass: all 11 SKILL.md sections present, Mermaid diagram confirmed, slides 289/300 words, README timing/Q&A/transition confirmed, notebook 12 cells alternating MD/code, all imports resolve, no hardcoded keys, deprecated `langchain.text_splitter` import fixed to `langchain_text_splitters`, notebook source serialization repaired (char-per-element → line-per-element).
+- Status: 1/26 modules complete. Next: 02_advanced_rag.
 
 ---
 
