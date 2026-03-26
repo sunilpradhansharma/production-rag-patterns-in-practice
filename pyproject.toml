@@ -1,0 +1,82 @@
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["shared", "modules"]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort
+    "B",    # flake8-bugbear
+    "C4",   # flake8-comprehensions
+    "UP",   # pyupgrade
+    "N",    # pep8-naming
+    "ANN",  # flake8-annotations (type hints)
+    "S",    # flake8-bandit (security)
+    "T20",  # flake8-print (no stray print statements in shared/)
+]
+ignore = [
+    "ANN101",   # Missing type annotation for `self`
+    "ANN102",   # Missing type annotation for `cls`
+    "S101",     # Use of assert (allowed in tests)
+    "T201",     # print() allowed in notebooks
+]
+
+[tool.ruff.lint.per-file-ignores]
+"modules/*/demo.ipynb" = ["T201", "ANN", "S"]
+"modules/*/tests/*.py" = ["S101", "ANN"]
+"shared/utils.py" = ["T201"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["shared"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+ignore_missing_imports = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+show_error_codes = true
+exclude = [
+    "modules/",
+    ".venv/",
+    "build/",
+]
+
+[[tool.mypy.overrides]]
+module = [
+    "chromadb.*",
+    "langchain.*",
+    "langchain_community.*",
+    "langchain_openai.*",
+    "langchain_anthropic.*",
+    "langgraph.*",
+    "llama_index.*",
+    "sentence_transformers.*",
+    "rank_bm25.*",
+    "cohere.*",
+    "ragas.*",
+    "sklearn.*",
+    "networkx.*",
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["modules"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+asyncio_mode = "auto"
+timeout = 60
+markers = [
+    "integration: marks tests that require live API keys (deselect with -m 'not integration')",
+    "slow: marks tests that take > 10 seconds",
+]

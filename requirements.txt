@@ -1,0 +1,46 @@
+# ── Core LLM / Orchestration ─────────────────────────────────────────────────
+anthropic==0.40.0
+openai==1.51.0
+langchain==0.3.14
+langchain-community==0.3.14
+langchain-openai==0.2.14
+langchain-anthropic==0.3.4
+langgraph==0.2.74
+llama-index==0.11.3
+llama-index-core==0.11.3
+llama-index-embeddings-openai==0.2.6
+llama-index-llms-anthropic==0.4.2
+
+# ── Vector Store ─────────────────────────────────────────────────────────────
+chromadb==0.5.23
+
+# ── Embeddings / Retrieval ───────────────────────────────────────────────────
+sentence-transformers==3.1.1
+rank-bm25==0.2.2
+tiktoken==0.7.0
+
+# ── Reranking / Search ───────────────────────────────────────────────────────
+cohere==5.9.1
+tavily-python==0.3.3
+
+# ── Evaluation ───────────────────────────────────────────────────────────────
+ragas==0.2.5
+
+# ── Data / Science ───────────────────────────────────────────────────────────
+numpy==1.26.4
+pandas==2.2.2
+scikit-learn==1.5.2
+networkx==3.3
+
+# ── Notebook / Visualization ─────────────────────────────────────────────────
+jupyter==1.1.1
+nbconvert==7.16.4
+ipykernel==6.29.5
+matplotlib==3.9.2
+
+# ── Utilities ────────────────────────────────────────────────────────────────
+python-dotenv==1.0.1
+pydantic==2.8.2
+pydantic-settings==2.5.2
+tenacity==8.5.0
+httpx==0.27.2
