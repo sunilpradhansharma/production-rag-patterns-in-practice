@@ -47,28 +47,31 @@ Before choosing a pattern, the first question is: **do you even need RAG?**
 3. Does the system need to describe the world or change it? (describe → RAG, act → Agentic)
 
 ```mermaid
-quadrantChart
-    title RAG vs Agentic AI — choose by knowledge + task complexity
-    x-axis Low Task Complexity --> High Task Complexity
-    y-axis Low Knowledge Complexity --> High Knowledge Complexity
-    quadrant-1 Agentic RAG
-    quadrant-2 RAG
-    quadrant-3 Plain LLM
-    quadrant-4 Agentic AI
-    Compliance Q&A: [0.15, 0.85]
-    Document search: [0.20, 0.75]
-    Policy lookup: [0.10, 0.90]
-    Customer support: [0.30, 0.80]
-    Fraud investigation: [0.80, 0.90]
-    Portfolio analysis: [0.75, 0.85]
-    KYC/AML workflows: [0.85, 0.80]
-    Regulatory audit: [0.90, 0.75]
-    Summarization: [0.15, 0.20]
-    Translation: [0.10, 0.15]
-    Code generation: [0.25, 0.25]
-    Code execution: [0.80, 0.20]
-    API orchestration: [0.75, 0.25]
-    Browser automation: [0.85, 0.15]
+flowchart TB
+    A["RAG vs Agentic AI<br/>Choose by knowledge + task complexity"]
+
+    subgraph B["Knowledge complexity vs task complexity"]
+        direction TB
+
+        subgraph R1[" "]
+            direction LR
+            C["<b>RAG</b><br/>- Policy lookup<br/>- Compliance Q&A<br/>- Document search<br/>- Customer support"]
+            D["<b>Agentic RAG</b><br/>- Fraud investigation<br/>- Portfolio analysis<br/>- KYC/AML workflows<br/>- Regulatory audit"]
+        end
+
+        subgraph R2[" "]
+            direction LR
+            E["<b>Plain LLM</b><br/>- Summarization<br/>- Translation<br/>- Code generation"]
+            F["<b>Agentic AI</b><br/>- API orchestration<br/>- Code execution<br/>- Browser automation"]
+        end
+    end
+
+    A --> B
+
+    style C fill:#eef,stroke:#99a,stroke-width:1px,color:#111
+    style D fill:#eef,stroke:#99a,stroke-width:1px,color:#111
+    style E fill:#f7f7fb,stroke:#99a,stroke-width:1px,color:#111
+    style F fill:#f7f7fb,stroke:#99a,stroke-width:1px,color:#111
 ```
 
 <details>
@@ -1038,4 +1041,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add new pattern modules.
 
 ## License
 
-MIT
+Proprietary. All rights reserved.
+
+This project is the intellectual property of the repository owner. No use, reproduction, modification, or distribution is permitted without explicit permission.
