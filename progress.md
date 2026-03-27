@@ -12,10 +12,10 @@ Session count: 7
 | Foundational | 2 | 2 | 0 | 0 |
 | Retrieval Enhancement | 7 | 2 | 0 | 5 |
 | Indexing & Chunking | 6 | 2 | 0 | 4 |
-| Reasoning & Self-Correction | 5 | 2 | 0 | 3 |
+| Reasoning & Self-Correction | 5 | 3 | 0 | 2 |
 | Architectural | 3 | 0 | 0 | 3 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **8** | **0** | **18** |
+| **TOTAL** | **26** | **9** | **0** | **17** |
 
 ---
 
@@ -47,7 +47,7 @@ Session count: 7
 
 ### Reasoning & self-correction
 - [x] `16_self_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
-- [ ] `17_corrective_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
+- [x] `17_corrective_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `18_ircot` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `19_speculative_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `20_adaptive_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
@@ -65,6 +65,16 @@ Session count: 7
 ---
 
 ## Session log
+
+### Session 10 — 2026-03-27
+- Completed module 17_corrective_rag — all phases (A/B/C/D):
+  - SKILL.md: 3-path routing table (Correct/Ambiguous/Incorrect); Yan et al. ICLR 2024 arXiv:2401.15884; relevance grader / web search (Tavily) / knowledge refiner / decision router components; Dodd-Frank fintech use case; latency ★★☆☆☆ / cost ★★★☆☆; 30% fallback-rate calibration threshold pitfall; relates 16+20+22
+  - slides.md: "When Internal Retrieval Fails, Go External"; irrelevant + stale failure modes; 3-path routing; Self-RAG contrast; Mermaid; Dodd-Frank demo table; transition to Module 20 (279 prose words ✓)
+  - README.md: 8–10 min; live demo recommended; "most practical self-correction pattern" framing; 4-step Dodd-Frank demo guide; 3 Q&As (web fails → no confident answer, search engine contrast, 25–30% calibration); adaptive routing transition (400 words ✓)
+  - demo.ipynb: 12 cells; grade_chunk (1–5) / refine_web_results / corrective_rag / web_search with Tavily+mock; RELEVANCE_THRESHOLD=3.0; avg_score routing; Fed rate query (Cell 4); score distribution + raw vs refined (Cell 5); MARKET_QUERY + POLICY_QUERY showing both paths (Cell 6)
+- Validation: 55/55
+- Next: 20_adaptive_rag (Tier 1)
+- Status: 9/26 modules complete.
 
 ### Session 9 — 2026-03-27
 - Validated module 06_hyde (24/24): trimmed slides.md to 274 prose words; README.md to 400 words; all 4 files clean
