@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
-Last updated: 2026-03-26
-Session count: 4
+Last updated: 2026-03-27
+Session count: 5
 
 ---
 
@@ -10,12 +10,12 @@ Session count: 4
 | Category | Patterns | Done | In progress | Not started |
 |----------|----------|------|-------------|-------------|
 | Foundational | 2 | 2 | 0 | 0 |
-| Retrieval Enhancement | 7 | 0 | 0 | 7 |
+| Retrieval Enhancement | 7 | 1 | 0 | 6 |
 | Indexing & Chunking | 6 | 0 | 0 | 6 |
 | Reasoning & Self-Correction | 5 | 0 | 0 | 5 |
 | Architectural | 3 | 0 | 0 | 3 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **2** | **0** | **24** |
+| **TOTAL** | **26** | **3** | **0** | **23** |
 
 ---
 
@@ -29,7 +29,7 @@ Session count: 4
 - [x] `02_advanced_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 
 ### Retrieval enhancement
-- [ ] `03_hybrid_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
+- [x] `03_hybrid_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `04_rag_fusion` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `05_multi_query_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `06_hyde` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
@@ -77,6 +77,16 @@ Session count: 4
 - Updated: rag_patterns.json (fixed skill_path references, added workshop_tier + difficulty fields)
 - Updated: progress.md (tier labels added to all modules)
 - Status: Foundation documents complete. No GoF references remain. Ready to build modules.
+
+### Session 5 — 2026-03-27
+- Completed module 03_hybrid_rag — all phases (A/B/C/D):
+  - SKILL.md (10 sections, Ma et al. arXiv:2301.07895 source, BM25+dense+RRF pattern)
+  - slides.md (6 slides, failure-case opener, RRF formula, ISDA demo table, tradeoffs)
+  - README.md (speaker notes, 7-8 min timing, 4 Q&As with full answers, transition to Module 10)
+  - demo.ipynb (12 cells: BM25Okapi + Chroma with chunk_idx metadata, rrf_fuse with k=60 default, hybrid_retrieve with in_bm25/in_dense provenance flags, three-way comparison in Cell 5)
+- Validation pass: 25/25 checks — cell count, alternating structure, all headers, API key safety, all 4 core functions, rrf_scores dict, all 4 fintech terms, no TODO stubs
+- Next: 10_parent_document (indexing category, skipping ahead in Tier 1 order)
+- Status: 3/26 modules complete.
 
 ### Session 4 — 2026-03-26
 - Completed module 02_advanced_rag — all phases (A/B/C/D):
