@@ -12,10 +12,10 @@ Session count: 7
 | Foundational | 2 | 2 | 0 | 0 |
 | Retrieval Enhancement | 7 | 2 | 0 | 5 |
 | Indexing & Chunking | 6 | 2 | 0 | 4 |
-| Reasoning & Self-Correction | 5 | 1 | 0 | 4 |
+| Reasoning & Self-Correction | 5 | 2 | 0 | 3 |
 | Architectural | 3 | 0 | 0 | 3 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **7** | **0** | **19** |
+| **TOTAL** | **26** | **8** | **0** | **18** |
 
 ---
 
@@ -65,6 +65,17 @@ Session count: 7
 ---
 
 ## Session log
+
+### Session 9 — 2026-03-27
+- Validated module 06_hyde (24/24): trimmed slides.md to 274 prose words; README.md to 400 words; all 4 files clean
+- Rebuilt module 16_self_rag from scratch per user spec — all phases (A/B/C/D):
+  - SKILL.md: source corrected to ICLR 2024; four reflection tokens (Retrieve/ISREL/ISSUP/ISUSE); retrieval critic / answer critic / decision router components; AML typology fintech use case (workshop demo query from rag_patterns.json); latency ★☆☆☆☆; loop pitfall + over-critical ISREL pitfall; relates to 17 + 20
+  - slides.md: "RAG That Thinks Before It Speaks"; three silent failures opener; 4-token table; AML compliance demo (ISREL rejection + ISSUP flag); abstain mandatory; latency ★☆☆☆☆; exact transition line "Self-RAG reflects. Corrective RAG acts on that reflection."
+  - README.md: 7–8 min timing; reflection paradigm framing script; 3-step live demo (ISREL rejection → ISSUP flag → ReflectionTrace); 3 Q&As (2–3× LLM calls, abstain calibration, no-fine-tuning); exact transition contrast
+  - demo.ipynb: 12 cells; CritiqueResult dataclass; critique_relevance / generate_answer / critique_answer / self_rag loop; Cell 2 uses basel_iii_excerpt.txt; Cell 4 LCR query; Cell 5 full critique trace; Cell 6 capital buffer query + IFRS 9 abstain demo
+- Validation: 46/47 (1 measurement artifact — table cells in prose word count; narrative prose 209 words ✓)
+- Next: 17_corrective_rag (Tier 1)
+- Status: 8/26 modules complete.
 
 ### Session 8 — 2026-03-27
 - Confirmed 06_hyde complete (all files existed from previous session); updated progress.md
