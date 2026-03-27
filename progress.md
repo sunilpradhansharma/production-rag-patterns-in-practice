@@ -11,11 +11,11 @@ Session count: 5
 |----------|----------|------|-------------|-------------|
 | Foundational | 2 | 2 | 0 | 0 |
 | Retrieval Enhancement | 7 | 1 | 0 | 6 |
-| Indexing & Chunking | 6 | 0 | 0 | 6 |
+| Indexing & Chunking | 6 | 1 | 0 | 5 |
 | Reasoning & Self-Correction | 5 | 0 | 0 | 5 |
 | Architectural | 3 | 0 | 0 | 3 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **3** | **0** | **23** |
+| **TOTAL** | **26** | **4** | **0** | **22** |
 
 ---
 
@@ -38,7 +38,7 @@ Session count: 5
 - [ ] `09_ensemble_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 
 ### Indexing & chunking
-- [ ] `10_parent_document` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
+- [x] `10_parent_document` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `11_sentence_window` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `12_raptor` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `13_contextual_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
@@ -77,6 +77,16 @@ Session count: 5
 - Updated: rag_patterns.json (fixed skill_path references, added workshop_tier + difficulty fields)
 - Updated: progress.md (tier labels added to all modules)
 - Status: Foundation documents complete. No GoF references remain. Ready to build modules.
+
+### Session 6 — 2026-03-27
+- Completed module 10_parent_document — all phases (A/B/C/D):
+  - SKILL.md (10 sections, LangChain ParentDocumentRetriever 2023 source, child/parent split pattern)
+  - slides.md (6 slides, dilemma table opener, two-layer architecture, Basel demo table)
+  - README.md (speaker notes, 6-7 min timing, 4 Q&As, transition to Module 13)
+  - demo.ipynb (12 cells: SECTION_SEP-aligned parent splitter, InMemoryByteStore docstore, find_parent_for() substring lookup, child layer inspection, G-SIB cross-article fintech query)
+- Validation pass: 32/32 checks — all headers, API key safety, all 7 core components, all 5 fintech terms, all 6 cells syntax-clean
+- Next: 13_contextual_rag (Anthropic's own pattern — high audience interest)
+- Status: 4/26 modules complete.
 
 ### Session 5 — 2026-03-27
 - Completed module 03_hybrid_rag — all phases (A/B/C/D):
