@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
 Last updated: 2026-03-27
-Session count: 12
+Session count: 13
 
 ---
 
@@ -10,12 +10,12 @@ Session count: 12
 | Category | Patterns | Done | In progress | Not started |
 |----------|----------|------|-------------|-------------|
 | Foundational | 2 | 2 | 0 | 0 |
-| Retrieval Enhancement | 7 | 2 | 0 | 5 |
+| Retrieval Enhancement | 7 | 3 | 0 | 4 |
 | Indexing & Chunking | 6 | 2 | 0 | 4 |
 | Reasoning & Self-Correction | 5 | 4 | 0 | 1 |
 | Architectural | 3 | 1 | 0 | 2 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **11** | **0** | **15** |
+| **TOTAL** | **26** | **12** | **0** | **14** |
 
 ---
 
@@ -30,7 +30,7 @@ Session count: 12
 
 ### Retrieval enhancement
 - [x] `03_hybrid_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
-- [ ] `04_rag_fusion` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
+- [x] `04_rag_fusion` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `05_multi_query_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [x] `06_hyde` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `07_step_back_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
@@ -65,6 +65,15 @@ Session count: 12
 ---
 
 ## Session log
+
+### Session 13 — 2026-03-27
+- Completed module 04_rag_fusion — all phases (A/B/C/D):
+  - SKILL.md: dual source (Rackauckas TDS 2023 + Shi et al. arXiv:2402.03367); RRF formula score=Σ1/(60+rank_i); 5 components (variant generator/per-variant retriever/RRF merger/deduplicator/generator); AML synonym coverage + market research + multi-jurisdiction fintech use cases; quality/answer quality ★★★★☆, latency ★★☆☆☆, complexity ★★☆☆☆; query drift + duplicate inflation + N×retrieval pitfalls; relates 05+03+02
+  - slides.md: "More Angles, Better Coverage"; synonym mismatch table (SAR/unusual activity/AML disclosure); RRF formula; Mermaid; AML 5-variant table; tradeoffs; transition to 05 (190 prose words ✓)
+  - README.md: 5–6 min (Tier 2); framing script; optional live demo Cell 4; Q&As (3–5 variants, RRF noise suppression, vs Multi-Query); transition (398 words ✓)
+  - demo.ipynb: 12 cells; generate_variants (Haiku); retrieve_for_variant (Chroma); rrf_fuse (score=1/(k+rank+1)); rag_fusion pipeline (generate→retrieve×N→fuse→dedup→generate); AML reporting query Cell 4; per-variant preview + RRF ranked table + baseline comparison Cell 5; credit risk market research Cell 6
+- Validation: 30/31 (1 false positive — ANTHROPIC_API_KEY in assert message, not hardcoded)
+- Status: 12/26 modules complete. Tier 1 complete (10/10). Tier 2: 2/9.
 
 ### Session 12 — 2026-03-27
 - Completed module 22_agentic_rag — all phases (A/B/C/D):
