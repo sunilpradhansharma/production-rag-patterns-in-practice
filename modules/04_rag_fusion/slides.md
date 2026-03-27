@@ -1,79 +1,54 @@
-# 04: RAG Fusion — More Angles, Better Coverage
+# 04: RAG Fusion — Query Perspective Diversity
 
 ---
 
-## The Problem: One Phrasing, One Slice of the Corpus
+## The Problem: One Query, One Slice of the Corpus
 
-Single-query RAG retrieves what matches *your* words. Documents indexed under different vocabulary are silently missed.
+A single query retrieves documents that match *your* phrasing. Documents covering the same topic under different terminology are silently missed.
 
-A compliance analyst asking "reporting obligations for suspicious transactions" may miss documents indexed as:
+A compliance analyst asking "reporting obligations for suspicious transactions" misses:
 
-| Document terminology | Single-query retrieves it? |
-|---------------------|---------------------------|
-| "SAR filing requirements" | ✗ — different words |
-| "unusual activity reporting" | ✗ — different framing |
-| "AML disclosure thresholds" | ✗ — different angle |
-| "suspicious transaction reporting obligations" | ✓ — exact match |
+| Phrasing | Retrieved? |
+|----------|-----------|
+| "SAR filing requirements" | ✗ |
+| "unusual activity reporting" | ✗ |
+| "AML disclosure thresholds" | ✗ |
+| "suspicious transaction reporting obligations" | ✓ |
 
-One query = one perspective. One perspective = incomplete coverage.
+Different phrasings retrieve different relevant chunks — fuse them for completeness.
 
 ---
 
-## The Solution: Generate Variants, Retrieve in Parallel, Fuse
+## The Solution: Multiple Angles, One Fused Result
 
-RAG Fusion generates N rephrasings of the original query, retrieves a ranked list for each, then merges all lists into one ranking using Reciprocal Rank Fusion.
+Generate 3–5 rephrasings of the original query, retrieve for each, then merge all ranked lists using Reciprocal Rank Fusion.
 
 ```
-Query → Generate N variants → Retrieve for each → RRF merge → Deduplicate → Generate
+Query → Generate N variants → Retrieve for each → RRF merge → Top-k → Generate
 ```
 
-**Reciprocal Rank Fusion** scores each document by summing its reciprocal rank positions across all retrieval lists: `score = Σ 1 / (60 + rank)`. Documents that surface in multiple lists receive additive boosts. The constant 60 prevents any single top-ranked document from dominating.
-
-The result: vocabulary-mismatched documents are caught. The generator sees a richer, more complete context.
+**Reciprocal Rank Fusion** scores each document across all lists: `score = Σ 1 / (60 + rank)`. Documents appearing in multiple lists receive additive boosts.
 
 ---
 
 ## Architecture
 
-```mermaid
-flowchart TD
-    Q[User query] --> VG[Generate\nN variants]
-    VG --> R1[Retrieve\nvariant 1]
-    VG --> R2[Retrieve\nvariant 2]
-    VG --> RN[Retrieve\nvariant N]
-    R1 --> RRF[RRF fusion]
-    R2 --> RRF
-    RN --> RRF
-    RRF --> DD[Deduplicate]
-    DD --> GEN[Generate]
-    GEN --> A[Answer]
-
-    style Q fill:#E6F1FB,stroke:#185FA5,color:#0C447C
-    style VG fill:#FAEEDA,stroke:#854F0B,color:#633806
-    style R1 fill:#E1F5EE,stroke:#0F6E56,color:#085041
-    style R2 fill:#E1F5EE,stroke:#0F6E56,color:#085041
-    style RN fill:#E1F5EE,stroke:#0F6E56,color:#085041
-    style RRF fill:#FAEEDA,stroke:#854F0B,color:#633806
-    style DD fill:#EEEDFE,stroke:#534AB7,color:#3C3489
-    style GEN fill:#E1F5EE,stroke:#0F6E56,color:#085041
-    style A fill:#EAF3DE,stroke:#3B6D11,color:#27500A
-```
+![Architecture](architecture.png)
 
 ---
 
-## Fintech: AML Synonym Coverage
+## Fintech: Market Sentiment Analysis
 
-**Query:** *"What are the reporting obligations for suspicious transactions?"*
+**Query:** *"What is the market outlook for emerging market bonds?"*
 
-| Variant | Terminology angle |
-|---------|------------------|
-| Original | "reporting obligations for suspicious transactions" |
-| Variant 1 | "SAR filing requirements for financial institutions" |
-| Variant 2 | "unusual activity reporting duties under AML rules" |
-| Variant 3 | "disclosure thresholds for suspected money laundering" |
-| Variant 4 | "financial crime notification obligations" |
+| Variant | Angle |
+|---------|-------|
+| Original | "market outlook for emerging market bonds" |
+| Variant 1 | "EM bond yield forecasts and risk appetite" |
+| Variant 2 | "developing country fixed income sentiment" |
+| Variant 3 | "sovereign debt outlook in frontier markets" |
 
-Each variant retrieves different documents. RRF fusion surfaces all of them. The generator sees the complete AML picture — not just what matched the analyst's exact phrasing.
+Each variant surfaces different analyst reports and news sources. Fusion delivers a complete picture across all coverage angles.
 
 ---
 
@@ -81,12 +56,12 @@ Each variant retrieves different documents. RRF fusion surfaces all of them. The
 
 | Dimension | Rating | Notes |
 |-----------|--------|-------|
-| Retrieval quality | ★★★★☆ | Multi-perspective coverage catches vocabulary-mismatched documents |
-| Answer quality | ★★★★☆ | Richer context improves completeness for open-ended queries |
-| Latency | ★★☆☆☆ | N retrieval calls — parallelise for production |
-| Cost | ★★★☆☆ | One Haiku call for variants; retrieval scales linearly with N |
-| Complexity | ★★☆☆☆ | RRF is 10 lines — one of the simplest retrieval enhancements |
+| Retrieval coverage | ★★★★☆ | Multi-angle retrieval catches vocabulary-mismatched documents |
+| Answer quality | ★★★★☆ | Richer, more complete context improves open-ended responses |
+| Latency | ★★☆☆☆ | N retrieval calls — parallelise in production |
+| Cost | ★★☆☆☆ | One LLM call for variants + N × retrieval cost |
+| Complexity | ★★★☆☆ | RRF is simple; variant quality depends on prompt engineering |
 
-**When to skip**: single-angle queries with no synonym problem, or latency-critical paths where N × retrieval is unacceptable.
+**When to skip**: unambiguous single-angle queries or latency-critical paths.
 
 → **Module 05: Multi-Query RAG** — instead of rephrasing, decompose the query into sub-questions.

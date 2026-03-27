@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
 Last updated: 2026-03-27
-Session count: 13
+Session count: 14
 
 ---
 
@@ -65,6 +65,14 @@ Session count: 13
 ---
 
 ## Session log
+
+### Session 14 — 2026-03-27
+- Revised module 04_rag_fusion — Phase B + C rewritten to new spec:
+  - slides.md: "Query Perspective Diversity"; synonym mismatch table; `![Architecture](architecture.png)` reference; key insight callout; market sentiment fintech example (EM bonds, 3 variants); tradeoffs table; transition to 05 (136 prose words ✓)
+  - README.md: 6–7 min (Tier 2); framing script; live demo 4-step walkthrough (original→variants→per-variant retrieval→fused vs baseline); Q&As (3–5 LLM-generated variants, why better than one query via semantic neighbourhood expansion + RRF); transition (399 words ✓)
+  - demo.ipynb: rewritten to use earnings_report.txt; generate_query_variants()/rrf_fuse()/rag_fusion() pipeline; Cell 4 query "What were the key financial highlights in Q3?"; Cell 5 RRF score distribution + per-variant provenance + baseline comparison + timing breakdown; Cell 6 "What are the market risks mentioned?" with coverage gain count
+- Validation: SKILL.md 18/18 | slides.md 10/10 | README.md 13/13 | demo.ipynb 35/35 | API safety 4/4
+- Status: 12/26 modules complete. Tier 1 complete (10/10). Tier 2: 2/9.
 
 ### Session 13 — 2026-03-27
 - Completed module 04_rag_fusion — all phases (A/B/C/D):
