@@ -10,12 +10,12 @@ Session count: 7
 | Category | Patterns | Done | In progress | Not started |
 |----------|----------|------|-------------|-------------|
 | Foundational | 2 | 2 | 0 | 0 |
-| Retrieval Enhancement | 7 | 1 | 0 | 6 |
+| Retrieval Enhancement | 7 | 2 | 0 | 5 |
 | Indexing & Chunking | 6 | 2 | 0 | 4 |
-| Reasoning & Self-Correction | 5 | 0 | 0 | 5 |
+| Reasoning & Self-Correction | 5 | 1 | 0 | 4 |
 | Architectural | 3 | 0 | 0 | 3 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **5** | **0** | **21** |
+| **TOTAL** | **26** | **7** | **0** | **19** |
 
 ---
 
@@ -32,7 +32,7 @@ Session count: 7
 - [x] `03_hybrid_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `04_rag_fusion` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `05_multi_query_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
-- [ ] `06_hyde` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
+- [x] `06_hyde` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `07_step_back_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `08_flare` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `09_ensemble_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
@@ -46,7 +46,7 @@ Session count: 7
 - [ ] `15_long_context_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 
 ### Reasoning & self-correction
-- [ ] `16_self_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
+- [x] `16_self_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `17_corrective_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `18_ircot` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `19_speculative_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
@@ -65,6 +65,17 @@ Session count: 7
 ---
 
 ## Session log
+
+### Session 8 — 2026-03-27
+- Confirmed 06_hyde complete (all files existed from previous session); updated progress.md
+- Completed module 16_self_rag — all phases (A/B/C/D):
+  - SKILL.md (15 sections; Asai et al. NeurIPS 2023 source; four reflection token table; ReflectionTrace dataclass; abstain path; IsSup three-way classification; model split rationale — Haiku for Retrieve?/IsUse, Sonnet for IsRel/IsSup)
+  - slides.md (6 slides; three failure modes of unconditional RAG; four reflection points table; Mermaid architecture with FLAG/abstain node; DTI demo table with per-step judgments; tradeoffs; transition to Module 17)
+  - README.md (7–8 min timing; explicit transition framing script; DTI live demo walkthrough with cell-by-cell guidance; 4 Q&As covering latency, abstain path, IsRel calibration, and original paper vs prompted implementation; transition to CRAG)
+  - demo.ipynb (12 cells: ReflectionTrace dataclass, JUDGE_MODEL/ANSWER_MODEL split, four reflection functions with structured prompt format, DTI query pipeline with step-by-step trace, IsSup per-claim verification, IsUse utility gate, Basel III compliance query with abstain path, grounding certificate)
+- Validation: 43/44 checks (1 false positive in check script — error message string, not a hardcoded key); all 6 code cells syntax clean
+- Next: 17_corrective_rag (Tier 1)
+- Status: 7/26 modules complete.
 
 ### Session 1 — 2026-03-25
 - Generated: CLAUDE.md, rag_patterns.json, progress.md
