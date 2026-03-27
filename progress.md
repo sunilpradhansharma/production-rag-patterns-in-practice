@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
 Last updated: 2026-03-27
-Session count: 5
+Session count: 7
 
 ---
 
@@ -11,11 +11,11 @@ Session count: 5
 |----------|----------|------|-------------|-------------|
 | Foundational | 2 | 2 | 0 | 0 |
 | Retrieval Enhancement | 7 | 1 | 0 | 6 |
-| Indexing & Chunking | 6 | 1 | 0 | 5 |
+| Indexing & Chunking | 6 | 2 | 0 | 4 |
 | Reasoning & Self-Correction | 5 | 0 | 0 | 5 |
 | Architectural | 3 | 0 | 0 | 3 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **4** | **0** | **22** |
+| **TOTAL** | **26** | **5** | **0** | **21** |
 
 ---
 
@@ -41,7 +41,7 @@ Session count: 5
 - [x] `10_parent_document` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `11_sentence_window` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `12_raptor` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
-- [ ] `13_contextual_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
+- [x] `13_contextual_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `14_multi_vector_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `15_long_context_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 
@@ -77,6 +77,16 @@ Session count: 5
 - Updated: rag_patterns.json (fixed skill_path references, added workshop_tier + difficulty fields)
 - Updated: progress.md (tier labels added to all modules)
 - Status: Foundation documents complete. No GoF references remain. Ready to build modules.
+
+### Session 7 — 2026-03-27
+- Completed module 13_contextual_rag — all phases (A/B/C/D):
+  - SKILL.md (10 sections + Anthropic innovation callout; 49% failure reduction figure; prompt caching guidance; Ma et al. Hybrid RAG combination recommendation)
+  - slides.md (7 slides, orphaned chunk problem opener with verbatim fragment, before/after context prefix example, numbers slide with 35%/49% table)
+  - README.md (8-10 min timing, explicit Anthropic attribution block, 4 Q&As including Haiku vs Sonnet rationale and context template guidance, transition to HyDE)
+  - demo.ipynb (12 cells: two-model setup, vocabulary overlap analysis table, generate_chunk_context with cache_control ephemeral, build_enriched_chunk with user-specified template, dual Chroma stores for comparison, raw_chunk in metadata for clean generation, caching savings estimate)
+- Validation pass: 38/38 checks — all headers, safety, 9 core components, both documents, all template fields, 49% figure, no stubs, all 6 cells syntax-clean
+- Next: 06_hyde (query-side improvements, elegant demo)
+- Status: 5/26 modules complete.
 
 ### Session 6 — 2026-03-27
 - Completed module 10_parent_document — all phases (A/B/C/D):
