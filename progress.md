@@ -12,10 +12,10 @@ Session count: 7
 | Foundational | 2 | 2 | 0 | 0 |
 | Retrieval Enhancement | 7 | 2 | 0 | 5 |
 | Indexing & Chunking | 6 | 2 | 0 | 4 |
-| Reasoning & Self-Correction | 5 | 3 | 0 | 2 |
+| Reasoning & Self-Correction | 5 | 4 | 0 | 1 |
 | Architectural | 3 | 0 | 0 | 3 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **9** | **0** | **17** |
+| **TOTAL** | **26** | **10** | **0** | **16** |
 
 ---
 
@@ -50,7 +50,7 @@ Session count: 7
 - [x] `17_corrective_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `18_ircot` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `19_speculative_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
-- [ ] `20_adaptive_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
+- [x] `20_adaptive_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 
 ### Architectural
 - [ ] `21_modular_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
@@ -65,6 +65,16 @@ Session count: 7
 ---
 
 ## Session log
+
+### Session 11 — 2026-03-27
+- Completed module 20_adaptive_rag — all phases (A/B/C/D):
+  - SKILL.md: 3-tier routing table (0/1/2); Jeong et al. NAACL 2024 arXiv:2403.14403; workshop synthesis table mapping tiers to patterns 01/03/13/17/22; complexity classifier (Haiku) + strategy router + 3 paths + routing logger; unified financial assistant fintech; quality ★★★★★/latency ★★★☆☆/complexity ★★★★☆; 20% misclassification pitfall; classifier drift pitfall; relates 21+22+17
+  - slides.md: "The Right Tool for the Query"; 3-query problem table (definitional/policy/cross-doc); tier table (0/1/2); synthesis framing; Mermaid; compliance assistant fintech demo table; transition to Module 22 (178 prose words ✓)
+  - README.md: 8–10 min; synthesis opening framing; 3-query live demo walkthrough; 3 Q&As (few-shot→fine-tune, route-up on boundary, start with 2 tiers); transition "Adaptive routes to strategies. Agentic builds strategies on the fly." (370 words ✓)
+  - demo.ipynb: 12 cells; 4-type classifier (simple_lookup|semantic_search|factual|multi_step); 4 strategies (naive/hybrid/corrective/multi-hop); STRATEGY_MAP router; ClassificationResult + RouteResult dataclasses; BM25+Chroma dual index; all 4 sample docs; RELEVANCE_THRESHOLD=3.0; sub-question bridge in multi-hop; abstain path; routing log + distribution in Cell 5; fintech unified KB in Cell 6
+- Validation: 20/20
+- Next: 22_agentic_rag (Tier 1 capstone)
+- Status: 10/26 modules complete.
 
 ### Session 10 — 2026-03-27
 - Completed module 17_corrective_rag — all phases (A/B/C/D):
