@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
 Last updated: 2026-03-27
-Session count: 7
+Session count: 12
 
 ---
 
@@ -13,9 +13,9 @@ Session count: 7
 | Retrieval Enhancement | 7 | 2 | 0 | 5 |
 | Indexing & Chunking | 6 | 2 | 0 | 4 |
 | Reasoning & Self-Correction | 5 | 4 | 0 | 1 |
-| Architectural | 3 | 0 | 0 | 3 |
+| Architectural | 3 | 1 | 0 | 2 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **10** | **0** | **16** |
+| **TOTAL** | **26** | **11** | **0** | **15** |
 
 ---
 
@@ -54,7 +54,7 @@ Session count: 7
 
 ### Architectural
 - [ ] `21_modular_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
-- [ ] `22_agentic_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
+- [x] `22_agentic_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `23_multi_hop_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 
 ### Specialized
@@ -65,6 +65,15 @@ Session count: 7
 ---
 
 ## Session log
+
+### Session 12 — 2026-03-27
+- Completed module 22_agentic_rag — all phases (A/B/C/D):
+  - SKILL.md: dual source (LangGraph 2024 + ReAct Yao et al. ICLR 2023); capstone framing; retrieval-as-tool key innovation; extension table mapping all prior workshop patterns to agentic equivalents; stopping condition + tool call trace components; ESG portfolio demo query; quality/flexibility ★★★★★, latency/cost ★☆☆☆☆; infinite loop / runaway cost / tool schema ambiguity pitfalls; relates 20+23+17
+  - slides.md: "The Most Powerful Pattern"; fixed-pipeline ceiling table; ReAct loop; Mermaid; ESG 5-step agent trace table; tradeoffs; transition "22 patterns in your toolkit" (246 prose words ✓)
+  - README.md: 10–12 min (live demo essential); "where RAG is heading" framing; 5-tool-call demo narration; Q&As (cost→max_steps+classifier gate, wrong tool→narrow descriptions+eval harness, overkill→predictable paths); transition (400 words ✓)
+  - demo.ipynb: 12 cells; LangGraph StateGraph; AgentState TypedDict + add_messages; 3 @tool functions (retrieve_docs/web_search/calculate); Tavily live + mock fallback; safe_chars guard; llm.bind_tools; call_model + should_continue; MAX_STEPS=5 stopping condition; Basel III $500M query Cell 4; full reasoning trace + Counter Cell 5; compliance ratio analysis Cell 6
+- Validation: 50/50
+- Status: 11/26 modules complete. Tier 1 COMPLETE (10/10 core patterns).
 
 ### Session 11 — 2026-03-27
 - Completed module 20_adaptive_rag — all phases (A/B/C/D):
