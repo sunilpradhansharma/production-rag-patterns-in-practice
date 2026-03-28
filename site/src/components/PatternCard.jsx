@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ExternalLink } from 'lucide-react'
+import { ExternalLink, GitBranch } from 'lucide-react'
 import { CATEGORY_COLORS } from '../data/patterns.js'
 import { REPO_BASE } from '../lib/constants.js'
 
@@ -33,7 +33,7 @@ const TIER_CONFIG = {
   3: { label: 'Tier 3', bg: 'rgba(251,146,60,0.09)',  border: 'rgba(251,146,60,0.2)',  text: '#fb923c' },
 }
 
-export default function PatternCard({ pattern, index }) {
+export default function PatternCard({ pattern, index, onClick }) {
   const [hovered, setHovered] = useState(false)
   const cat = CATEGORY_COLORS[pattern.category] || CATEGORY_COLORS.foundational
   const tier = TIER_CONFIG[pattern.tier] || TIER_CONFIG[1]
@@ -46,6 +46,7 @@ export default function PatternCard({ pattern, index }) {
       transition={{ duration: 0.38, delay: Math.min(index % 6, 5) * 0.065 }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={onClick}
       style={{
         position: 'relative',
         display: 'flex',
@@ -64,7 +65,7 @@ export default function PatternCard({ pattern, index }) {
           ? `0 1px 0 rgba(255,255,255,0.06) inset, 0 8px 32px rgba(0,0,0,0.3), 0 0 40px ${cat.bg}`
           : '0 1px 0 rgba(255,255,255,0.05) inset, 0 3px 16px rgba(0,0,0,0.2)',
         transition: 'all 0.22s ease',
-        cursor: 'default',
+        cursor: 'pointer',
       }}
     >
       {/* Category color accent line at top */}
@@ -82,7 +83,7 @@ export default function PatternCard({ pattern, index }) {
 
       <div style={{ padding: '18px 18px 16px', display: 'flex', flexDirection: 'column', gap: 13, flex: 1 }}>
 
-        {/* Top row: pattern number + tier */}
+        {/* Top row: pattern number + diagram badge + tier */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{
             fontFamily: 'JetBrains Mono, monospace',
@@ -98,18 +99,33 @@ export default function PatternCard({ pattern, index }) {
           }}>
             #{String(pattern.id).padStart(2, '0')}
           </div>
-          <span style={{
-            fontSize: 10,
-            fontWeight: 600,
-            padding: '2px 9px',
-            borderRadius: 10,
-            background: tier.bg,
-            border: `1px solid ${tier.border}`,
-            color: tier.text,
-            letterSpacing: '0.04em',
-          }}>
-            {tier.label}
-          </span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+            {/* Diagram available indicator */}
+            <span style={{
+              display: 'inline-flex', alignItems: 'center', gap: 3,
+              fontSize: 9.5, fontWeight: 600, letterSpacing: '0.05em',
+              padding: '2px 7px', borderRadius: 6,
+              background: hovered ? `${cat.text}15` : 'rgba(255,255,255,0.035)',
+              border: `1px solid ${hovered ? cat.text + '35' : 'rgba(255,255,255,0.065)'}`,
+              color: hovered ? cat.text : '#3a5068',
+              transition: 'all 0.2s ease',
+            }}>
+              <GitBranch size={8} />
+              Diagram
+            </span>
+            <span style={{
+              fontSize: 10,
+              fontWeight: 600,
+              padding: '2px 9px',
+              borderRadius: 10,
+              background: tier.bg,
+              border: `1px solid ${tier.border}`,
+              color: tier.text,
+              letterSpacing: '0.04em',
+            }}>
+              {tier.label}
+            </span>
+          </div>
         </div>
 
         {/* Name + category */}
@@ -176,30 +192,48 @@ export default function PatternCard({ pattern, index }) {
               {COMPLEXITY_LABELS[pattern.complexity]}
             </span>
           </div>
-          <a
-            href={`${REPO_BASE}${pattern.notebookPath}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={e => e.stopPropagation()}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 4,
-              fontSize: 11,
+          <div style={{ display: 'flex', gap: 5 }}>
+            {/* View diagram — triggers modal via card click */}
+            <span style={{
+              display: 'flex', alignItems: 'center', gap: 3,
+              fontSize: 10.5, fontWeight: 600, letterSpacing: '-0.01em',
               color: hovered ? cat.text : '#38bdf8',
-              fontWeight: 600,
-              textDecoration: 'none',
-              padding: '4px 9px',
-              borderRadius: 6,
+              padding: '4px 9px', borderRadius: 6,
               background: hovered ? cat.bg : 'rgba(56,189,248,0.07)',
               border: `1px solid ${hovered ? cat.border : 'rgba(56,189,248,0.14)'}`,
               transition: 'all 0.18s ease',
-              letterSpacing: '-0.01em',
-            }}
-          >
-            Notebook
-            <ExternalLink size={9} strokeWidth={2.5} />
-          </a>
+              pointerEvents: 'none',
+            }}>
+              View details
+            </span>
+            {/* Notebook — direct external link */}
+            <a
+              href={`${REPO_BASE}${pattern.notebookPath}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={e => e.stopPropagation()}
+              style={{
+                display: 'flex', alignItems: 'center', gap: 3,
+                fontSize: 10.5, fontWeight: 500,
+                color: '#3d5068',
+                textDecoration: 'none',
+                padding: '4px 8px', borderRadius: 6,
+                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid rgba(255,255,255,0.06)',
+                transition: 'all 0.15s ease',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.color = '#64748b'
+                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.color = '#3d5068'
+                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'
+              }}
+            >
+              <ExternalLink size={9} strokeWidth={2.5} />
+            </a>
+          </div>
         </div>
       </div>
     </motion.div>

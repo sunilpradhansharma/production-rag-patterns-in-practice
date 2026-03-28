@@ -3,12 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Search, X } from 'lucide-react'
 import { PATTERNS, CATEGORIES, CATEGORY_COLORS } from '../data/patterns.js'
 import PatternCard from '../components/PatternCard.jsx'
+import PatternDetailModal from '../components/PatternDetailModal.jsx'
 import SectionLabel from '../components/SectionLabel.jsx'
 import { PatternExplorerOrb } from '../components/BackgroundEffects.jsx'
 
 export default function PatternExplorerSection() {
   const [activeCategory, setActiveCategory] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
+  const [selectedPattern, setSelectedPattern] = useState(null)
 
   const filtered = useMemo(() => {
     let result = PATTERNS
@@ -207,7 +209,12 @@ export default function PatternExplorerSection() {
               style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(288px, 1fr))', gap: 14 }}
             >
               {filtered.map((pattern, i) => (
-                <PatternCard key={pattern.id} pattern={pattern} index={i} />
+                <PatternCard
+                  key={pattern.id}
+                  pattern={pattern}
+                  index={i}
+                  onClick={() => setSelectedPattern(pattern)}
+                />
               ))}
             </motion.div>
           ) : (
@@ -224,6 +231,17 @@ export default function PatternExplorerSection() {
           )}
         </AnimatePresence>
       </div>
+
+      {/* Pattern detail modal */}
+      <AnimatePresence>
+        {selectedPattern && (
+          <PatternDetailModal
+            key={selectedPattern.id}
+            pattern={selectedPattern}
+            onClose={() => setSelectedPattern(null)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   )
 }
