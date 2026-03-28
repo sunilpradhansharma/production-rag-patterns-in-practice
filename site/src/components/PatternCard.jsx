@@ -11,12 +11,10 @@ function ComplexityBar({ value, max = 5, color }) {
         <div
           key={i}
           style={{
-            width: i < value ? 14 : 8,
+            width: 20,
             height: 3,
-            borderRadius: 2,
-            background: i < value
-              ? `linear-gradient(90deg, ${color}cc, ${color})`
-              : '#e4e0d8',
+            borderRadius: 99,
+            background: i < value ? '#4285F4' : '#e8e8e8',
             transition: 'all 0.2s ease',
           }}
         />
@@ -28,9 +26,9 @@ function ComplexityBar({ value, max = 5, color }) {
 const COMPLEXITY_LABELS = { 1: 'Minimal', 2: 'Low', 3: 'Medium', 4: 'High', 5: 'Expert' }
 
 const TIER_CONFIG = {
-  1: { label: 'Tier 1', bg: '#eff6ff', border: '#bfdbfe', text: '#1d4ed8' },
-  2: { label: 'Tier 2', bg: '#fff7ed', border: '#fed7aa', text: '#b45309' },
-  3: { label: 'Tier 3', bg: '#fef2f2', border: '#fecaca', text: '#b91c1c' },
+  1: { label: 'Tier 1', bg: '#eef3ff', border: '#c5d8ff', text: '#1967d2' },
+  2: { label: 'Tier 2', bg: '#fff8f0', border: '#fdd9b5', text: '#b06000' },
+  3: { label: 'Tier 3', bg: '#fdf3f3', border: '#fac5c5', text: '#c5221f' },
 }
 
 export default function PatternCard({ pattern, index, onClick }) {
@@ -53,60 +51,40 @@ export default function PatternCard({ pattern, index, onClick }) {
         flexDirection: 'column',
         height: '100%',
         background: '#ffffff',
-        border: hovered
-          ? `1px solid ${cat.border}`
-          : '1px solid #e4e0d8',
-        borderTopColor: hovered ? cat.border : '#e4e0d8',
-        borderRadius: 14,
+        border: hovered ? '1px solid #4285F4' : '1px solid #e8e8e8',
+        borderRadius: 16,
         overflow: 'hidden',
-        boxShadow: hovered
-          ? `0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.08), 0 0 40px ${cat.bg}`
-          : '0 1px 3px rgba(0,0,0,0.05)',
-        transition: 'all 0.22s ease',
+        boxShadow: 'none',
+        transition: 'border-color 0.18s ease',
         cursor: 'pointer',
+        padding: 20,
       }}
     >
-      {/* Category color accent line at top */}
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        height: '2px',
-        background: `linear-gradient(90deg, ${cat.text}00 0%, ${cat.text} 40%, ${cat.text} 60%, ${cat.text}00 100%)`,
-        opacity: hovered ? 0.7 : 0,
-        transition: 'opacity 0.22s ease',
-        borderRadius: '14px 14px 0 0',
-      }} />
-
-      <div style={{ padding: '18px 18px 16px', display: 'flex', flexDirection: 'column', gap: 13, flex: 1 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 13, flex: 1 }}>
 
         {/* Top row: pattern number + diagram badge + tier */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{
             fontFamily: 'JetBrains Mono, monospace',
-            fontSize: 10.5,
+            fontSize: 11,
             fontWeight: 700,
-            color: hovered ? cat.text : '#9a9890',
-            background: hovered ? cat.bg : '#f5f3ee',
-            border: `1px solid ${hovered ? cat.border : '#e4e0d8'}`,
+            color: '#9aa0a6',
+            background: '#f8f9fa',
+            border: '1px solid #f1f3f4',
             padding: '3px 8px',
             borderRadius: 5,
             letterSpacing: '0.1em',
-            transition: 'all 0.2s ease',
           }}>
             #{String(pattern.id).padStart(2, '0')}
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-            {/* Diagram available indicator */}
             <span style={{
               display: 'inline-flex', alignItems: 'center', gap: 3,
-              fontSize: 9.5, fontWeight: 600, letterSpacing: '0.05em',
-              padding: '2px 7px', borderRadius: 6,
-              background: hovered ? `${cat.text}18` : '#f5f3ee',
-              border: `1px solid ${hovered ? cat.text + '55' : '#e4e0d8'}`,
-              color: hovered ? cat.text : '#9a9890',
-              transition: 'all 0.2s ease',
+              fontSize: 10, fontWeight: 600, letterSpacing: '0.05em',
+              padding: '3px 9px', borderRadius: 99,
+              background: '#fafafa',
+              border: '1px solid #e0e0e0',
+              color: '#9aa0a6',
             }}>
               <GitBranch size={8} />
               Diagram
@@ -114,8 +92,8 @@ export default function PatternCard({ pattern, index, onClick }) {
             <span style={{
               fontSize: 10,
               fontWeight: 600,
-              padding: '2px 9px',
-              borderRadius: 10,
+              padding: '3px 9px',
+              borderRadius: 99,
               background: tier.bg,
               border: `1px solid ${tier.border}`,
               color: tier.text,
@@ -129,9 +107,9 @@ export default function PatternCard({ pattern, index, onClick }) {
         {/* Name + category */}
         <div>
           <h3 style={{
-            color: '#1a1a18',
+            color: '#202124',
             fontWeight: 700,
-            fontSize: 14.5,
+            fontSize: 16,
             letterSpacing: '-0.015em',
             lineHeight: 1.3,
             marginBottom: 8,
@@ -158,8 +136,8 @@ export default function PatternCard({ pattern, index, onClick }) {
 
         {/* Core concept */}
         <p style={{
-          color: '#6a6860',
-          fontSize: 12.5,
+          color: '#5f6368',
+          fontSize: 12,
           lineHeight: 1.65,
           flex: 1,
         }}>
@@ -170,7 +148,10 @@ export default function PatternCard({ pattern, index, onClick }) {
         {pattern.fintechUseCases.length > 0 && (
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
             {pattern.fintechUseCases.slice(0, 2).map(uc => (
-              <span key={uc} className="tag-dim">{uc}</span>
+              <span key={uc} style={{
+                background: '#f8f9fa', border: '1px solid #f1f3f4',
+                color: '#80868b', fontSize: 11, borderRadius: 6, padding: '5px 10px',
+              }}>{uc}</span>
             ))}
           </div>
         )}
@@ -181,30 +162,29 @@ export default function PatternCard({ pattern, index, onClick }) {
           alignItems: 'center',
           justifyContent: 'space-between',
           paddingTop: 12,
-          borderTop: `1px solid ${hovered ? '#d4d0c8' : '#e4e0d8'}`,
-          transition: 'border-color 0.2s ease',
+          borderTop: '1px solid #e8e8e8',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
-            <ComplexityBar value={pattern.complexity} color={cat.text} />
-            <span style={{ fontSize: 10, color: '#9a9890', fontWeight: 500 }}>
+            <ComplexityBar value={pattern.complexity} color="#4285F4" />
+            <span style={{ fontSize: 10, color: '#9aa0a6', fontWeight: 500 }}>
               {COMPLEXITY_LABELS[pattern.complexity]}
             </span>
           </div>
           <div style={{ display: 'flex', gap: 5 }}>
-            {/* View diagram — triggers modal via card click */}
-            <span style={{
-              display: 'flex', alignItems: 'center', gap: 3,
-              fontSize: 10.5, fontWeight: 600, letterSpacing: '-0.01em',
-              color: hovered ? cat.text : '#2563b0',
-              padding: '4px 9px', borderRadius: 6,
-              background: hovered ? cat.bg : '#eff6ff',
-              border: `1px solid ${hovered ? cat.border : '#bfdbfe'}`,
-              transition: 'all 0.18s ease',
-              pointerEvents: 'none',
-            }}>
+            <span
+              style={{
+                display: 'flex', alignItems: 'center', gap: 3,
+                fontSize: 12, fontWeight: 600,
+                color: hovered ? '#4285F4' : '#202124',
+                padding: '6px 18px', borderRadius: 99,
+                border: `1px solid ${hovered ? '#4285F4' : '#dadce0'}`,
+                background: '#ffffff',
+                transition: 'all 0.18s ease',
+                pointerEvents: 'none',
+              }}
+            >
               View details
             </span>
-            {/* Notebook — direct external link */}
             <a
               href={`${REPO_BASE}${pattern.notebookPath}`}
               target="_blank"
@@ -213,20 +193,20 @@ export default function PatternCard({ pattern, index, onClick }) {
               style={{
                 display: 'flex', alignItems: 'center', gap: 3,
                 fontSize: 10.5, fontWeight: 500,
-                color: '#9a9890',
+                color: '#9aa0a6',
                 textDecoration: 'none',
                 padding: '4px 8px', borderRadius: 6,
-                background: '#f5f3ee',
-                border: '1px solid #e4e0d8',
+                background: '#f8f9fa',
+                border: '1px solid #f1f3f4',
                 transition: 'all 0.15s ease',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.color = '#1a1a18'
-                e.currentTarget.style.borderColor = '#ccc9c0'
+                e.currentTarget.style.color = '#202124'
+                e.currentTarget.style.borderColor = '#e8e8e8'
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.color = '#9a9890'
-                e.currentTarget.style.borderColor = '#e4e0d8'
+                e.currentTarget.style.color = '#9aa0a6'
+                e.currentTarget.style.borderColor = '#f1f3f4'
               }}
             >
               <ExternalLink size={9} strokeWidth={2.5} />

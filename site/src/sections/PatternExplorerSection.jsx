@@ -45,13 +45,13 @@ export default function PatternExplorerSection() {
         >
           <SectionLabel centered>Pattern Catalog</SectionLabel>
           <h2 style={{
-            fontSize: 'clamp(1.8rem, 4vw, 2.6rem)',
-            fontWeight: 800, letterSpacing: '-0.03em',
-            color: '#1a1a18', marginBottom: 14, lineHeight: 1.1,
+            fontSize: 42,
+            fontWeight: 700, letterSpacing: '-0.02em',
+            color: '#202124', marginBottom: 16, lineHeight: 1.12, textAlign: 'center',
           }}>
-            All 26 RAG Patterns
+            All 26 <span style={{ color: '#4285F4' }}>RAG Patterns</span>
           </h2>
-          <p style={{ color: '#6a6860', maxWidth: 460, margin: '0 auto', fontSize: 15, lineHeight: 1.65 }}>
+          <p style={{ color: '#5f6368', maxWidth: 460, margin: '0 auto', fontSize: 15, lineHeight: 1.65 }}>
             From foundational baselines to agentic systems — every pattern with notebooks and fintech examples.
           </p>
         </motion.div>
@@ -69,7 +69,7 @@ export default function PatternExplorerSection() {
             <Search size={13} style={{
               position: 'absolute', left: 13, top: '50%',
               transform: 'translateY(-50%)',
-              color: '#9a9890', pointerEvents: 'none',
+              color: '#9aa0a6', pointerEvents: 'none',
             }} />
             <input
               type="text"
@@ -80,25 +80,25 @@ export default function PatternExplorerSection() {
                 width: '100%',
                 padding: '10px 36px 10px 36px',
                 background: '#ffffff',
-                border: '1px solid #e4e0d8',
-                borderTopColor: '#e4e0d8',
+                border: '1px solid #e8e8e8',
+                borderTopColor: '#e8e8e8',
                 borderRadius: 9,
-                color: '#1a1a18', fontSize: 13,
+                color: '#202124', fontSize: 13,
                 outline: 'none',
                 transition: 'all 0.2s ease',
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: "'Google Sans', 'Product Sans', sans-serif",
                 letterSpacing: '-0.01em',
                 boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
               }}
               onFocus={e => {
-                e.target.style.borderColor = '#bfdbfe'
+                e.target.style.borderColor = '#c5d8ff'
                 e.target.style.borderTopColor = '#93c5fd'
                 e.target.style.background = '#ffffff'
-                e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.05), 0 0 0 3px rgba(37,99,176,0.08)'
+                e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.05), 0 0 0 3px rgba(66,133,244,0.08)'
               }}
               onBlur={e => {
-                e.target.style.borderColor = '#e4e0d8'
-                e.target.style.borderTopColor = '#e4e0d8'
+                e.target.style.borderColor = '#e8e8e8'
+                e.target.style.borderTopColor = '#e8e8e8'
                 e.target.style.background = '#ffffff'
                 e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.05)'
               }}
@@ -110,7 +110,7 @@ export default function PatternExplorerSection() {
                   position: 'absolute', right: 10, top: '50%',
                   transform: 'translateY(-50%)',
                   background: 'none', border: 'none',
-                  cursor: 'pointer', color: '#9a9890',
+                  cursor: 'pointer', color: '#9aa0a6',
                   display: 'flex', alignItems: 'center', padding: 2,
                 }}
               >
@@ -132,15 +132,15 @@ export default function PatternExplorerSection() {
                     fontSize: 12, fontWeight: isActive ? 600 : 500,
                     padding: '6px 14px', borderRadius: 20,
                     border: isActive
-                      ? `1px solid ${colors ? colors.border : '#bfdbfe'}`
-                      : '1px solid #e4e0d8',
+                      ? `1px solid ${colors ? colors.border : '#c5d8ff'}`
+                      : '1px solid #e8e8e8',
                     borderTopColor: isActive
                       ? (colors ? colors.border : '#93c5fd')
-                      : '#e4e0d8',
+                      : '#e8e8e8',
                     background: isActive
-                      ? (colors ? colors.bg : '#eff6ff')
+                      ? (colors ? colors.bg : '#f0f6ff')
                       : 'transparent',
-                    color: isActive ? (colors ? colors.text : '#2563b0') : '#9a9890',
+                    color: isActive ? (colors ? colors.text : '#4285F4') : '#9aa0a6',
                     cursor: 'pointer', transition: 'all 0.15s ease',
                     display: 'flex', alignItems: 'center', gap: 5,
                     boxShadow: isActive ? '0 1px 0 rgba(255,255,255,0.055) inset, 0 2px 8px rgba(0,0,0,0.15)' : 'none',
@@ -149,15 +149,15 @@ export default function PatternExplorerSection() {
                   onMouseEnter={e => {
                     if (!isActive) {
                       e.currentTarget.style.background = 'rgba(0,0,0,0.04)'
-                      e.currentTarget.style.color = '#1a1a18'
-                      e.currentTarget.style.borderColor = '#d4d0c8'
+                      e.currentTarget.style.color = '#202124'
+                      e.currentTarget.style.borderColor = '#dadce0'
                     }
                   }}
                   onMouseLeave={e => {
                     if (!isActive) {
                       e.currentTarget.style.background = 'transparent'
-                      e.currentTarget.style.color = '#9a9890'
-                      e.currentTarget.style.borderColor = '#e4e0d8'
+                      e.currentTarget.style.color = '#9aa0a6'
+                      e.currentTarget.style.borderColor = '#e8e8e8'
                     }
                   }}
                 >
@@ -168,7 +168,7 @@ export default function PatternExplorerSection() {
                   <span style={{
                     fontSize: 10, fontWeight: 600,
                     background: isActive ? 'rgba(0,0,0,0.07)' : 'rgba(0,0,0,0.04)',
-                    color: isActive ? (colors ? colors.text : '#2563b0') : '#9a9890',
+                    color: isActive ? (colors ? colors.text : '#4285F4') : '#9aa0a6',
                     padding: '0 5px', borderRadius: 6,
                     lineHeight: '16px', display: 'inline-block',
                     minWidth: 18, textAlign: 'center',
@@ -183,14 +183,14 @@ export default function PatternExplorerSection() {
         </motion.div>
 
         {/* Result count */}
-        <div style={{ textAlign: 'center', marginBottom: 24, fontSize: 11.5, color: '#9a9890', letterSpacing: '0.02em' }}>
+        <div style={{ textAlign: 'center', marginBottom: 24, fontSize: 11.5, color: '#9aa0a6', letterSpacing: '0.02em' }}>
           {filtered.length === PATTERNS.length
             ? `Showing all ${PATTERNS.length} patterns`
             : `${filtered.length} pattern${filtered.length !== 1 ? 's' : ''} found`}
           {activeCategory !== 'all' && (
             <button
               onClick={() => setActiveCategory('all')}
-              style={{ marginLeft: 10, color: '#2563b0', background: 'none', border: 'none', cursor: 'pointer', fontSize: 11.5, textDecoration: 'underline' }}
+              style={{ marginLeft: 10, color: '#4285F4', background: 'none', border: 'none', cursor: 'pointer', fontSize: 11.5, textDecoration: 'underline' }}
             >
               clear filter
             </button>

@@ -23,13 +23,13 @@ function SignalCard({ signal, active, onClick }) {
         position: 'relative',
         padding: '13px 13px 11px',
         borderRadius: 10,
-        border: `1px solid ${active ? '#bfdbfe' : '#e4e0d8'}`,
-        borderTopColor: active ? '#93c5fd' : '#e4e0d8',
+        border: `1px solid ${active ? '#c5d8ff' : '#e8e8e8'}`,
+        borderTopColor: active ? '#a8c7ff' : '#e8e8e8',
         background: active
-          ? '#eff6ff'
+          ? '#f0f6ff'
           : '#ffffff',
         boxShadow: active
-          ? '0 1px 3px rgba(0,0,0,0.05), 0 4px 12px rgba(37,99,176,0.08)'
+          ? '0 1px 3px rgba(0,0,0,0.05), 0 4px 12px rgba(66,133,244,0.08)'
           : '0 1px 3px rgba(0,0,0,0.05)',
         cursor: 'pointer',
         textAlign: 'left',
@@ -44,7 +44,7 @@ function SignalCard({ signal, active, onClick }) {
         top: 0, left: 0, right: 0,
         height: 2,
         borderRadius: '10px 10px 0 0',
-        background: 'linear-gradient(90deg, transparent, #2563b0, transparent)',
+        background: 'linear-gradient(90deg, transparent, #4285F4, transparent)',
         opacity: active ? 0.7 : 0,
         transition: 'opacity 0.17s ease',
       }} />
@@ -53,14 +53,14 @@ function SignalCard({ signal, active, onClick }) {
         {/* Icon */}
         <div style={{
           width: 28, height: 28, borderRadius: 6, flexShrink: 0,
-          background: active ? '#eff6ff' : '#f5f3ee',
-          border: `1px solid ${active ? '#bfdbfe' : '#e4e0d8'}`,
+          background: active ? '#f0f6ff' : '#f8f9fa',
+          border: `1px solid ${active ? '#c5d8ff' : '#e8e8e8'}`,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           transition: 'all 0.17s ease',
         }}>
           <IconComp
             size={13}
-            style={{ color: active ? '#2563b0' : '#6a6860', transition: 'color 0.17s ease' }}
+            style={{ color: active ? '#4285F4' : '#5f6368', transition: 'color 0.17s ease' }}
           />
         </div>
 
@@ -68,7 +68,7 @@ function SignalCard({ signal, active, onClick }) {
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{
             fontSize: 12, fontWeight: active ? 600 : 500,
-            color: active ? '#1a1a18' : '#6a6860',
+            color: active ? '#202124' : '#5f6368',
             lineHeight: 1.3, marginBottom: 3,
             transition: 'color 0.17s ease',
           }}>
@@ -76,7 +76,7 @@ function SignalCard({ signal, active, onClick }) {
           </div>
           <div style={{
             fontSize: 10.5,
-            color: active ? '#6a6860' : '#9a9890',
+            color: active ? '#5f6368' : '#9aa0a6',
             lineHeight: 1.4,
             transition: 'color 0.17s ease',
           }}>
@@ -88,14 +88,14 @@ function SignalCard({ signal, active, onClick }) {
         <div style={{
           width: 14, height: 14, flexShrink: 0, marginTop: 1,
           borderRadius: 4,
-          border: `1.5px solid ${active ? '#2563b0' : '#ccc9c0'}`,
-          background: active ? 'rgba(37,99,176,0.15)' : 'transparent',
+          border: `1.5px solid ${active ? '#4285F4' : '#e8e8e8'}`,
+          background: active ? 'rgba(66,133,244,0.15)' : 'transparent',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           transition: 'all 0.17s ease',
         }}>
           {active && (
             <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
-              <path d="M1 3l2 2 4-4" stroke="#2563b0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M1 3l2 2 4-4" stroke="#4285F4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           )}
         </div>
@@ -115,9 +115,9 @@ function EmptyResults() {
         padding: '52px 32px',
         textAlign: 'center',
         borderRadius: 14,
-        background: '#f5f3ee',
-        border: '1px solid #e4e0d8',
-        borderTopColor: '#e4e0d8',
+        background: '#f8f9fa',
+        border: '1px solid #e8e8e8',
+        borderTopColor: '#e8e8e8',
         boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
       }}
     >
@@ -125,20 +125,20 @@ function EmptyResults() {
         width: 48, height: 48,
         margin: '0 auto 18px',
         borderRadius: 12,
-        background: '#eff6ff',
-        border: '1px solid #bfdbfe',
+        background: '#f0f6ff',
+        border: '1px solid #c5d8ff',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}>
         <span style={{ fontSize: 22, opacity: 0.35 }}>◎</span>
       </div>
       <p style={{
-        color: '#1a1a18', fontWeight: 600, fontSize: 14,
+        color: '#202124', fontWeight: 600, fontSize: 14,
         marginBottom: 9, letterSpacing: '-0.01em',
       }}>
         Select signals to see your recommendation
       </p>
       <p style={{
-        color: '#6a6860', fontSize: 12,
+        color: '#5f6368', fontSize: 12,
         lineHeight: 1.6, maxWidth: 230, margin: '0 auto',
       }}>
         Check every challenge that applies. More signals produce a more targeted result.
@@ -191,8 +191,8 @@ function PrimaryResultCard({ result, activeSignals }) {
         </div>
         <span style={{
           fontSize: 10, fontWeight: 700,
-          color: '#2563b0', fontFamily: 'JetBrains Mono, monospace',
-          background: '#eff6ff', border: '1px solid #bfdbfe',
+          color: '#4285F4', fontFamily: 'JetBrains Mono, monospace',
+          background: '#f0f6ff', border: '1px solid #c5d8ff',
           padding: '2px 8px', borderRadius: 5,
         }}>
           Module {moduleNum}
@@ -201,7 +201,7 @@ function PrimaryResultCard({ result, activeSignals }) {
 
       {/* Pattern name */}
       <h3 style={{
-        color: '#1a1a18', fontWeight: 800, fontSize: 19,
+        color: '#202124', fontWeight: 800, fontSize: 19,
         letterSpacing: '-0.02em', marginBottom: 10, lineHeight: 1.2,
       }}>
         {pattern.name}
@@ -221,15 +221,15 @@ function PrimaryResultCard({ result, activeSignals }) {
         <span style={{
           fontSize: 10, fontWeight: 600, letterSpacing: '0.04em',
           padding: '3px 9px', borderRadius: 10,
-          background: '#eff6ff', border: '1px solid #bfdbfe',
-          color: '#2563b0',
+          background: '#f0f6ff', border: '1px solid #c5d8ff',
+          color: '#4285F4',
         }}>
           Tier {pattern.tier}
         </span>
       </div>
 
       {/* Key innovation */}
-      <p style={{ color: '#6a6860', fontSize: 12.5, lineHeight: 1.65, marginBottom: 12 }}>
+      <p style={{ color: '#5f6368', fontSize: 12.5, lineHeight: 1.65, marginBottom: 12 }}>
         {pattern.keyInnovation}
       </p>
 
@@ -237,7 +237,7 @@ function PrimaryResultCard({ result, activeSignals }) {
       {reasons.length > 0 && (
         <div style={{ marginBottom: 12, display: 'flex', flexDirection: 'column', gap: 5 }}>
           {reasons.map((reason, i) => (
-            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 6, fontSize: 11.5, color: '#6a6860', lineHeight: 1.5 }}>
+            <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 6, fontSize: 11.5, color: '#5f6368', lineHeight: 1.5 }}>
               <span style={{ color: cat.text, flexShrink: 0, marginTop: 1, opacity: 0.9 }}>↳</span>
               <span>{reason}</span>
             </div>
@@ -249,8 +249,8 @@ function PrimaryResultCard({ result, activeSignals }) {
       <div style={{
         display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12,
         padding: '7px 10px', borderRadius: 7,
-        background: '#f5f3ee',
-        border: '1px solid #e4e0d8',
+        background: '#f8f9fa',
+        border: '1px solid #e8e8e8',
       }}>
         <div style={{ display: 'flex', gap: 3, alignItems: 'center' }}>
           {activeSignals.map(sid => {
@@ -259,13 +259,13 @@ function PrimaryResultCard({ result, activeSignals }) {
             return (
               <div key={sid} style={{
                 width: 6, height: 6, borderRadius: '50%',
-                background: matched ? cat.text : '#e4e0d8',
+                background: matched ? cat.text : '#e8e8e8',
                 transition: 'background 0.2s ease',
               }} />
             )
           })}
         </div>
-        <span style={{ fontSize: 10.5, color: '#6a6860', fontFamily: 'JetBrains Mono, monospace' }}>
+        <span style={{ fontSize: 10.5, color: '#5f6368', fontFamily: 'JetBrains Mono, monospace' }}>
           {matchedCount} / {activeSignals.length} signals matched
         </span>
       </div>
@@ -275,18 +275,18 @@ function PrimaryResultCard({ result, activeSignals }) {
         <div style={{
           padding: '9px 12px', marginBottom: 16,
           borderRadius: 7,
-          background: '#f5f3ee',
-          border: '1px solid #e4e0d8',
+          background: '#f8f9fa',
+          border: '1px solid #e8e8e8',
           borderLeft: `2px solid ${cat.text}80`,
         }}>
           <div style={{
-            fontSize: 9.5, color: '#9a9890', fontWeight: 600,
+            fontSize: 9.5, color: '#9aa0a6', fontWeight: 600,
             letterSpacing: '0.1em', textTransform: 'uppercase',
             marginBottom: 5, fontFamily: 'JetBrains Mono, monospace',
           }}>
             Example query
           </div>
-          <div style={{ fontSize: 11.5, color: '#6a6860', lineHeight: 1.55, fontStyle: 'italic' }}>
+          <div style={{ fontSize: 11.5, color: '#5f6368', lineHeight: 1.55, fontStyle: 'italic' }}>
             "{pattern.demoQuery}"
           </div>
         </div>
@@ -315,17 +315,17 @@ function PrimaryResultCard({ result, activeSignals }) {
           style={{
             flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
             padding: '9px 12px', borderRadius: 8,
-            background: '#f5f3ee', border: '1px solid #e4e0d8',
-            color: '#6a6860', fontSize: 12, fontWeight: 500,
+            background: '#f8f9fa', border: '1px solid #e8e8e8',
+            color: '#5f6368', fontSize: 12, fontWeight: 500,
             textDecoration: 'none', transition: 'all 0.15s ease',
           }}
           onMouseEnter={e => {
             e.currentTarget.style.background = '#e8e5e0'
-            e.currentTarget.style.color = '#1a1a18'
+            e.currentTarget.style.color = '#202124'
           }}
           onMouseLeave={e => {
-            e.currentTarget.style.background = '#f5f3ee'
-            e.currentTarget.style.color = '#6a6860'
+            e.currentTarget.style.background = '#f8f9fa'
+            e.currentTarget.style.color = '#5f6368'
           }}
         >
           Browse Catalog
@@ -353,8 +353,8 @@ function AltResultCard({ result, rank }) {
         padding: '14px',
         borderRadius: 12,
         background: '#ffffff',
-        border: '1px solid #e4e0d8',
-        borderTopColor: '#e4e0d8',
+        border: '1px solid #e8e8e8',
+        borderTopColor: '#e8e8e8',
         boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
         display: 'flex', flexDirection: 'column', gap: 8,
       }}
@@ -362,15 +362,15 @@ function AltResultCard({ result, rank }) {
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <span style={{
-          fontSize: 9.5, fontWeight: 700, color: '#9a9890',
+          fontSize: 9.5, fontWeight: 700, color: '#9aa0a6',
           fontFamily: 'JetBrains Mono, monospace', letterSpacing: '0.08em',
         }}>
           Module {moduleNum}
         </span>
         <span style={{
-          fontSize: 9.5, fontWeight: 600, color: '#9a9890',
+          fontSize: 9.5, fontWeight: 600, color: '#9aa0a6',
           padding: '1px 6px', borderRadius: 4,
-          background: '#f5f3ee', border: '1px solid #e4e0d8',
+          background: '#f8f9fa', border: '1px solid #e8e8e8',
         }}>
           Alt {rank - 1}
         </span>
@@ -378,7 +378,7 @@ function AltResultCard({ result, rank }) {
 
       {/* Name */}
       <div style={{
-        color: '#1a1a18', fontWeight: 700, fontSize: 13,
+        color: '#202124', fontWeight: 700, fontSize: 13,
         letterSpacing: '-0.01em', lineHeight: 1.3,
       }}>
         {pattern.name}
@@ -396,7 +396,7 @@ function AltResultCard({ result, rank }) {
       </span>
 
       {/* Reason or key innovation */}
-      <p style={{ fontSize: 11, color: '#6a6860', lineHeight: 1.5, flex: 1 }}>
+      <p style={{ fontSize: 11, color: '#5f6368', lineHeight: 1.5, flex: 1 }}>
         {reasons[0] || pattern.keyInnovation}
       </p>
 
@@ -454,13 +454,13 @@ export default function PatternChooserSection() {
         >
           <SectionLabel centered>Pattern Chooser</SectionLabel>
           <h2 style={{
-            fontSize: 'clamp(1.8rem, 4vw, 2.6rem)',
-            fontWeight: 800, letterSpacing: '-0.03em',
-            color: '#1a1a18', marginBottom: 14, lineHeight: 1.1,
+            fontSize: 42,
+            fontWeight: 700, letterSpacing: '-0.02em',
+            color: '#202124', marginBottom: 16, lineHeight: 1.12, textAlign: 'center',
           }}>
-            Choose Your RAG Pattern
+            Choose Your <span style={{ color: '#4285F4' }}>RAG Pattern</span>
           </h2>
-          <p style={{ color: '#6a6860', maxWidth: 500, margin: '0 auto', fontSize: 15, lineHeight: 1.65 }}>
+          <p style={{ color: '#5f6368', maxWidth: 500, margin: '0 auto', fontSize: 15, lineHeight: 1.65 }}>
             Signal the challenges in your use case. The recommender scores all 26 patterns
             in real time and surfaces the best match.
           </p>
@@ -482,10 +482,10 @@ export default function PatternChooserSection() {
               marginBottom: 14,
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <span className="mono" style={{ fontSize: 11, color: '#2563b0', fontWeight: 700 }}>
+                <span className="mono" style={{ fontSize: 11, color: '#4285F4', fontWeight: 700 }}>
                   {activeSignals.length}
                 </span>
-                <span style={{ fontSize: 11.5, color: '#9a9890' }}>
+                <span style={{ fontSize: 11.5, color: '#9aa0a6' }}>
                   of {SIGNALS.length} signals selected
                 </span>
               </div>
@@ -494,13 +494,13 @@ export default function PatternChooserSection() {
                   onClick={() => setActiveSignals([])}
                   style={{
                     display: 'flex', alignItems: 'center', gap: 5,
-                    fontSize: 11, color: '#6a6860',
+                    fontSize: 11, color: '#5f6368',
                     background: 'none', border: 'none', cursor: 'pointer',
                     padding: '3px 8px', borderRadius: 5,
                     transition: 'color 0.15s ease',
                   }}
                   onMouseEnter={e => { e.currentTarget.style.color = '#94a3b8' }}
-                  onMouseLeave={e => { e.currentTarget.style.color = '#9a9890' }}
+                  onMouseLeave={e => { e.currentTarget.style.color = '#9aa0a6' }}
                 >
                   <RotateCcw size={10} />
                   Clear
@@ -534,10 +534,10 @@ export default function PatternChooserSection() {
             {/* Signal legend */}
             <div style={{
               marginTop: 16, padding: '10px 14px',
-              borderRadius: 8, fontSize: 11.5, color: '#6a6860', lineHeight: 1.55,
-              background: '#eff6ff', border: '1px solid #bfdbfe',
+              borderRadius: 8, fontSize: 11.5, color: '#5f6368', lineHeight: 1.55,
+              background: '#f0f6ff', border: '1px solid #c5d8ff',
             }}>
-              <span style={{ color: '#2563b0', fontWeight: 600 }}>Tip:</span>{' '}
+              <span style={{ color: '#4285F4', fontWeight: 600 }}>Tip:</span>{' '}
               Signals stack — selecting multiple narrows the recommendation to patterns that address the most constraints simultaneously.
             </div>
           </div>
@@ -560,7 +560,7 @@ export default function PatternChooserSection() {
                   {alts.length > 0 && (
                     <>
                       <div style={{
-                        fontSize: 10.5, fontWeight: 600, color: '#9a9890',
+                        fontSize: 10.5, fontWeight: 600, color: '#9aa0a6',
                         letterSpacing: '0.08em', textTransform: 'uppercase',
                         marginBottom: 8, fontFamily: 'JetBrains Mono, monospace',
                       }}>

@@ -6,6 +6,7 @@ import PatternExplorerSection from './sections/PatternExplorerSection.jsx'
 import ArchitectureSection from './sections/ArchitectureSection.jsx'
 import LearningPathsSection from './sections/LearningPathsSection.jsx'
 import UseCasesSection from './sections/UseCasesSection.jsx'
+import FAQSection from './sections/FAQSection.jsx'
 import CTASection from './sections/CTASection.jsx'
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
         <SectionDivider />
         <UseCasesSection />
         <SectionDivider />
+        <FAQSection />
         <CTASection />
       </div>
     </div>

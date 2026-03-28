@@ -7,9 +7,9 @@ import { REPO_BASE, GITHUB_URL } from '../lib/constants.js'
 import MermaidDiagram from './MermaidDiagram.jsx'
 
 const TIER_CONFIG = {
-  1: { label: 'Tier 1', color: '#1d4ed8', bg: '#eff6ff', border: '#bfdbfe' },
-  2: { label: 'Tier 2', color: '#b45309', bg: '#fff7ed', border: '#fed7aa' },
-  3: { label: 'Tier 3', color: '#b91c1c', bg: '#fef2f2', border: '#fecaca' },
+  1: { label: 'Tier 1', color: '#1967d2', bg: '#eef3ff', border: '#c5d8ff' },
+  2: { label: 'Tier 2', color: '#b06000', bg: '#fff8f0', border: '#fdd9b5' },
+  3: { label: 'Tier 3', color: '#c5221f', bg: '#fdf3f3', border: '#fac5c5' },
 }
 
 const COMPLEXITY_LABELS = { 1: 'Minimal', 2: 'Low', 3: 'Medium', 4: 'High', 5: 'Expert' }
@@ -44,9 +44,9 @@ export default function PatternDetailModal({ pattern, onClose }) {
         onClick={onClose}
         style={{
           position: 'fixed', inset: 0, zIndex: 200,
-          background: 'rgba(15,15,12,0.6)',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
+          background: 'rgba(0,0,0,0.5)',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           padding: '20px',
           overflowY: 'auto',
@@ -64,14 +64,9 @@ export default function PatternDetailModal({ pattern, onClose }) {
             position: 'relative',
             width: '100%', maxWidth: 900,
             borderRadius: 18,
-            background: '#faf9f6',
-            border: `1px solid ${cat.border}`,
-            borderTopColor: cat.border,
-            boxShadow: `
-              0 1px 3px rgba(0,0,0,0.06),
-              0 24px 60px rgba(0,0,0,0.12),
-              0 0 100px ${cat.bg}
-            `,
+            background: '#ffffff',
+            border: '1px solid #e8e8e8',
+            boxShadow: '0 8px 40px rgba(0,0,0,0.12)',
             overflow: 'hidden',
           }}
         >
@@ -88,21 +83,21 @@ export default function PatternDetailModal({ pattern, onClose }) {
             style={{
               position: 'absolute', top: 16, right: 16, zIndex: 10,
               width: 32, height: 32, borderRadius: 8,
-              background: '#f5f3ee',
-              border: '1px solid #e4e0d8',
+              background: '#f8f9fa',
+              border: '1px solid #e8e8e8',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              cursor: 'pointer', color: '#9a9890',
+              cursor: 'pointer', color: '#9aa0a6',
               transition: 'all 0.15s ease',
             }}
             onMouseEnter={e => {
-              e.currentTarget.style.color = '#1a1a18'
-              e.currentTarget.style.background = '#e8e5e0'
-              e.currentTarget.style.borderColor = '#ccc9c0'
+              e.currentTarget.style.color = '#202124'
+              e.currentTarget.style.background = '#f1f3f4'
+              e.currentTarget.style.borderColor = '#dadce0'
             }}
             onMouseLeave={e => {
-              e.currentTarget.style.color = '#9a9890'
-              e.currentTarget.style.background = '#f5f3ee'
-              e.currentTarget.style.borderColor = '#e4e0d8'
+              e.currentTarget.style.color = '#9aa0a6'
+              e.currentTarget.style.background = '#f8f9fa'
+              e.currentTarget.style.borderColor = '#e8e8e8'
             }}
           >
             <X size={14} />
@@ -112,7 +107,7 @@ export default function PatternDetailModal({ pattern, onClose }) {
           <div style={{
             overflowY: 'auto', maxHeight: '90vh',
             scrollbarWidth: 'thin',
-            scrollbarColor: 'rgba(37,99,176,0.2) transparent',
+            scrollbarColor: 'rgba(66,133,244,0.2) transparent',
           }}>
             <div style={{ padding: '28px 30px 32px' }}>
 
@@ -122,8 +117,8 @@ export default function PatternDetailModal({ pattern, onClose }) {
                   <span style={{
                     fontSize: 10, fontWeight: 700, letterSpacing: '0.11em',
                     fontFamily: 'JetBrains Mono, monospace',
-                    color: '#2563b0', background: '#eff6ff',
-                    border: '1px solid #bfdbfe', padding: '3px 9px', borderRadius: 5,
+                    color: '#4285F4', background: '#f0f6ff',
+                    border: '1px solid #c5d8ff', padding: '3px 9px', borderRadius: 5,
                   }}>
                     Module {moduleNum}
                   </span>
@@ -147,12 +142,12 @@ export default function PatternDetailModal({ pattern, onClose }) {
                       href={pattern.sourceUrl}
                       target="_blank" rel="noopener noreferrer"
                       style={{
-                        fontSize: 10, color: '#9a9890', textDecoration: 'none',
+                        fontSize: 10, color: '#9aa0a6', textDecoration: 'none',
                         fontFamily: 'JetBrains Mono, monospace',
                         transition: 'color 0.15s',
                       }}
-                      onMouseEnter={e => { e.currentTarget.style.color = '#6a6860' }}
-                      onMouseLeave={e => { e.currentTarget.style.color = '#9a9890' }}
+                      onMouseEnter={e => { e.currentTarget.style.color = '#5f6368' }}
+                      onMouseLeave={e => { e.currentTarget.style.color = '#9aa0a6' }}
                     >
                       {pattern.sourcePaper}
                     </a>
@@ -160,14 +155,14 @@ export default function PatternDetailModal({ pattern, onClose }) {
                 </div>
 
                 <h2 style={{
-                  fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 800,
-                  color: '#1a1a18', letterSpacing: '-0.025em', lineHeight: 1.1,
+                  fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700,
+                  color: '#202124', letterSpacing: '-0.025em', lineHeight: 1.1,
                   marginBottom: 10,
                 }}>
                   {pattern.name}
                 </h2>
 
-                <p style={{ color: '#6a6860', fontSize: 13.5, lineHeight: 1.65, maxWidth: 680 }}>
+                <p style={{ color: '#5f6368', fontSize: 13.5, lineHeight: 1.65, maxWidth: 680 }}>
                   {pattern.coreConcept}
                 </p>
               </div>
@@ -191,9 +186,8 @@ export default function PatternDetailModal({ pattern, onClose }) {
                     borderRadius: 12, overflow: 'hidden',
                     background: '#ffffff',
                     border: `1px solid ${cat.border}`,
-                    borderTopColor: cat.border,
                     padding: '20px 16px',
-                    boxShadow: `0 1px 3px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.06), 0 0 48px ${cat.bg}`,
+                    boxShadow: 'none',
                   }}>
                     <MermaidDiagram chart={diagram} />
                   </div>
@@ -209,17 +203,16 @@ export default function PatternDetailModal({ pattern, onClose }) {
                 {/* Key innovation */}
                 <div style={{
                   padding: '14px 16px', borderRadius: 10,
-                  background: '#f5f3ee',
-                  border: '1px solid #e4e0d8',
-                  borderTopColor: '#e4e0d8',
+                  background: '#f8f9fa',
+                  border: '1px solid #f1f3f4',
                 }}>
                   <div style={{
                     fontSize: 9.5, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-                    color: '#9a9890', marginBottom: 8, fontFamily: 'JetBrains Mono, monospace',
+                    color: '#9aa0a6', marginBottom: 8, fontFamily: 'JetBrains Mono, monospace',
                   }}>
                     Key Innovation
                   </div>
-                  <p style={{ fontSize: 12.5, color: '#6a6860', lineHeight: 1.62 }}>
+                  <p style={{ fontSize: 12.5, color: '#5f6368', lineHeight: 1.62 }}>
                     {pattern.keyInnovation}
                   </p>
                 </div>
@@ -228,17 +221,17 @@ export default function PatternDetailModal({ pattern, onClose }) {
                 {pattern.demoQuery && (
                   <div style={{
                     padding: '14px 16px', borderRadius: 10,
-                    background: '#f5f3ee',
-                    border: '1px solid #e4e0d8',
+                    background: '#f8f9fa',
+                    border: '1px solid #f1f3f4',
                     borderLeft: `2px solid ${cat.text}80`,
                   }}>
                     <div style={{
                       fontSize: 9.5, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-                      color: '#9a9890', marginBottom: 8, fontFamily: 'JetBrains Mono, monospace',
+                      color: '#9aa0a6', marginBottom: 8, fontFamily: 'JetBrains Mono, monospace',
                     }}>
                       Example Query
                     </div>
-                    <p style={{ fontSize: 12, color: '#6a6860', lineHeight: 1.58, fontStyle: 'italic' }}>
+                    <p style={{ fontSize: 12, color: '#5f6368', lineHeight: 1.58, fontStyle: 'italic' }}>
                       "{pattern.demoQuery}"
                     </p>
                   </div>
@@ -250,7 +243,7 @@ export default function PatternDetailModal({ pattern, onClose }) {
                 <div style={{ marginBottom: 22 }}>
                   <div style={{
                     fontSize: 9.5, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-                    color: '#9a9890', marginBottom: 9, fontFamily: 'JetBrains Mono, monospace',
+                    color: '#9aa0a6', marginBottom: 9, fontFamily: 'JetBrains Mono, monospace',
                   }}>
                     Fintech Use Cases
                   </div>
@@ -274,23 +267,21 @@ export default function PatternDetailModal({ pattern, onClose }) {
                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                 flexWrap: 'wrap', gap: 14,
                 paddingTop: 18,
-                borderTop: '1px solid #e4e0d8',
+                borderTop: '1px solid #e8e8e8',
               }}>
                 {/* Complexity */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
-                  <span style={{ fontSize: 10.5, color: '#9a9890', fontWeight: 500 }}>Complexity</span>
+                  <span style={{ fontSize: 10.5, color: '#9aa0a6', fontWeight: 500 }}>Complexity</span>
                   <div style={{ display: 'flex', gap: 3 }}>
                     {Array.from({ length: 5 }).map((_, i) => (
                       <div key={i} style={{
-                        width: i < pattern.complexity ? 16 : 9, height: 3, borderRadius: 2,
-                        background: i < pattern.complexity
-                          ? `linear-gradient(90deg, ${cat.text}bb, ${cat.text})`
-                          : '#e4e0d8',
+                        width: i < pattern.complexity ? 16 : 9, height: 3, borderRadius: 99,
+                        background: i < pattern.complexity ? '#4285F4' : '#e8e8e8',
                         transition: 'all 0.2s ease',
                       }} />
                     ))}
                   </div>
-                  <span style={{ fontSize: 10.5, color: '#9a9890' }}>{COMPLEXITY_LABELS[pattern.complexity]}</span>
+                  <span style={{ fontSize: 10.5, color: '#9aa0a6' }}>{COMPLEXITY_LABELS[pattern.complexity]}</span>
                 </div>
 
                 {/* Action links */}
@@ -305,7 +296,7 @@ export default function PatternDetailModal({ pattern, onClose }) {
                       background: cat.bg, border: `1px solid ${cat.border}`,
                       textDecoration: 'none', transition: 'filter 0.15s ease',
                     }}
-                    onMouseEnter={e => { e.currentTarget.style.filter = 'brightness(1.2)' }}
+                    onMouseEnter={e => { e.currentTarget.style.filter = 'brightness(1.1)' }}
                     onMouseLeave={e => { e.currentTarget.style.filter = '' }}
                   >
                     <BookOpen size={12} />
@@ -318,20 +309,20 @@ export default function PatternDetailModal({ pattern, onClose }) {
                     target="_blank" rel="noopener noreferrer"
                     style={{
                       display: 'inline-flex', alignItems: 'center', gap: 6,
-                      fontSize: 12, fontWeight: 500, color: '#6a6860',
+                      fontSize: 12, fontWeight: 500, color: '#5f6368',
                       padding: '8px 14px', borderRadius: 8,
-                      background: '#f5f3ee', border: '1px solid #e4e0d8',
+                      background: '#f8f9fa', border: '1px solid #e8e8e8',
                       textDecoration: 'none', transition: 'all 0.15s ease',
                     }}
                     onMouseEnter={e => {
-                      e.currentTarget.style.color = '#1a1a18'
-                      e.currentTarget.style.borderColor = '#ccc9c0'
-                      e.currentTarget.style.background = '#e8e5e0'
+                      e.currentTarget.style.color = '#202124'
+                      e.currentTarget.style.borderColor = '#dadce0'
+                      e.currentTarget.style.background = '#f1f3f4'
                     }}
                     onMouseLeave={e => {
-                      e.currentTarget.style.color = '#6a6860'
-                      e.currentTarget.style.borderColor = '#e4e0d8'
-                      e.currentTarget.style.background = '#f5f3ee'
+                      e.currentTarget.style.color = '#5f6368'
+                      e.currentTarget.style.borderColor = '#e8e8e8'
+                      e.currentTarget.style.background = '#f8f9fa'
                     }}
                   >
                     <FileText size={12} />
@@ -344,20 +335,20 @@ export default function PatternDetailModal({ pattern, onClose }) {
                     target="_blank" rel="noopener noreferrer"
                     style={{
                       display: 'inline-flex', alignItems: 'center', gap: 6,
-                      fontSize: 12, fontWeight: 500, color: '#6a6860',
+                      fontSize: 12, fontWeight: 500, color: '#5f6368',
                       padding: '8px 14px', borderRadius: 8,
-                      background: '#f5f3ee', border: '1px solid #e4e0d8',
+                      background: '#f8f9fa', border: '1px solid #e8e8e8',
                       textDecoration: 'none', transition: 'all 0.15s ease',
                     }}
                     onMouseEnter={e => {
-                      e.currentTarget.style.color = '#1a1a18'
-                      e.currentTarget.style.borderColor = '#ccc9c0'
-                      e.currentTarget.style.background = '#e8e5e0'
+                      e.currentTarget.style.color = '#202124'
+                      e.currentTarget.style.borderColor = '#dadce0'
+                      e.currentTarget.style.background = '#f1f3f4'
                     }}
                     onMouseLeave={e => {
-                      e.currentTarget.style.color = '#6a6860'
-                      e.currentTarget.style.borderColor = '#e4e0d8'
-                      e.currentTarget.style.background = '#f5f3ee'
+                      e.currentTarget.style.color = '#5f6368'
+                      e.currentTarget.style.borderColor = '#e8e8e8'
+                      e.currentTarget.style.background = '#f8f9fa'
                     }}
                   >
                     <FolderOpen size={12} />

@@ -23,13 +23,13 @@ export default function UseCasesSection() {
         >
           <SectionLabel centered mb={12}>Real-World Applications</SectionLabel>
           <h2 style={{
-            fontSize: 'clamp(1.8rem, 4vw, 2.6rem)',
-            fontWeight: 800, letterSpacing: '-0.025em',
-            color: '#1a1a18', marginBottom: 14,
+            fontSize: 42,
+            fontWeight: 700, letterSpacing: '-0.02em',
+            color: '#202124', marginBottom: 16, lineHeight: 1.12, textAlign: 'center',
           }}>
-            Fintech Use Cases
+            <span style={{ color: '#4285F4' }}>Fintech</span> Use Cases
           </h2>
-          <p style={{ color: '#6a6860', maxWidth: 520, margin: '0 auto', fontSize: 15, lineHeight: 1.6 }}>
+          <p style={{ color: '#5f6368', maxWidth: 520, margin: '0 auto', fontSize: 15, lineHeight: 1.6 }}>
             Every pattern maps to concrete fintech problems. See which patterns apply to your domain.
           </p>
         </motion.div>
@@ -58,34 +58,34 @@ export default function UseCasesSection() {
                     <IconComp size={17} style={{ color: uc.color }} />
                   </div>
                   <div>
-                    <h3 style={{ color: '#1a1a18', fontWeight: 700, fontSize: 14, marginBottom: 3, letterSpacing: '-0.01em' }}>
+                    <h3 style={{ color: '#202124', fontWeight: 700, fontSize: 14, marginBottom: 3, letterSpacing: '-0.01em' }}>
                       {uc.domain}
                     </h3>
-                    <p style={{ color: '#6a6860', fontSize: 12, lineHeight: 1.5 }}>{uc.description}</p>
+                    <p style={{ color: '#5f6368', fontSize: 12, lineHeight: 1.5 }}>{uc.description}</p>
                   </div>
                 </div>
 
                 {/* Examples */}
                 <div style={{ marginBottom: 14 }}>
-                  <div style={{ fontSize: 10, fontWeight: 600, color: '#9a9890', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>
+                  <div style={{ fontSize: 10, fontWeight: 600, color: '#9aa0a6', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>
                     Examples
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                     {uc.examples.map((ex, j) => (
                       <div key={j} style={{
                         padding: '7px 9px', borderRadius: 6,
-                        background: '#f5f3ee',
-                        border: '1px solid #e4e0d8',
+                        background: '#f8f9fa',
+                        border: '1px solid #e8e8e8',
                       }}>
-                        <div style={{ fontSize: 11.5, color: '#1a1a18', marginBottom: 3, lineHeight: 1.4 }}>
+                        <div style={{ fontSize: 11.5, color: '#202124', marginBottom: 3, lineHeight: 1.4 }}>
                           {ex.problem}
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
                           <span style={{ fontSize: 10, fontWeight: 600, color: uc.color, fontFamily: 'JetBrains Mono, monospace' }}>
                             {ex.pattern}
                           </span>
-                          <span style={{ fontSize: 10, color: '#9a9890' }}>—</span>
-                          <span style={{ fontSize: 10, color: '#6a6860', lineHeight: 1.4 }}>{ex.why}</span>
+                          <span style={{ fontSize: 10, color: '#9aa0a6' }}>—</span>
+                          <span style={{ fontSize: 10, color: '#5f6368', lineHeight: 1.4 }}>{ex.why}</span>
                         </div>
                       </div>
                     ))}
@@ -94,7 +94,7 @@ export default function UseCasesSection() {
 
                 {/* Pattern tags */}
                 <div>
-                  <div style={{ fontSize: 10, fontWeight: 600, color: '#9a9890', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>
+                  <div style={{ fontSize: 10, fontWeight: 600, color: '#9aa0a6', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>
                     Key Patterns
                   </div>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>

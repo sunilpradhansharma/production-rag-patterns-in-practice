@@ -15,9 +15,9 @@ function getMermaid() {
         themeVariables: {
           background: 'transparent',
           mainBkg: '#ffffff',
-          lineColor: '#9a9890',
-          primaryTextColor: '#1a1a18',
-          edgeLabelBackground: 'rgba(245,243,238,0.95)',
+          lineColor: '#9aa0a6',
+          primaryTextColor: '#202124',
+          edgeLabelBackground: 'rgba(248,249,250,0.95)',
           fontSize: '13px',
         },
         flowchart: { curve: 'basis', padding: 16, useMaxWidth: true },
@@ -73,7 +73,7 @@ export default function MermaidDiagram({ chart }) {
         padding: '48px 24px', gap: 10,
       }}>
         <div className="diagram-spinner" />
-        <span style={{ color: '#9a9890', fontSize: 13, fontFamily: 'JetBrains Mono, monospace' }}>
+        <span style={{ color: '#9aa0a6', fontSize: 13, fontFamily: 'JetBrains Mono, monospace' }}>
           rendering…
         </span>
       </div>
@@ -82,7 +82,7 @@ export default function MermaidDiagram({ chart }) {
 
   if (error) {
     return (
-      <div style={{ padding: '32px 24px', textAlign: 'center', color: '#9a9890', fontSize: 13 }}>
+      <div style={{ padding: '32px 24px', textAlign: 'center', color: '#9aa0a6', fontSize: 13 }}>
         Diagram unavailable
       </div>
     )

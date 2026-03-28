@@ -24,7 +24,7 @@ export function HeroOrbs() {
         width: 900,
         height: 600,
         background:
-          'radial-gradient(ellipse at center, rgba(37,99,176,0.04) 0%, rgba(37,99,176,0.015) 40%, transparent 70%)',
+          'radial-gradient(ellipse at center, rgba(66,133,244,0.04) 0%, rgba(66,133,244,0.015) 40%, transparent 70%)',
       }} aria-hidden="true" />
       {/* Secondary offset glow */}
       <div style={{
@@ -33,7 +33,7 @@ export function HeroOrbs() {
         left: '30%',
         width: 500,
         height: 400,
-        background: 'radial-gradient(ellipse, rgba(37,99,176,0.025) 0%, transparent 65%)',
+        background: 'radial-gradient(ellipse, rgba(66,133,244,0.025) 0%, transparent 65%)',
       }} aria-hidden="true" />
     </>
   )
@@ -50,7 +50,7 @@ export function PatternExplorerOrb() {
       transform: 'translateX(-50%)',
       width: 700,
       height: 300,
-      background: 'radial-gradient(ellipse, rgba(37,99,176,0.025) 0%, transparent 65%)',
+      background: 'radial-gradient(ellipse, rgba(66,133,244,0.025) 0%, transparent 65%)',
     }} aria-hidden="true" />
   )
 }
@@ -65,7 +65,7 @@ export function ArchitectureOrb() {
       top: '30%',
       width: 500,
       height: 500,
-      background: 'radial-gradient(ellipse, rgba(37,99,176,0.03) 0%, transparent 65%)',
+      background: 'radial-gradient(ellipse, rgba(66,133,244,0.03) 0%, transparent 65%)',
     }} aria-hidden="true" />
   )
 }
@@ -80,7 +80,7 @@ export function UseCasesOrb() {
       bottom: '20%',
       width: 400,
       height: 400,
-      background: 'radial-gradient(ellipse, rgba(37,99,176,0.025) 0%, transparent 70%)',
+      background: 'radial-gradient(ellipse, rgba(66,133,244,0.025) 0%, transparent 70%)',
     }} aria-hidden="true" />
   )
 }
@@ -96,7 +96,7 @@ export function CTAOrb() {
       transform: 'translate(-50%, -50%)',
       width: 500,
       height: 300,
-      background: 'radial-gradient(ellipse, rgba(37,99,176,0.04) 0%, transparent 70%)',
+      background: 'radial-gradient(ellipse, rgba(66,133,244,0.04) 0%, transparent 70%)',
     }} aria-hidden="true" />
   )
 }

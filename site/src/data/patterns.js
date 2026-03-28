@@ -30,7 +30,7 @@ export const CATEGORY_META = {
 }
 
 export const CATEGORY_COLORS = {
-  foundational:             { bg: '#eff6ff',  border: '#bfdbfe',  text: '#2563b0' },
+  foundational:             { bg: '#f0f6ff',  border: '#c5d8ff',  text: '#4285F4' },
   retrieval_enhancement:    { bg: '#f5f3ff',  border: '#ddd6fe',  text: '#7c3aed' },
   indexing_chunking:        { bg: '#f0fdf4',  border: '#bbf7d0',  text: '#059669' },
   reasoning_self_correction:{ bg: '#fffbeb',  border: '#fde68a',  text: '#b45309' },

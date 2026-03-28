@@ -11,12 +11,12 @@ import { ArchitectureOrb } from '../components/BackgroundEffects.jsx'
 const ICON_MAP = { Database, Scissors, Cpu, Server, Layers, Search, Zap, BarChart2 }
 
 const LAYER_COLORS = [
-  { accent: '#2563b0', dim: 'rgba(37,99,176,0.06)' },
-  { accent: '#3b82f6', dim: 'rgba(59,130,246,0.06)' },
+  { accent: '#4285F4', dim: 'rgba(66,133,244,0.06)' },
+  { accent: '#4285F4', dim: 'rgba(59,130,246,0.06)' },
   { accent: '#7c3aed', dim: 'rgba(124,58,237,0.06)' },
   { accent: '#6d28d9', dim: 'rgba(109,40,217,0.06)' },
   { accent: '#059669', dim: 'rgba(5,150,105,0.06)' },
-  { accent: '#2563b0', dim: 'rgba(37,99,176,0.06)' },
+  { accent: '#4285F4', dim: 'rgba(66,133,244,0.06)' },
   { accent: '#b45309', dim: 'rgba(180,83,9,0.06)' },
   { accent: '#be123c', dim: 'rgba(190,18,60,0.06)' },
 ]
@@ -40,13 +40,13 @@ export default function ArchitectureSection() {
         >
           <SectionLabel centered>Production Architecture</SectionLabel>
           <h2 style={{
-            fontSize: 'clamp(1.8rem, 4vw, 2.6rem)',
-            fontWeight: 800, letterSpacing: '-0.03em',
-            color: '#1a1a18', marginBottom: 14, lineHeight: 1.1,
+            fontSize: 42,
+            fontWeight: 700, letterSpacing: '-0.02em',
+            color: '#202124', marginBottom: 16, lineHeight: 1.12, textAlign: 'center',
           }}>
-            8 Design Layers
+            8 <span style={{ color: '#4285F4' }}>Design Layers</span>
           </h2>
-          <p style={{ color: '#6a6860', maxWidth: 540, margin: '0 auto', fontSize: 15, lineHeight: 1.65 }}>
+          <p style={{ color: '#5f6368', maxWidth: 540, margin: '0 auto', fontSize: 15, lineHeight: 1.65 }}>
             Every production RAG system is assembled from these layers — in order. A poor choice at Layer 2
             (chunking) cannot be fully compensated by a better choice at Layer 5 (retrieval).
           </p>
@@ -57,7 +57,7 @@ export default function ArchitectureSection() {
           {/* Connecting spine */}
           <div style={{
             position: 'absolute', left: 31, top: 24, bottom: 24, width: 1,
-            background: 'linear-gradient(180deg, rgba(37,99,176,0.25) 0%, rgba(180,83,9,0.15) 60%, rgba(190,18,60,0.15) 100%)',
+            background: 'linear-gradient(180deg, rgba(66,133,244,0.25) 0%, rgba(180,83,9,0.15) 60%, rgba(190,18,60,0.15) 100%)',
             zIndex: 0,
           }} />
 
@@ -81,8 +81,8 @@ export default function ArchitectureSection() {
                     gridTemplateColumns: '64px 1fr auto',
                     gap: 0, alignItems: 'center',
                     background: '#ffffff',
-                    border: `1px solid ${isActive ? color.accent + '55' : '#e4e0d8'}`,
-                    borderTopColor: isActive ? color.accent + '88' : '#e4e0d8',
+                    border: `1px solid ${isActive ? color.accent + '55' : '#e8e8e8'}`,
+                    borderTopColor: isActive ? color.accent + '88' : '#e8e8e8',
                     borderRadius: 12, overflow: 'hidden',
                     boxShadow: isActive
                       ? `0 1px 3px rgba(0,0,0,0.06), 0 6px 20px rgba(0,0,0,0.08), 0 0 40px ${color.dim}`
@@ -96,8 +96,8 @@ export default function ArchitectureSection() {
                     display: 'flex', flexDirection: 'column',
                     alignItems: 'center', justifyContent: 'center',
                     padding: '20px 0', gap: 6,
-                    borderRight: `1px solid ${isActive ? color.accent + '40' : '#e4e0d8'}`,
-                    background: isActive ? color.dim : '#f5f3ee',
+                    borderRight: `1px solid ${isActive ? color.accent + '40' : '#e8e8e8'}`,
+                    background: isActive ? color.dim : '#f8f9fa',
                     transition: 'all 0.2s ease',
                     minHeight: 80, position: 'relative',
                   }}>
@@ -110,16 +110,16 @@ export default function ArchitectureSection() {
                     }} />
                     <div style={{
                       width: 30, height: 30, borderRadius: 7,
-                      background: isActive ? color.dim : '#f5f3ee',
-                      border: `1px solid ${isActive ? color.accent + '55' : '#e4e0d8'}`,
+                      background: isActive ? color.dim : '#f8f9fa',
+                      border: `1px solid ${isActive ? color.accent + '55' : '#e8e8e8'}`,
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       transition: 'all 0.2s ease',
                     }}>
-                      <IconComp size={14} style={{ color: isActive ? color.accent : '#6a6860', transition: 'color 0.2s ease' }} />
+                      <IconComp size={14} style={{ color: isActive ? color.accent : '#5f6368', transition: 'color 0.2s ease' }} />
                     </div>
                     <span className="mono" style={{
                       fontSize: 9, fontWeight: 700, letterSpacing: '0.1em',
-                      color: isActive ? color.accent : '#9a9890',
+                      color: isActive ? color.accent : '#9aa0a6',
                       transition: 'color 0.2s ease',
                     }}>
                       {layer.num}
@@ -129,7 +129,7 @@ export default function ArchitectureSection() {
                   {/* Content column */}
                   <div style={{ padding: '16px 20px' }}>
                     <h3 style={{
-                      color: '#1a1a18',
+                      color: '#202124',
                       fontWeight: 700, fontSize: 13.5,
                       letterSpacing: '-0.01em', marginBottom: 4,
                       transition: 'color 0.2s ease',
@@ -137,7 +137,7 @@ export default function ArchitectureSection() {
                       {layer.name}
                     </h3>
                     <p style={{
-                      color: '#6a6860', fontSize: 11.5, lineHeight: 1.55,
+                      color: '#5f6368', fontSize: 11.5, lineHeight: 1.55,
                       marginBottom: isActive && layer.fintechNote ? 6 : 0,
                     }}>
                       {layer.description}
@@ -162,9 +162,9 @@ export default function ArchitectureSection() {
                     {layer.options.map(opt => (
                       <span key={opt} className="mono" style={{
                         fontSize: 10,
-                        color: isActive ? '#6a6860' : '#9a9890',
-                        background: isActive ? '#f0eee8' : '#f5f3ee',
-                        border: `1px solid ${isActive ? '#d4d0c8' : '#e4e0d8'}`,
+                        color: isActive ? '#5f6368' : '#9aa0a6',
+                        background: isActive ? '#f1f3f4' : '#f8f9fa',
+                        border: `1px solid ${isActive ? '#dadce0' : '#e8e8e8'}`,
                         padding: '2px 7px', borderRadius: 5,
                         whiteSpace: 'nowrap', transition: 'all 0.2s ease',
                         letterSpacing: '0.01em',
@@ -189,12 +189,12 @@ export default function ArchitectureSection() {
         >
           <div style={{
             padding: '20px 24px', borderRadius: 12,
-            background: '#eff6ff',
-            border: '1px solid #bfdbfe',
+            background: '#f0f6ff',
+            border: '1px solid #c5d8ff',
           }}>
             <div style={{
               fontSize: 10, fontWeight: 700, letterSpacing: '0.12em',
-              textTransform: 'uppercase', color: '#2563b0', marginBottom: 14,
+              textTransform: 'uppercase', color: '#4285F4', marginBottom: 14,
               fontFamily: 'JetBrains Mono, monospace',
             }}>
               90-Minute Workshop Flow
@@ -204,18 +204,18 @@ export default function ArchitectureSection() {
                 <div key={seg.segment} style={{
                   padding: '10px 12px', borderRadius: 8,
                   background: '#ffffff',
-                  border: '1px solid #e4e0d8',
+                  border: '1px solid #e8e8e8',
                 }}>
                   <div style={{
                     fontSize: 9, fontWeight: 700, letterSpacing: '0.06em',
-                    color: '#9a9890', fontFamily: 'JetBrains Mono, monospace', marginBottom: 4,
+                    color: '#9aa0a6', fontFamily: 'JetBrains Mono, monospace', marginBottom: 4,
                   }}>
                     {seg.time}
                   </div>
-                  <div style={{ fontSize: 12, color: '#1a1a18', fontWeight: 600, marginBottom: 3 }}>
+                  <div style={{ fontSize: 12, color: '#202124', fontWeight: 600, marginBottom: 3 }}>
                     {seg.segment}
                   </div>
-                  <div style={{ fontSize: 10.5, color: '#6a6860', lineHeight: 1.4 }}>
+                  <div style={{ fontSize: 10.5, color: '#5f6368', lineHeight: 1.4 }}>
                     {seg.patterns.join(', ')}
                   </div>
                 </div>

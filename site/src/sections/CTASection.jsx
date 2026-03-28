@@ -1,115 +1,112 @@
 import { motion } from 'framer-motion'
-import { Github, BookOpen, ArrowRight, Star } from 'lucide-react'
-import { GITHUB_URL, FIRST_NOTEBOOK } from '../lib/constants.js'
-import SectionLabel from '../components/SectionLabel.jsx'
-import { CTAOrb } from '../components/BackgroundEffects.jsx'
+import { GITHUB_URL } from '../lib/constants.js'
 
-const FOOTER_STATS = [
-  { value: '26', label: 'Patterns' },
-  { value: '26', label: 'Notebooks' },
-  { value: '8',  label: 'Design Layers' },
-  { value: '3',  label: 'Learning Paths' },
+const FOOTER_COLS = [
+  {
+    title: 'Workshop',
+    links: [
+      { label: 'All 26 Patterns',       href: '#patterns' },
+      { label: 'Architecture Diagrams', href: '#architecture' },
+      { label: 'Learning Paths',        href: '#learning' },
+      { label: 'Fintech Use Cases',     href: '#usecases' },
+      { label: '90-Minute Workshop',    href: '#recommender' },
+    ],
+  },
+  {
+    title: 'Patterns',
+    links: [
+      { label: 'Foundational',          href: '#patterns' },
+      { label: 'Retrieval Enhancement', href: '#patterns' },
+      { label: 'Indexing & Chunking',   href: '#patterns' },
+      { label: 'Reasoning',             href: '#patterns' },
+      { label: 'Specialized',           href: '#patterns' },
+    ],
+  },
+  {
+    title: 'Links',
+    links: [
+      { label: 'GitHub Repository',  href: GITHUB_URL, external: true },
+      { label: 'Contributing',       href: `${GITHUB_URL}/blob/main/CONTRIBUTING.md`, external: true },
+      { label: 'License',            href: `${GITHUB_URL}/blob/main/LICENSE`, external: true },
+      { label: 'LinkedIn',           href: 'https://www.linkedin.com/in/sunil-p-sharma/', external: true },
+    ],
+  },
 ]
 
 export default function CTASection() {
   return (
-    <section style={{ padding: '80px 24px 100px', position: 'relative' }}>
-      <CTAOrb />
-
-      <div style={{ maxWidth: 720, margin: '0 auto', position: 'relative', textAlign: 'center' }}>
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <SectionLabel centered mb={16}>Get Started</SectionLabel>
-
-          <h2 style={{
-            fontSize: 'clamp(2rem, 5vw, 3rem)',
-            fontWeight: 800, letterSpacing: '-0.03em',
-            lineHeight: 1.1, marginBottom: 18, color: '#1a1a18',
-          }}>
-            Start building{' '}
-            <span className="gradient-text-blue">production RAG</span>
-            {' '}today
-          </h2>
-
-          <p style={{
-            color: '#6a6860', fontSize: 16, lineHeight: 1.65,
-            maxWidth: 520, margin: '0 auto 36px',
-          }}>
-            All 26 patterns. 26 runnable notebooks. Real fintech data. Production-grade architecture.
-            Everything you need to ship reliable RAG systems.
-          </p>
-
-          {/* CTA buttons */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: 12, flexWrap: 'wrap', marginBottom: 48 }}>
-            <a href={FIRST_NOTEBOOK} target="_blank" rel="noopener noreferrer"
-              className="btn-primary" style={{ textDecoration: 'none', fontSize: 14 }}>
-              <BookOpen size={15} />
-              Start with Naive RAG
-              <ArrowRight size={14} />
-            </a>
-            <a href="#patterns" className="btn-secondary" style={{ textDecoration: 'none', fontSize: 14 }}>
-              Browse All Patterns
-            </a>
-            <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer"
-              className="btn-secondary" style={{ textDecoration: 'none', fontSize: 14 }}>
-              <Star size={14} />
-              Star on GitHub
-            </a>
-          </div>
-
-          {/* Stat row */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: 32, flexWrap: 'wrap' }}>
-            {FOOTER_STATS.map(stat => (
-              <div key={stat.label} style={{ textAlign: 'center' }}>
-                <div style={{
-                  fontSize: 22, fontWeight: 800, letterSpacing: '-0.02em',
-                  color: '#2563b0', lineHeight: 1, marginBottom: 4,
-                }}>
-                  {stat.value}
-                </div>
-                <div style={{ fontSize: 11, color: '#9a9890', fontWeight: 500, letterSpacing: '0.04em' }}>
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Footer */}
+    <section style={{ borderTop: '1px solid #e8e8e8' }}>
+      {/* 3-column footer grid */}
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ delay: 0.3 }}
+        transition={{ duration: 0.5 }}
         style={{
-          textAlign: 'center', marginTop: 64,
-          paddingTop: 28,
-          borderTop: '1px solid #e4e0d8',
-          color: '#9a9890', fontSize: 12,
+          display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24,
+          padding: '40px 32px', maxWidth: 960, margin: '0 auto',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, flexWrap: 'wrap' }}>
-          <span>RAG Patterns in Practice</span>
-          <span>·</span>
-          <a
-            href={GITHUB_URL}
-            target="_blank" rel="noopener noreferrer"
-            style={{ color: '#9a9890', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 4 }}
-            onMouseEnter={e => (e.currentTarget.style.color = '#2563b0')}
-            onMouseLeave={e => (e.currentTarget.style.color = '#9a9890')}
-          >
-            <Github size={12} />
-            GitHub
-          </a>
-          <span>·</span>
-          <span>MIT License</span>
-        </div>
+        {FOOTER_COLS.map(col => (
+          <div key={col.title}>
+            <div style={{ fontSize: 12, fontWeight: 600, color: '#202124', marginBottom: 12 }}>
+              {col.title}
+            </div>
+            {col.links.map(link => (
+              <a
+                key={link.label}
+                href={link.href}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
+                style={{
+                  fontSize: 12, color: '#5f6368', display: 'block',
+                  marginBottom: 8, textDecoration: 'none', transition: 'color 0.15s ease',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.color = '#202124' }}
+                onMouseLeave={e => { e.currentTarget.style.color = '#5f6368' }}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        ))}
       </motion.div>
+
+      {/* Bottom bar */}
+      <div style={{
+        borderTop: '1px solid #e8e8e8',
+        padding: '16px 32px',
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        maxWidth: 960, margin: '0 auto',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2C12 2 12 10 4 12C12 14 12 22 12 22C12 22 12 14 20 12C12 10 12 2 12 2Z" fill="#4285F4"/>
+          </svg>
+          <span style={{ fontSize: 12, color: '#9aa0a6' }}>RAG Patterns in Practice</span>
+        </div>
+        <div style={{ display: 'flex', gap: 20 }}>
+          {[
+            { label: 'License', href: `${GITHUB_URL}/blob/main/LICENSE` },
+            { label: 'GitHub',  href: GITHUB_URL },
+          ].map(link => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                fontSize: 12, color: '#5f6368', textDecoration: 'none',
+                transition: 'color 0.15s ease',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.color = '#202124' }}
+              onMouseLeave={e => { e.currentTarget.style.color = '#5f6368' }}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
     </section>
   )
 }

@@ -18,13 +18,13 @@ export default function LearningPathsSection() {
         >
           <SectionLabel centered mb={12}>Learning Paths</SectionLabel>
           <h2 style={{
-            fontSize: 'clamp(1.8rem, 4vw, 2.6rem)',
-            fontWeight: 800, letterSpacing: '-0.025em',
-            color: '#1a1a18', marginBottom: 14,
+            fontSize: 42,
+            fontWeight: 700, letterSpacing: '-0.02em',
+            color: '#202124', marginBottom: 16, lineHeight: 1.12, textAlign: 'center',
           }}>
-            Choose your path
+            Choose your <span style={{ color: '#4285F4' }}>path</span>
           </h2>
-          <p style={{ color: '#6a6860', maxWidth: 480, margin: '0 auto', fontSize: 15, lineHeight: 1.6 }}>
+          <p style={{ color: '#5f6368', maxWidth: 480, margin: '0 auto', fontSize: 15, lineHeight: 1.6 }}>
             Structured paths from zero to production. Each path builds on the previous.
           </p>
         </motion.div>
@@ -61,16 +61,16 @@ export default function LearningPathsSection() {
                   </span>
                 </div>
 
-                <h3 style={{ color: '#1a1a18', fontWeight: 700, fontSize: 18, letterSpacing: '-0.015em', marginBottom: 6 }}>
+                <h3 style={{ color: '#202124', fontWeight: 700, fontSize: 18, letterSpacing: '-0.015em', marginBottom: 6 }}>
                   {path.title}
                 </h3>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10 }}>
-                  <Clock size={12} style={{ color: '#9a9890' }} />
-                  <span style={{ fontSize: 12, color: '#9a9890' }}>{path.duration}</span>
+                  <Clock size={12} style={{ color: '#9aa0a6' }} />
+                  <span style={{ fontSize: 12, color: '#9aa0a6' }}>{path.duration}</span>
                 </div>
 
-                <p style={{ color: '#6a6860', fontSize: 13, lineHeight: 1.6 }}>{path.description}</p>
+                <p style={{ color: '#5f6368', fontSize: 13, lineHeight: 1.6 }}>{path.description}</p>
               </div>
 
               {/* Step list */}
@@ -79,8 +79,8 @@ export default function LearningPathsSection() {
                   <div key={step.id} style={{
                     display: 'flex', alignItems: 'flex-start', gap: 10,
                     padding: '7px 10px', borderRadius: 6,
-                    background: '#f5f3ee',
-                    border: '1px solid #e4e0d8',
+                    background: '#f8f9fa',
+                    border: '1px solid #e8e8e8',
                   }}>
                     <div style={{
                       width: 20, height: 20, borderRadius: 4,
@@ -93,13 +93,13 @@ export default function LearningPathsSection() {
                       {j + 1}
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ color: '#1a1a18', fontSize: 12.5, fontWeight: 600, marginBottom: 1 }}>
+                      <div style={{ color: '#202124', fontSize: 12.5, fontWeight: 600, marginBottom: 1 }}>
                         {step.name}
                       </div>
-                      <div style={{ color: '#6a6860', fontSize: 11, lineHeight: 1.4 }}>{step.what}</div>
+                      <div style={{ color: '#5f6368', fontSize: 11, lineHeight: 1.4 }}>{step.what}</div>
                     </div>
                     {j < path.steps.length - 1 && (
-                      <ChevronRight size={10} style={{ color: '#9a9890', flexShrink: 0, marginTop: 4 }} />
+                      <ChevronRight size={10} style={{ color: '#9aa0a6', flexShrink: 0, marginTop: 4 }} />
                     )}
                   </div>
                 ))}
