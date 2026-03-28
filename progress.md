@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
 Last updated: 2026-03-27
-Session count: 19
+Session count: 20
 
 ---
 
@@ -12,10 +12,10 @@ Session count: 19
 | Foundational | 2 | 2 | 0 | 0 |
 | Retrieval Enhancement | 7 | 5 | 0 | 2 |
 | Indexing & Chunking | 6 | 5 | 0 | 1 |
-| Reasoning & Self-Correction | 5 | 4 | 0 | 1 |
+| Reasoning & Self-Correction | 5 | 5 | 0 | 0 |
 | Architectural | 3 | 1 | 0 | 2 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **17** | **0** | **9** |
+| **TOTAL** | **26** | **18** | **0** | **8** |
 
 ---
 
@@ -49,7 +49,7 @@ Session count: 19
 - [x] `16_self_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [x] `17_corrective_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `18_ircot` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
-- [ ] `19_speculative_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
+- [x] `19_speculative_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [x] `20_adaptive_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 
 ### Architectural
@@ -65,6 +65,12 @@ Session count: 19
 ---
 
 ## Session log
+
+### Session 20 — 2026-03-27
+- Completed module 19_speculative_rag — Phase D (validation + progress update):
+  - demo.ipynb validated: 6 markdown + 6 code cells ✓; API key safety (`os.environ.get` + `assert`) ✓; `DRAFT_MODEL = 'claude-haiku-4-5-20251001'`, `VERIFY_MODEL = 'claude-sonnet-4-6'` ✓; `ALIGNMENT_THRESHOLD = 3` ✓; all four core functions with type hints (`speculative_answer`, `retrieve_docs`, `verify_alignment`, `speculative_rag`) ✓; Cell 4 two queries (common + novel) ✓; Cell 5 timing breakdown + parallel estimate + draft-vs-final diff ✓; Cell 6 FAQ system + aggregate stats + business case ✓; no `# TODO` stubs ✓
+- Validation: demo.ipynb structure/safety/core functions — all checks pass
+- Status: 18/26 modules complete. Tier 1: 10/10. Tier 2: 8/9. Reasoning & Self-Correction: 5/5 (complete).
 
 ### Session 19 — 2026-03-27
 - Completed module 14_multi_vector_rag — all phases (A/B/C/D):
