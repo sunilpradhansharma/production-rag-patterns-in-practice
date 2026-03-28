@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
 Last updated: 2026-03-28
-Session count: 29
+Session count: 30
 
 ---
 
@@ -26,35 +26,35 @@ Session count: 29
 
 ### Foundational
 - [x] `01_naive_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes | tests
-- [x] `02_advanced_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
+- [x] `02_advanced_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes | tests
 
 ### Retrieval enhancement
-- [x] `03_hybrid_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
+- [x] `03_hybrid_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes | tests
 - [x] `04_rag_fusion` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [x] `05_multi_query_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
-- [x] `06_hyde` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
+- [x] `06_hyde` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes | tests
 - [x] `07_step_back_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [x] `08_flare` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 - [x] `09_ensemble_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 
 ### Indexing & chunking
-- [x] `10_parent_document` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
+- [x] `10_parent_document` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes | tests
 - [x] `11_sentence_window` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [x] `12_raptor` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
-- [x] `13_contextual_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
+- [x] `13_contextual_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes | tests
 - [x] `14_multi_vector_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [x] `15_long_context_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 
 ### Reasoning & self-correction
-- [x] `16_self_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
-- [x] `17_corrective_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
+- [x] `16_self_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes | tests
+- [x] `17_corrective_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes | tests
 - [x] `18_ircot` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 - [x] `19_speculative_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
-- [x] `20_adaptive_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
+- [x] `20_adaptive_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes | tests
 
 ### Architectural
 - [x] `21_modular_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
-- [x] `22_agentic_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
+- [x] `22_agentic_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes | tests
 - [x] `23_multi_hop_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 
 ### Specialized
@@ -65,6 +65,19 @@ Session count: 29
 ---
 
 ## Session log
+
+### Session 30 — 2026-03-28 — Tests, CI, and documentation complete
+- Tier 1 unit tests: created test_*.py for modules 02, 03, 06, 10, 13, 16, 17, 20, 22 (234 tests total across all 10 Tier 1 modules, 0 failures)
+  - Each test file: TestNotebookStructure + pattern-specific unit tests + @pytest.mark.integration stubs
+  - Fixed pyproject.toml: added `--import-mode=importlib` for multi-package test layout
+  - Fixed langchain.schema → langchain_core.documents import across all test files
+  - Logic tested without API calls: RRF arithmetic, MD5 deduplication, cosine similarity, CritiqueResult schema, relevance filtering, threshold routing, query type dispatch, MAX_STEPS cap, safe eval
+- CI workflow: rewrote .github/workflows/ci.yml — 4 jobs (unit-tests → notebook-structure → notebook-execution → integration-tests); notebook execution fails PR if any cell errors; secrets-absent graceful skip; failed notebook artifact upload
+- README: added CI/Python/license/pattern-count shields; 4-command quick start; 26-row pattern catalog table; updated learning paths (Beginner 01→02→03, Intermediate +10/13/16/17, Advanced full Tier 1); fintech use cases section (4 domains × 4 patterns); MIT license; Contributing expanded
+- LICENSE: added MIT license file
+- docs/workshop/cheatsheet.md: created one-page pattern reference card
+- Full validation: 10/10 checks pass (see validation report in commit)
+- Status: 26/26 modules complete. All Tier 1 tests passing. CI configured. Documentation complete.
 
 ### Session 29 — 2026-03-28 — ALL PATTERNS COMPLETE
 - Completed module 26_temporal_rag — all phases (A/B/C/D):
