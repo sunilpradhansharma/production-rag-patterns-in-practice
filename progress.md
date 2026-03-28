@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
 Last updated: 2026-03-28
-Session count: 25
+Session count: 26
 
 ---
 
@@ -15,7 +15,7 @@ Session count: 25
 | Reasoning & Self-Correction | 5 | 5 | 0 | 0 |
 | Architectural | 3 | 3 | 0 | 0 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **23** | **0** | **3** |
+| **TOTAL** | **26** | **24** | **0** | **2** |
 
 ---
 
@@ -48,7 +48,7 @@ Session count: 25
 ### Reasoning & self-correction
 - [x] `16_self_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [x] `17_corrective_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
-- [ ] `18_ircot` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
+- [x] `18_ircot` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 - [x] `19_speculative_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [x] `20_adaptive_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 
@@ -65,6 +65,15 @@ Session count: 25
 ---
 
 ## Session log
+
+### Session 26 — 2026-03-28
+- Completed module 18_ircot — all phases (A/B/C/D):
+  - SKILL.md: Trivedi et al. ACL 2023 arXiv:2212.10509; 5-component architecture (CoT step generator, retrieval trigger detector, retrieval query formulator, context manager, loop controller); Haiku for steps / Sonnet for synthesis; MAX_STEPS=8 hard ceiling; fintech use cases (multi-step credit risk assessment, suitability assessment, Basel III sequential compliance, OTC derivatives eligibility); reasoning transparency ★★★★★ as key differentiator; 6 pitfalls (over-retrieval, poor query formulation, reasoning drift, infinite loops, context window overflow, cost opacity); relates 08 FLARE + 23 Multi-Hop RAG + 22 Agentic RAG
+  - slides.md: "Reason, Then Retrieve, Then Reason Again"; 4-step suitability query showing why one-shot fails; ASCII loop diagram with Continue/Retrieve/Done outcomes; loan compliance table (4 steps, 3 retrievals); tradeoffs table with latency/cost ★★☆☆☆; use/avoid conditions
+  - README.md: 7-8 min; contrast with Module 03 as demo anchor ("retrieve before knowing what you need" vs "reasoning tells you what's missing"); 5 Q&As (trigger decision, MAX_STEPS, vs FLARE, vs Multi-Hop, misfire modes); transition "IRCoT reasons linearly -- Graph RAG maps relationships" → Module 24; 3 delivery anti-patterns
+  - demo.ipynb: 12 cells; `ReasoningStep` dataclass (step_num, text, action, search_query, chunks_retrieved); `generate_reasoning_step` (Haiku, one CoT sentence); `detect_and_formulate` (3-path: ANSWER: prefix fast → 12-phrase linguistic signal list fast → LLM slow); `ircot_retrieve` (dense cosine, plain dicts); `ircot_loop` (seen_chunk_texts dedup, MAX_CTX_CHUNKS=6 eviction, hit_max_steps flag, total_llm_calls + total_ret_calls tracking); `synthesize_answer` (Sonnet on full trace + context); Cell 4 query: $500K loan default -- Basel III capital implications + recovery procedures; Cell 5 step breakdown table + context accumulation timeline + single-shot RAG baseline comparison; Cell 6 HELOC eligibility (640 FICO / $75K income / $2.5K monthly debt / $250K requested) with APPROVED/DECLINED determination
+- Validation: 72/72 checks passed; all 4 files present; all 6 code cells parse cleanly
+- Status: 24/26 modules complete. Reasoning & Self-Correction: 5/5 (complete). Tier 3: 4/7.
 
 ### Session 25 — 2026-03-28
 - Completed module 15_long_context_rag -- all phases (A/B/C/D):
