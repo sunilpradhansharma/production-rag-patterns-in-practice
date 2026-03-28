@@ -1,0 +1,304 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+# Cancel in-flight runs for the same PR/branch when a new commit arrives
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+# ---------------------------------------------------------------------------
+# Job 1 — Unit tests (no API keys required, runs on every PR)
+# ---------------------------------------------------------------------------
+jobs:
+  unit-tests:
+    name: Unit Tests — Tier 1 (no API keys)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt -r requirements-dev.txt
+
+      - name: Run Tier 1 unit tests
+        run: |
+          pytest \
+            modules/01_naive_rag/tests/ \
+            modules/02_advanced_rag/tests/ \
+            modules/03_hybrid_rag/tests/ \
+            modules/06_hyde/tests/ \
+            modules/10_parent_document/tests/ \
+            modules/13_contextual_rag/tests/ \
+            modules/16_self_rag/tests/ \
+            modules/17_corrective_rag/tests/ \
+            modules/20_adaptive_rag/tests/ \
+            modules/22_agentic_rag/tests/ \
+            -m "not integration" \
+            -v \
+            --tb=short \
+            --timeout=30
+
+# ---------------------------------------------------------------------------
+# Job 2 — Notebook structure validation (no execution, no API keys)
+# Verifies every Tier 1 demo.ipynb meets the CLAUDE.md Section 5 standard:
+# 12 cells, alternating markdown/code, no hardcoded keys, load_dotenv in cell 1
+# ---------------------------------------------------------------------------
+  notebook-structure:
+    name: Notebook Structure — Tier 1
+    runs-on: ubuntu-latest
+    needs: unit-tests
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install nbformat
+        run: pip install nbformat
+
+      - name: Validate Tier 1 notebook structure
+        run: |
+          python3 - <<'PYEOF'
+          import json
+          import sys
+          from pathlib import Path
+
+          TIER1_MODULES = [
+              "modules/01_naive_rag",
+              "modules/02_advanced_rag",
+              "modules/03_hybrid_rag",
+              "modules/06_hyde",
+              "modules/10_parent_document",
+              "modules/13_contextual_rag",
+              "modules/16_self_rag",
+              "modules/17_corrective_rag",
+              "modules/20_adaptive_rag",
+              "modules/22_agentic_rag",
+          ]
+
+          errors = []
+
+          for module_path in TIER1_MODULES:
+              nb_path = Path(module_path) / "demo.ipynb"
+              if not nb_path.exists():
+                  errors.append(f"MISSING: {nb_path}")
+                  continue
+
+              with open(nb_path, encoding="utf-8") as f:
+                  nb = json.load(f)
+
+              cells = nb.get("cells", [])
+              module_name = Path(module_path).name
+
+              # Must have exactly 12 cells (6 markdown + 6 code, alternating)
+              if len(cells) != 12:
+                  errors.append(f"{module_name}: expected 12 cells, got {len(cells)}")
+
+              # Must alternate markdown -> code
+              expected_types = ["markdown", "code"] * 6
+              actual_types = [c["cell_type"] for c in cells]
+              if actual_types != expected_types:
+                  errors.append(
+                      f"{module_name}: cell types {actual_types} != {expected_types}"
+                  )
+
+              # Cell 1 (code) must call load_dotenv and check both API keys
+              code_cells = [c for c in cells if c["cell_type"] == "code"]
+              if code_cells:
+                  cell1_src = "".join(code_cells[0]["source"])
+                  if "load_dotenv" not in cell1_src:
+                      errors.append(f"{module_name}: cell 1 missing load_dotenv()")
+                  if "ANTHROPIC_API_KEY" not in cell1_src:
+                      errors.append(f"{module_name}: cell 1 missing ANTHROPIC_API_KEY check")
+                  if "OPENAI_API_KEY" not in cell1_src:
+                      errors.append(f"{module_name}: cell 1 missing OPENAI_API_KEY check")
+
+              # No hardcoded API keys anywhere in the notebook
+              all_src = " ".join("".join(c["source"]) for c in cells)
+              if "sk-ant-" in all_src:
+                  errors.append(f"{module_name}: hardcoded Anthropic API key found")
+              if "sk-proj-" in all_src:
+                  errors.append(f"{module_name}: hardcoded OpenAI API key found")
+
+              print(f"  OK  {module_name}")
+
+          if errors:
+              print("\nStructure errors:")
+              for err in errors:
+                  print(f"  FAIL  {err}")
+              sys.exit(1)
+          else:
+              print(f"\nAll {len(TIER1_MODULES)} Tier 1 notebooks pass structure checks.")
+          PYEOF
+
+# ---------------------------------------------------------------------------
+# Job 3 — Execute Tier 1 notebooks end-to-end (requires API key secrets)
+# Runs on every PR when secrets are configured; always on push to main.
+# Fails if any notebook cell raises an exception.
+# Skips gracefully when secrets are absent (forks, first-time contributors).
+# ---------------------------------------------------------------------------
+  notebook-execution:
+    name: Execute Tier 1 Notebooks
+    runs-on: ubuntu-latest
+    needs: notebook-structure
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}   # optional — CRAG / Agentic RAG
+
+    steps:
+      - name: Check secrets availability
+        id: check-secrets
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ] || [ -z "$OPENAI_API_KEY" ]; then
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::API key secrets not set — skipping notebook execution"
+          else
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout repository
+        if: steps.check-secrets.outputs.available == 'true'
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        if: steps.check-secrets.outputs.available == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        if: steps.check-secrets.outputs.available == 'true'
+        run: pip install -r requirements.txt jupyter nbconvert
+
+      - name: Execute Tier 1 notebooks
+        if: steps.check-secrets.outputs.available == 'true'
+        run: |
+          set -euo pipefail
+
+          TIER1_MODULES=(
+            "modules/01_naive_rag"
+            "modules/02_advanced_rag"
+            "modules/03_hybrid_rag"
+            "modules/06_hyde"
+            "modules/10_parent_document"
+            "modules/13_contextual_rag"
+            "modules/16_self_rag"
+            "modules/17_corrective_rag"
+            "modules/20_adaptive_rag"
+            "modules/22_agentic_rag"
+          )
+
+          FAILED=()
+
+          for module in "${TIER1_MODULES[@]}"; do
+            nb="$module/demo.ipynb"
+            module_name=$(basename "$module")
+
+            if [ ! -f "$nb" ]; then
+              echo "::warning::Skipping $module_name — demo.ipynb not found"
+              continue
+            fi
+
+            echo "::group::Executing $module_name"
+            if jupyter nbconvert \
+              --to notebook \
+              --execute "$nb" \
+              --output "/tmp/executed_${module_name}.ipynb" \
+              --ExecutePreprocessor.timeout=300 \
+              --ExecutePreprocessor.kernel_name=python3 \
+              2>&1; then
+              echo "PASS: $module_name"
+            else
+              echo "::error::FAIL: $module_name — notebook raised an exception"
+              FAILED+=("$module_name")
+            fi
+            echo "::endgroup::"
+          done
+
+          if [ ${#FAILED[@]} -gt 0 ]; then
+            echo ""
+            echo "Failed notebooks (${#FAILED[@]}):"
+            for f in "${FAILED[@]}"; do
+              echo "  - $f"
+            done
+            exit 1
+          fi
+
+          echo ""
+          echo "All Tier 1 notebooks executed without errors."
+
+      - name: Upload executed notebooks on failure
+        if: failure() && steps.check-secrets.outputs.available == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: failed-notebooks-${{ github.run_id }}
+          path: /tmp/executed_*.ipynb
+          retention-days: 7
+
+# ---------------------------------------------------------------------------
+# Job 4 — Integration tests with live API (Tier 1 only)
+# Runs on push to main only; does not block PRs.
+# Tier 2/3 notebook execution is handled by eval.yml (weekly schedule).
+# ---------------------------------------------------------------------------
+  integration-tests:
+    name: Integration Tests — Tier 1
+    runs-on: ubuntu-latest
+    needs: unit-tests
+    # Informational only — never blocks a merge
+    continue-on-error: true
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt -r requirements-dev.txt
+
+      - name: Run Tier 1 integration tests
+        run: |
+          pytest \
+            modules/01_naive_rag/tests/ \
+            modules/02_advanced_rag/tests/ \
+            modules/03_hybrid_rag/tests/ \
+            modules/06_hyde/tests/ \
+            modules/10_parent_document/tests/ \
+            modules/13_contextual_rag/tests/ \
+            modules/16_self_rag/tests/ \
+            modules/17_corrective_rag/tests/ \
+            modules/20_adaptive_rag/tests/ \
+            modules/22_agentic_rag/tests/ \
+            -m integration \
+            -v \
+            --tb=short \
+            --timeout=120 \
+          || echo "::warning::One or more integration tests failed — see above for details"
