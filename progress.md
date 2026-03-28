@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
 Last updated: 2026-03-28
-Session count: 28
+Session count: 29
 
 ---
 
@@ -14,8 +14,8 @@ Session count: 28
 | Indexing & Chunking | 6 | 6 | 0 | 0 |
 | Reasoning & Self-Correction | 5 | 5 | 0 | 0 |
 | Architectural | 3 | 3 | 0 | 0 |
-| Specialized | 3 | 2 | 0 | 1 |
-| **TOTAL** | **26** | **25** | **0** | **1** |
+| Specialized | 3 | 3 | 0 | 0 |
+| **TOTAL** | **26** | **26** | **0** | **0** |
 
 ---
 
@@ -60,11 +60,20 @@ Session count: 28
 ### Specialized
 - [x] `24_graph_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 - [x] `25_multimodal_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
-- [ ] `26_temporal_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
+- [x] `26_temporal_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 
 ---
 
 ## Session log
+
+### Session 29 — 2026-03-28 — ALL PATTERNS COMPLETE
+- Completed module 26_temporal_rag — all phases (A/B/C/D):
+  - SKILL.md: Dhingra et al. TACL 2022 arXiv:2106.15110; three retrieval modes (hard time filter, time-decay re-scoring, version-aware supersession); `decay_score = semantic_score * exp(-λ * age_in_days)`; λ=0.001 → 693-day half-life (regulatory); λ=0.05 → 14-day half-life (market data); 4-intent query parser (current/historical/range/comparative); fintech use cases (Basel III→IV change tracking, lending policy audit trail, market data time-bounded context, MiFID II/Dodd-Frank evolution); recency signal ★★★★★, complexity ★★☆☆☆ — lowest-complexity addition in repo; 6 pitfalls (timestamp absence, hard filter excluding valid old docs, recency bias per-domain λ, supersession chain validation, comparative dual-retrieval, LLM cutoff interaction); relates 17 CRAG + 21 Modular RAG + 20 Adaptive RAG
+  - slides.md: "Time-Aware Retrieval"; Basel CET1 three-version stale-data problem; all three retrieval modes in ASCII diagram; 5-row query type table (version-aware/historical/comparative/range/decay); "lowest-complexity addition in this workshop" positioning
+  - README.md: 6-7 min; supersession chain printout as anchor; 5 Q&As (λ tuning table, missing timestamps extraction hierarchy, never-amended docs with effective_from/effective_until, partial supersession chunk-level vs doc-level, composability with all patterns); closing framing: "if your corpus changes and you're not doing this, every answer is potentially out of date"; transition to Pattern Selection Guide
+  - demo.ipynb: 12 cells; 8-document Basel III/IV corpus 2013-2024 (4 CET1 versions + 3 leverage versions + LCR + NSFR); `to_epoch()` (date→int for ChromaDB); `time_decay()` (exp decay); `build_temporal_index` (timestamp+superseded int metadata); `retrieve_before`/`retrieve_after` ($lt/$gte filters); `retrieve_with_decay` (2k candidates → re-score → top-k); `retrieve_active` (superseded=$eq:0); `detect_temporal_intent` (4-mode classifier); Cell 4: comparative "before vs after 2023" two-pass; Cell 5: decay score table + version-aware + flat baseline STALE labels + supersession chain validation; Cell 6: `temporal_qa()` helper, 3 fintech queries (Q1 2016 audit / current requirements / 2019→2023 evolution), mode summary table
+- Validation: 60/60 checks passed; all 4 files present; all 6 code cells parse cleanly
+- Status: 26/26 modules complete. ALL PATTERNS DONE. Repository ready for documentation phase.
 
 ### Session 28 — 2026-03-28
 - Completed module 25_multimodal_rag — all phases (A/B/C/D):
