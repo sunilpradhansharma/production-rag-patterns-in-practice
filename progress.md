@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
-Last updated: 2026-03-27
-Session count: 20
+Last updated: 2026-03-28
+Session count: 21
 
 ---
 
@@ -13,9 +13,9 @@ Session count: 20
 | Retrieval Enhancement | 7 | 5 | 0 | 2 |
 | Indexing & Chunking | 6 | 5 | 0 | 1 |
 | Reasoning & Self-Correction | 5 | 5 | 0 | 0 |
-| Architectural | 3 | 1 | 0 | 2 |
+| Architectural | 3 | 2 | 0 | 1 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **18** | **0** | **8** |
+| **TOTAL** | **26** | **19** | **0** | **7** |
 
 ---
 
@@ -53,7 +53,7 @@ Session count: 20
 - [x] `20_adaptive_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 
 ### Architectural
-- [ ] `21_modular_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
+- [x] `21_modular_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [x] `22_agentic_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `23_multi_hop_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 
@@ -65,6 +65,15 @@ Session count: 20
 ---
 
 ## Session log
+
+### Session 21 — 2026-03-28
+- Completed module 21_modular_rag — all phases (A/B/C/D):
+  - SKILL.md: Gao et al. 2024 arXiv:2407.21059; `RetrieverModule`/`RerankerModule`/`GeneratorModule` as `typing.Protocol`; `RetrievedChunk` TypedDict + `PipelineResult` dataclass as shared contracts; `RAGPipeline` dependency injection; A/B testing + multi-team ownership + compliance substitutability use cases; flexibility ★★★★★, maintainability ★★★★★, initial complexity ★★★★☆; interface design / protocol drift / cross-boundary debugging pitfalls; relates 20 Adaptive + 22 Agentic + 03 Hybrid + 17 Corrective
+  - slides.md: "Composable Architecture"; monolith vs modular problem table; ASCII pipeline with swap arrows; Mermaid; Basel III 4-config benchmark table (Config D selected); key insight callout; transition to Module 22 (84 prose words ✓)
+  - README.md: 7–8 min; framing script; 5-step swap demo; Q&As (overkill, interface design, LCEL); transition "Modular fixes structure, Agentic removes it" (400 words ✓)
+  - demo.ipynb: 12 cells; `RetrievedChunk` TypedDict + `PipelineResult` dataclass; `@runtime_checkable` Protocol interfaces; `BM25Retriever` (BM25Okapi, normalised scores) + `VectorRetriever` (Chroma, L2→similarity) + `LLMReranker` (single Haiku call, JSON rank list) + `ClaudeGenerator` (Sonnet, source citations); `RAGPipeline` dataclass; Cell 4 BM25 pipeline Basel III query; Cell 5 one-line swap to VectorRetriever + side-by-side comparison (chunk overlap, source distribution, latency table); Cell 6 three domain pipelines (regulatory/contract/earnings) with domain-specific module selection
+- Validation: demo.ipynb 44/44 checks passed; all 4 files present
+- Status: 19/26 modules complete. Tier 1: 10/10. Tier 2: 9/9 (COMPLETE). Architectural: 2/3.
 
 ### Session 20 — 2026-03-27
 - Completed module 19_speculative_rag — Phase D (validation + progress update):
