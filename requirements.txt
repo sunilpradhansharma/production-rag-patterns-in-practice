@@ -1,6 +1,6 @@
 # ── Core LLM / Orchestration ─────────────────────────────────────────────────
-anthropic==0.40.0
-openai==1.51.0
+anthropic==0.49.0
+openai==1.109.1
 langchain==0.3.14
 langchain-community==0.3.14
 langchain-openai==0.2.14
@@ -8,8 +8,8 @@ langchain-anthropic==0.3.4
 langgraph==0.2.74
 llama-index==0.11.3
 llama-index-core==0.11.3
-llama-index-embeddings-openai==0.2.6
-llama-index-llms-anthropic==0.4.2
+llama-index-embeddings-openai==0.2.5
+llama-index-llms-anthropic==0.4.1
 
 # ── Vector Store ─────────────────────────────────────────────────────────────
 chromadb==0.5.23
