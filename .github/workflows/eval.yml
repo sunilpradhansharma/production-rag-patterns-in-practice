@@ -1,0 +1,36 @@
+name: Weekly Eval Pipeline
+
+on:
+  schedule:
+    # Every Monday at 08:00 UTC
+    - cron: "0 8 * * 1"
+  workflow_dispatch:
+    inputs:
+      module:
+        description: "Specific module to evaluate (e.g. 01_naive_rag), or 'all' for all completed modules"
+        required: false
+        default: "all"
+
+jobs:
+  ragas-eval:
+    name: RAGAS Evaluation
+    runs-on: ubuntu-latest
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install all dependencies
+        run: pip install -r requirements.txt -r requirements-dev.txt
+      - name: Run RAGAS evaluation pipeline
+        run: python -m shared.eval_runner --module "${{ github.event.inputs.module || 'all' }}"
+      - name: Upload eval results
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-results-${{ github.run_id }}
+          path: eval_results/
+          retention-days: 90
