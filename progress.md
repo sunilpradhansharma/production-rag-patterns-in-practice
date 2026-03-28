@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
 Last updated: 2026-03-27
-Session count: 14
+Session count: 15
 
 ---
 
@@ -10,12 +10,12 @@ Session count: 14
 | Category | Patterns | Done | In progress | Not started |
 |----------|----------|------|-------------|-------------|
 | Foundational | 2 | 2 | 0 | 0 |
-| Retrieval Enhancement | 7 | 3 | 0 | 4 |
+| Retrieval Enhancement | 7 | 4 | 0 | 3 |
 | Indexing & Chunking | 6 | 2 | 0 | 4 |
 | Reasoning & Self-Correction | 5 | 4 | 0 | 1 |
 | Architectural | 3 | 1 | 0 | 2 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **12** | **0** | **14** |
+| **TOTAL** | **26** | **13** | **0** | **13** |
 
 ---
 
@@ -31,7 +31,7 @@ Session count: 14
 ### Retrieval enhancement
 - [x] `03_hybrid_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [x] `04_rag_fusion` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
-- [ ] `05_multi_query_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
+- [x] `05_multi_query_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [x] `06_hyde` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `07_step_back_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `08_flare` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
@@ -65,6 +65,15 @@ Session count: 14
 ---
 
 ## Session log
+
+### Session 15 — 2026-03-27
+- Completed module 05_multi_query_rag — all phases (A/B/C/D):
+  - SKILL.md: LangChain MultiQueryRetriever source; centroid problem framing; union+dedup (no RRF); Mermaid; 4 fintech use cases (cross-framework compliance, cross-product comparison, multi-timeframe, portfolio risk); quality/answer ★★★★☆, latency ★★☆☆☆, cost ★★★☆☆, complexity ★★★☆☆; pitfalls (similar perspectives, lossy union, context overflow, token cost); relates 04+23+02
+  - slides.md: "Decompose Complex Questions"; centroid problem; ASCII pipeline + Mermaid; key insight callout; Basel III + FATF compliance fintech example; tradeoffs; transition to 07 Step-Back (172 prose words ✓)
+  - README.md: 5–6 min; framing script; 5-step live demo (original→sub-questions→per-sub retrieval→union→answer); Q&As (vs RAG Fusion, 3–5 sub-queries, diversity fix via prompt); transition to 07 (399 words ✓)
+  - demo.ipynb: 12 cells; decompose_query()/retrieve_for_subquery()/multi_query_rag(); basel_iii + fintech_policy corpus; capital+lending query Cell 4; incremental unique contribution table + baseline comparison Cell 5; Basel III + AML multi-framework compliance Cell 6
+- Validation: SKILL.md 16/16 | slides.md 10/10 | README.md 13/13 | demo.ipynb 31/31
+- Status: 13/26 modules complete. Tier 1: 10/10. Tier 2: 3/9.
 
 ### Session 14 — 2026-03-27
 - Revised module 04_rag_fusion — Phase B + C rewritten to new spec:
