@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Github, ExternalLink } from 'lucide-react'
+import { Github } from 'lucide-react'
+import { GITHUB_URL } from '../lib/constants.js'
 
 const NAV_LINKS = [
-  { label: 'Patterns', href: '#patterns' },
-  { label: 'Architecture', href: '#architecture' },
+  { label: 'Recommender',    href: '#recommender' },
+  { label: 'Patterns',       href: '#patterns' },
+  { label: 'Architecture',   href: '#architecture' },
   { label: 'Learning Paths', href: '#learning' },
-  { label: 'Use Cases', href: '#usecases' },
+  { label: 'Use Cases',      href: '#usecases' },
 ]
 
-export default function Nav() {
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -25,29 +27,20 @@ export default function Nav() {
       transition={{ duration: 0.55, ease: 'easeOut' }}
       style={{
         position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
+        top: 0, left: 0, right: 0,
         zIndex: 50,
-        background: scrolled
-          ? 'rgba(5,10,18,0.88)'
-          : 'transparent',
+        background: scrolled ? 'rgba(5,10,18,0.88)' : 'transparent',
         backdropFilter: scrolled ? 'blur(22px) saturate(180%)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(22px) saturate(180%)' : 'none',
-        borderBottom: scrolled
-          ? '1px solid rgba(255,255,255,0.065)'
-          : '1px solid transparent',
+        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.065)' : '1px solid transparent',
         boxShadow: scrolled ? '0 1px 0 rgba(56,189,248,0.04)' : 'none',
         transition: 'all 0.3s ease',
       }}
     >
-      {/* Subtle top edge glow when scrolled */}
       {scrolled && (
         <div style={{
           position: 'absolute',
-          top: 0,
-          left: '20%',
-          right: '20%',
+          top: 0, left: '20%', right: '20%',
           height: 1,
           background: 'linear-gradient(90deg, transparent, rgba(56,189,248,0.18), transparent)',
           pointerEvents: 'none',
@@ -60,13 +53,10 @@ export default function Nav() {
           {/* Logo */}
           <a href="#hero" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10 }}>
             <div style={{
-              width: 30,
-              height: 30,
+              width: 30, height: 30,
               borderRadius: 7,
               background: 'linear-gradient(135deg, #0369a1 0%, #0284c7 50%, #0ea5e9 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
               boxShadow: '0 2px 10px rgba(14,165,233,0.35), 0 0 0 1px rgba(56,189,248,0.2)',
             }}>
               <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
@@ -89,7 +79,7 @@ export default function Nav() {
           </a>
 
           {/* Nav links */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+          <div className="nav-links-desktop" style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             {NAV_LINKS.map(link => (
               <a
                 key={link.href}
@@ -120,17 +110,14 @@ export default function Nav() {
 
           {/* GitHub button */}
           <a
-            href="https://github.com/sunilpradhansharma/production-rag-patterns-in-practice"
+            href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 6,
+              display: 'flex', alignItems: 'center', gap: 6,
               color: '#64748b',
               textDecoration: 'none',
-              fontSize: 13,
-              fontWeight: 500,
+              fontSize: 13, fontWeight: 500,
               padding: '7px 14px',
               borderRadius: 7,
               border: '1px solid rgba(255,255,255,0.09)',

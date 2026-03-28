@@ -2,9 +2,11 @@ import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, X } from 'lucide-react'
 import { PATTERNS, CATEGORIES, CATEGORY_COLORS } from '../data/patterns.js'
-import PatternCard from './PatternCard.jsx'
+import PatternCard from '../components/PatternCard.jsx'
+import SectionLabel from '../components/SectionLabel.jsx'
+import { PatternExplorerOrb } from '../components/BackgroundEffects.jsx'
 
-export default function PatternExplorer() {
+export default function PatternExplorerSection() {
   const [activeCategory, setActiveCategory] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
 
@@ -26,25 +28,12 @@ export default function PatternExplorer() {
   }, [activeCategory, searchQuery])
 
   return (
-    <section
-      id="patterns"
-      style={{ padding: '80px 24px', position: 'relative' }}
-    >
-      {/* Section glow */}
-      <div style={{
-        position: 'absolute',
-        left: '50%',
-        top: '10%',
-        transform: 'translateX(-50%)',
-        width: 700,
-        height: 300,
-        background: 'radial-gradient(ellipse, rgba(14,165,233,0.04) 0%, transparent 65%)',
-        pointerEvents: 'none',
-      }} />
+    <section id="patterns" style={{ padding: '80px 24px', position: 'relative' }}>
+      <PatternExplorerOrb />
 
       <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative' }}>
 
-        {/* Section header */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -52,14 +41,11 @@ export default function PatternExplorer() {
           transition={{ duration: 0.5 }}
           style={{ textAlign: 'center', marginBottom: 48 }}
         >
-          <div className="section-label" style={{ marginBottom: 14, justifyContent: 'center' }}>Pattern Catalog</div>
+          <SectionLabel centered>Pattern Catalog</SectionLabel>
           <h2 style={{
             fontSize: 'clamp(1.8rem, 4vw, 2.6rem)',
-            fontWeight: 800,
-            letterSpacing: '-0.03em',
-            color: '#f1f5f9',
-            marginBottom: 14,
-            lineHeight: 1.1,
+            fontWeight: 800, letterSpacing: '-0.03em',
+            color: '#f1f5f9', marginBottom: 14, lineHeight: 1.1,
           }}>
             All 26 RAG Patterns
           </h2>
@@ -76,23 +62,13 @@ export default function PatternExplorer() {
           transition={{ duration: 0.4, delay: 0.1 }}
           style={{ marginBottom: 36 }}
         >
-          {/* Search bar */}
-          <div style={{
-            position: 'relative',
-            maxWidth: 400,
-            margin: '0 auto 22px',
-          }}>
-            <Search
-              size={13}
-              style={{
-                position: 'absolute',
-                left: 13,
-                top: '50%',
-                transform: 'translateY(-50%)',
-                color: '#374455',
-                pointerEvents: 'none',
-              }}
-            />
+          {/* Search */}
+          <div style={{ position: 'relative', maxWidth: 400, margin: '0 auto 22px' }}>
+            <Search size={13} style={{
+              position: 'absolute', left: 13, top: '50%',
+              transform: 'translateY(-50%)',
+              color: '#374455', pointerEvents: 'none',
+            }} />
             <input
               type="text"
               placeholder="Search patterns, categories, use cases…"
@@ -105,8 +81,7 @@ export default function PatternExplorer() {
                 border: '1px solid rgba(255,255,255,0.085)',
                 borderTopColor: 'rgba(255,255,255,0.11)',
                 borderRadius: 9,
-                color: '#e2e8f0',
-                fontSize: 13,
+                color: '#e2e8f0', fontSize: 13,
                 outline: 'none',
                 transition: 'all 0.2s ease',
                 fontFamily: 'Inter, sans-serif',
@@ -130,17 +105,11 @@ export default function PatternExplorer() {
               <button
                 onClick={() => setSearchQuery('')}
                 style={{
-                  position: 'absolute',
-                  right: 10,
-                  top: '50%',
+                  position: 'absolute', right: 10, top: '50%',
                   transform: 'translateY(-50%)',
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  color: '#3d5068',
-                  display: 'flex',
-                  alignItems: 'center',
-                  padding: 2,
+                  background: 'none', border: 'none',
+                  cursor: 'pointer', color: '#3d5068',
+                  display: 'flex', alignItems: 'center', padding: 2,
                 }}
               >
                 <X size={13} />
@@ -148,7 +117,7 @@ export default function PatternExplorer() {
             )}
           </div>
 
-          {/* Category filter pills */}
+          {/* Category pills */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, justifyContent: 'center' }}>
             {CATEGORIES.map(cat => {
               const isActive = activeCategory === cat.id
@@ -158,10 +127,8 @@ export default function PatternExplorer() {
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
                   style={{
-                    fontSize: 12,
-                    fontWeight: isActive ? 600 : 500,
-                    padding: '6px 14px',
-                    borderRadius: 20,
+                    fontSize: 12, fontWeight: isActive ? 600 : 500,
+                    padding: '6px 14px', borderRadius: 20,
                     border: isActive
                       ? `1px solid ${colors ? colors.border : 'rgba(56,189,248,0.35)'}`
                       : '1px solid rgba(255,255,255,0.075)',
@@ -171,17 +138,10 @@ export default function PatternExplorer() {
                     background: isActive
                       ? (colors ? colors.bg : 'rgba(56,189,248,0.1)')
                       : 'rgba(255,255,255,0.03)',
-                    color: isActive
-                      ? (colors ? colors.text : '#38bdf8')
-                      : '#3d5068',
-                    cursor: 'pointer',
-                    transition: 'all 0.15s ease',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 5,
-                    boxShadow: isActive
-                      ? `0 1px 0 rgba(255,255,255,0.055) inset, 0 2px 8px rgba(0,0,0,0.15)`
-                      : 'none',
+                    color: isActive ? (colors ? colors.text : '#38bdf8') : '#3d5068',
+                    cursor: 'pointer', transition: 'all 0.15s ease',
+                    display: 'flex', alignItems: 'center', gap: 5,
+                    boxShadow: isActive ? '0 1px 0 rgba(255,255,255,0.055) inset, 0 2px 8px rgba(0,0,0,0.15)' : 'none',
                     letterSpacing: '-0.01em',
                   }}
                   onMouseEnter={e => {
@@ -204,16 +164,12 @@ export default function PatternExplorer() {
                   )}
                   {cat.label}
                   <span style={{
-                    fontSize: 10,
-                    fontWeight: 600,
+                    fontSize: 10, fontWeight: 600,
                     background: isActive ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.06)',
                     color: isActive ? (colors ? colors.text : '#38bdf8') : '#2a3f52',
-                    padding: '0 5px',
-                    borderRadius: 6,
-                    lineHeight: '16px',
-                    display: 'inline-block',
-                    minWidth: 18,
-                    textAlign: 'center',
+                    padding: '0 5px', borderRadius: 6,
+                    lineHeight: '16px', display: 'inline-block',
+                    minWidth: 18, textAlign: 'center',
                     transition: 'all 0.15s ease',
                   }}>
                     {cat.count}
@@ -224,14 +180,8 @@ export default function PatternExplorer() {
           </div>
         </motion.div>
 
-        {/* Results count */}
-        <div style={{
-          textAlign: 'center',
-          marginBottom: 24,
-          fontSize: 11.5,
-          color: '#2f4258',
-          letterSpacing: '0.02em',
-        }}>
+        {/* Result count */}
+        <div style={{ textAlign: 'center', marginBottom: 24, fontSize: 11.5, color: '#2f4258', letterSpacing: '0.02em' }}>
           {filtered.length === PATTERNS.length
             ? `Showing all ${PATTERNS.length} patterns`
             : `${filtered.length} pattern${filtered.length !== 1 ? 's' : ''} found`}
@@ -254,11 +204,7 @@ export default function PatternExplorer() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(288px, 1fr))',
-                gap: 14,
-              }}
+              style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(288px, 1fr))', gap: 14 }}
             >
               {filtered.map((pattern, i) => (
                 <PatternCard key={pattern.id} pattern={pattern} index={i} />

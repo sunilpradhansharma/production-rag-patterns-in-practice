@@ -1,38 +1,31 @@
-import Nav from './components/Nav.jsx'
-import Hero from './components/Hero.jsx'
-import PatternRecommender from './components/PatternRecommender.jsx'
-import PatternExplorer from './components/PatternExplorer.jsx'
-import ArchitectureSection from './components/ArchitectureSection.jsx'
-import LearningPaths from './components/LearningPaths.jsx'
-import UseCases from './components/UseCases.jsx'
-import CTA from './components/CTA.jsx'
-
-function Divider() {
-  return (
-    <div style={{ padding: '0 24px' }}>
-      <div className="section-divider" />
-    </div>
-  )
-}
+import Navbar from './components/Navbar.jsx'
+import SectionDivider from './components/SectionDivider.jsx'
+import HeroSection from './sections/HeroSection.jsx'
+import PatternChooserSection from './sections/PatternChooserSection.jsx'
+import PatternExplorerSection from './sections/PatternExplorerSection.jsx'
+import ArchitectureSection from './sections/ArchitectureSection.jsx'
+import LearningPathsSection from './sections/LearningPathsSection.jsx'
+import UseCasesSection from './sections/UseCasesSection.jsx'
+import CTASection from './sections/CTASection.jsx'
 
 export default function App() {
   return (
     <div className="page-bg">
-      <Nav />
+      <Navbar />
       <div className="content-layer">
-        <Hero />
-        <Divider />
-        <PatternRecommender />
-        <Divider />
-        <PatternExplorer />
-        <Divider />
+        <HeroSection />
+        <SectionDivider />
+        <PatternChooserSection />
+        <SectionDivider />
+        <PatternExplorerSection />
+        <SectionDivider />
         <ArchitectureSection />
-        <Divider />
-        <LearningPaths />
-        <Divider />
-        <UseCases />
-        <Divider />
-        <CTA />
+        <SectionDivider />
+        <LearningPathsSection />
+        <SectionDivider />
+        <UseCasesSection />
+        <SectionDivider />
+        <CTASection />
       </div>
     </div>
   )

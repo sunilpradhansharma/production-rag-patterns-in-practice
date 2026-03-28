@@ -1,57 +1,33 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, BookOpen } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
+import { GITHUB_URL } from '../lib/constants.js'
+import { HeroOrbs } from '../components/BackgroundEffects.jsx'
 
 const STATS = [
-  { value: '26', label: 'RAG Patterns' },
-  { value: '6', label: 'Categories' },
-  { value: '26', label: 'Notebooks' },
+  { value: '26',  label: 'RAG Patterns' },
+  { value: '6',   label: 'Categories' },
+  { value: '26',  label: 'Notebooks' },
   { value: '90m', label: 'Workshop' },
 ]
 
 const BADGES = [
-  { label: 'Naive → Agentic', color: '#38bdf8', dim: 'rgba(56,189,248,0.1)' },
-  { label: 'Fintech-First', color: '#a78bfa', dim: 'rgba(167,139,250,0.1)' },
+  { label: 'Naive → Agentic',  color: '#38bdf8', dim: 'rgba(56,189,248,0.1)' },
+  { label: 'Fintech-First',    color: '#a78bfa', dim: 'rgba(167,139,250,0.1)' },
   { label: 'Production Ready', color: '#34d399', dim: 'rgba(52,211,153,0.1)' },
 ]
 
-export default function Hero() {
+export default function HeroSection() {
   return (
     <section
       id="hero"
       style={{
         minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
         padding: '128px 24px 96px',
         position: 'relative',
       }}
     >
-      {/* Hero focal glow — large, soft, centered */}
-      <div style={{
-        position: 'absolute',
-        top: '38%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        width: 900,
-        height: 600,
-        background:
-          'radial-gradient(ellipse at center, rgba(14,165,233,0.13) 0%, rgba(14,165,233,0.04) 40%, transparent 70%)',
-        pointerEvents: 'none',
-        zIndex: 0,
-      }} />
-
-      {/* Secondary, offset glow */}
-      <div style={{
-        position: 'absolute',
-        top: '20%',
-        left: '30%',
-        width: 500,
-        height: 400,
-        background: 'radial-gradient(ellipse, rgba(56,189,248,0.04) 0%, transparent 65%)',
-        pointerEvents: 'none',
-        zIndex: 0,
-      }} />
+      <HeroOrbs />
 
       <div style={{ maxWidth: 800, width: '100%', textAlign: 'center', position: 'relative', zIndex: 1 }}>
 
@@ -64,65 +40,53 @@ export default function Hero() {
         >
           {BADGES.map(b => (
             <span key={b.label} style={{
-              fontSize: 11,
-              fontWeight: 600,
-              letterSpacing: '0.09em',
-              textTransform: 'uppercase',
-              color: b.color,
-              background: b.dim,
+              fontSize: 11, fontWeight: 600,
+              letterSpacing: '0.09em', textTransform: 'uppercase',
+              color: b.color, background: b.dim,
               border: `1px solid ${b.color}28`,
-              padding: '5px 14px',
-              borderRadius: 20,
+              padding: '5px 14px', borderRadius: 20,
             }}>
               {b.label}
             </span>
           ))}
         </motion.div>
 
-        {/* Main headline */}
+        {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.16 }}
           style={{
             fontSize: 'clamp(2.8rem, 7vw, 4.6rem)',
-            fontWeight: 800,
-            lineHeight: 1.06,
+            fontWeight: 800, lineHeight: 1.06,
             letterSpacing: '-0.035em',
             marginBottom: 24,
           }}
         >
           <span style={{
             background: 'linear-gradient(150deg, #f8fafc 0%, #e2e8f0 45%, #94a3b8 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
           }}>
             RAG Patterns
           </span>
           <br />
           <span style={{
             background: 'linear-gradient(130deg, #38bdf8 0%, #7dd3fc 50%, #bae6fd 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
           }}>
             in Practice
           </span>
         </motion.h1>
 
-        {/* Subheadline */}
+        {/* Sub-headline */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.26 }}
           style={{
             fontSize: 'clamp(1rem, 2.4vw, 1.18rem)',
-            color: '#64748b',
-            lineHeight: 1.7,
-            maxWidth: 580,
-            margin: '0 auto 42px',
-            fontWeight: 400,
+            color: '#64748b', lineHeight: 1.7,
+            maxWidth: 580, margin: '0 auto 42px', fontWeight: 400,
           }}
         >
           A hands-on workshop covering all{' '}
@@ -142,9 +106,8 @@ export default function Hero() {
             <ArrowRight size={15} strokeWidth={2.5} />
           </a>
           <a
-            href="https://github.com/sunilpradhansharma/production-rag-patterns-in-practice"
-            target="_blank"
-            rel="noopener noreferrer"
+            href={GITHUB_URL}
+            target="_blank" rel="noopener noreferrer"
             className="btn-secondary"
             style={{ textDecoration: 'none', fontSize: 14 }}
           >
@@ -155,17 +118,14 @@ export default function Hero() {
           </a>
         </motion.div>
 
-        {/* Stats row */}
+        {/* Stats strip */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.44 }}
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: 12,
-            maxWidth: 640,
-            margin: '0 auto',
+            display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: 12, maxWidth: 640, margin: '0 auto',
           }}
         >
           {STATS.map((stat, i) => (
@@ -175,8 +135,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.48 + i * 0.06 }}
               style={{
-                padding: '20px 12px 16px',
-                textAlign: 'center',
+                padding: '20px 12px 16px', textAlign: 'center',
                 background: 'linear-gradient(145deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.028) 100%)',
                 border: '1px solid rgba(255,255,255,0.09)',
                 borderTop: '1px solid rgba(255,255,255,0.13)',
@@ -186,14 +145,10 @@ export default function Hero() {
             >
               <div style={{
                 fontSize: 'clamp(1.5rem, 3.5vw, 2rem)',
-                fontWeight: 800,
-                letterSpacing: '-0.025em',
+                fontWeight: 800, letterSpacing: '-0.025em',
                 background: 'linear-gradient(135deg, #38bdf8, #7dd3fc)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                lineHeight: 1,
-                marginBottom: 7,
+                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+                lineHeight: 1, marginBottom: 7,
               }}>
                 {stat.value}
               </div>

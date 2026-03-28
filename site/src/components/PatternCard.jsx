@@ -2,8 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import { CATEGORY_COLORS } from '../data/patterns.js'
-
-const REPO_BASE = 'https://github.com/sunilpradhansharma/production-rag-patterns-in-practice/blob/main/'
+import { REPO_BASE } from '../lib/constants.js'
 
 function ComplexityBar({ value, max = 5, color }) {
   return (
