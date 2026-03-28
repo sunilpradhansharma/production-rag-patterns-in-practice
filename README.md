@@ -5,7 +5,7 @@
 [![CI](https://github.com/sunilpradhansharma/production-rag-patterns-in-practice/actions/workflows/ci.yml/badge.svg)](https://github.com/sunilpradhansharma/production-rag-patterns-in-practice/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![Patterns: 26](https://img.shields.io/badge/RAG_patterns-26-purple.svg)](#pattern-catalog)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![License: Sunil Pradhan Sharma](https://img.shields.io/badge/license-Sunil%20Pradhan%20Sharma-green.svg)](https://www.linkedin.com/in/sunil-p-sharma/)
 
 ---
 
@@ -1154,7 +1154,5 @@ Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before
 ---
 
 ## License
-
-MIT License — see [LICENSE](LICENSE) for the full text.
 
 You are free to use, copy, modify, and distribute this repository for any purpose, including commercial use, provided the original copyright notice is retained.
