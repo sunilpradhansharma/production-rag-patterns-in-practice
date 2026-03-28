@@ -76,6 +76,7 @@ python_classes = ["Test*"]
 python_functions = ["test_*"]
 asyncio_mode = "auto"
 timeout = 60
+addopts = "--import-mode=importlib"
 markers = [
     "integration: marks tests that require live API keys (deselect with -m 'not integration')",
     "slow: marks tests that take > 10 seconds",
