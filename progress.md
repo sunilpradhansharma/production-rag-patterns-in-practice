@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
 Last updated: 2026-03-28
-Session count: 24
+Session count: 25
 
 ---
 
@@ -11,11 +11,11 @@ Session count: 24
 |----------|----------|------|-------------|-------------|
 | Foundational | 2 | 2 | 0 | 0 |
 | Retrieval Enhancement | 7 | 7 | 0 | 0 |
-| Indexing & Chunking | 6 | 5 | 0 | 1 |
+| Indexing & Chunking | 6 | 6 | 0 | 0 |
 | Reasoning & Self-Correction | 5 | 5 | 0 | 0 |
 | Architectural | 3 | 3 | 0 | 0 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **22** | **0** | **4** |
+| **TOTAL** | **26** | **23** | **0** | **3** |
 
 ---
 
@@ -43,7 +43,7 @@ Session count: 24
 - [x] `12_raptor` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [x] `13_contextual_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [x] `14_multi_vector_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
-- [ ] `15_long_context_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
+- [x] `15_long_context_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 
 ### Reasoning & self-correction
 - [x] `16_self_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
@@ -65,6 +65,15 @@ Session count: 24
 ---
 
 ## Session log
+
+### Session 25 — 2026-03-28
+- Completed module 15_long_context_rag -- all phases (A/B/C/D):
+  - SKILL.md: Liu et al. ACL 2024 arXiv:2307.03172 (lost in the middle) as primary source; Claude 200K / GPT-4 Turbo 128K / Gemini 1M as enabling context; no-retrieval architecture (query + full doc → LLM → answer); `estimate_tokens` + context assembler + long-context LLM components; full 10-K analysis / complete ISDA contract review / multi-document deal analysis fintech use cases; quality ★★★★★ + simplicity ★★★★★ vs cost ★☆☆☆☆ + scalability ★☆☆☆☆; pitfalls (lost in the middle quantified, cost scales per query not per index, token headroom mandatory, not a corpus-scale solution); relates RAPTOR + Contextual RAG + Multimodal RAG
+  - slides.md: "Skip Retrieval, Use Full Context"; three concrete fintech chunking failures (10-K cross-ref, ISDA Schedule override, Basel III definitional dependency); context window table (Claude 200K, GPT-4 Turbo 128K, Gemini 1M); Mermaid with no retriever node; cost made concrete (~$1.50/10-K); use/avoid table
+  - README.md: 5-6 min; token count as demo anchor; 5 Q&As (when better than RAG, lost-in-middle, Gemini 1M caveats, whether replaces other patterns, what when doc too long); transition "Long Context loads everything -- IRCoT reasons step by step"; 3 delivery anti-patterns
+  - demo.ipynb: 12 cells; anthropic + python-dotenv only (no chromadb/rank-bm25/langchain-openai); `estimate_tokens` (4 chars/token); `assemble_context` (XML tags, query appended last for recency); `format_cost` (USD estimate); `long_context_query` (assert budget, one API call, retrieval_calls=0 explicit); Cell 4 cross-doc Basel III + lending policy query; Cell 5 token budget bar + cost comparison table (long-context vs 5-chunk retrieval with multiplier) + lost-in-the-middle position experiment (Order A vs Order B); Cell 6 three-doc deal analysis (Basel III + ISDA + earnings) with attribution signal detection and "when breaks down" section
+- Validation: 58/63 checks passed; 5 failures confirmed as false positives (chromadb/rank-bm25/langchain-openai appear in comments only; MODEL constant uses aligned spacing); all substantive checks pass; all 4 files present
+- Status: 23/26 modules complete. Tier 3: 3/7. Indexing & Chunking: 6/6 (complete).
 
 ### Session 24 — 2026-03-28
 - Completed module 09_ensemble_rag — all phases (A/B/C/D):
