@@ -2,8 +2,10 @@
 
 **A hands-on workshop covering all 26 RAG patterns — from Naive to Agentic — with runnable notebooks, architecture diagrams, and fintech examples.**
 
+[![CI](https://github.com/sunilpradhansharma/production-rag-patterns-in-practice/actions/workflows/ci.yml/badge.svg)](https://github.com/sunilpradhansharma/production-rag-patterns-in-practice/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![Patterns: 26](https://img.shields.io/badge/RAG_patterns-26-purple.svg)](#the-26-rag-patterns)
+[![Patterns: 26](https://img.shields.io/badge/RAG_patterns-26-purple.svg)](#pattern-catalog)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 ---
 
@@ -17,6 +19,27 @@ This repository is a practical learning lab for engineers building production RA
 - **Fintech examples** — compliance Q&A, fraud detection, risk analysis, regulatory search
 
 **Target audience:** Engineers and ML practitioners building RAG systems who want to understand the landscape, pick the right pattern, and run working code.
+
+---
+
+## Quick start
+
+```bash
+git clone https://github.com/sunilpradhansharma/production-rag-patterns-in-practice.git
+cd production-rag-patterns-in-practice
+pip install -r requirements.txt
+jupyter lab modules/01_naive_rag/demo.ipynb
+```
+
+You need two API keys in a `.env` file at the repo root:
+
+```
+ANTHROPIC_API_KEY=sk-ant-...   # required — LLM generation
+OPENAI_API_KEY=sk-...          # required — embeddings
+TAVILY_API_KEY=tvly-...        # optional — web search (modules 17, 22)
+```
+
+Copy `.env.example` to `.env` and fill in your keys. Full setup instructions: [docs/workshop/setup_guide.md](docs/workshop/setup_guide.md)
 
 ---
 
@@ -112,23 +135,52 @@ flowchart TB
 
 ## Learning paths
 
-### Beginner — understand the foundations
+### Beginner — understand the foundations (3 modules, ~2 hours)
 
-`01_naive_rag` → `02_advanced_rag` → `03_hybrid_rag` → `10_parent_document`
+```
+01_naive_rag  →  02_advanced_rag  →  03_hybrid_rag
+```
 
-> Learn the baseline, understand where it fails, add the two most impactful improvements.
+| Step | What you learn |
+|------|---------------|
+| [01 Naive RAG](modules/01_naive_rag/) | How RAG works end-to-end; chunk → embed → retrieve → generate |
+| [02 Advanced RAG](modules/02_advanced_rag/) | Query rewriting, cross-encoder reranking, context compression |
+| [03 Hybrid RAG](modules/03_hybrid_rag/) | BM25 + dense fusion via RRF; the single best retrieval upgrade |
 
-### Intermediate — improve retrieval quality
+> After this path you can build a production-grade RAG system for most fintech Q&A use cases.
 
-`06_hyde` → `05_multi_query_rag` → `04_rag_fusion` → `13_contextual_rag` → `20_adaptive_rag`
+---
 
-> Master query-side improvements, indexing strategies, and smart routing.
+### Intermediate — improve indexing and self-correction (7 modules, ~4 hours)
 
-### Advanced — reasoning, reflection, and agents
+```
+01 → 02 → 03  +  10_parent_document  →  13_contextual_rag  →  16_self_rag  →  17_corrective_rag
+```
 
-`16_self_rag` → `17_corrective_rag` → `18_ircot` → `22_agentic_rag` → `24_graph_rag`
+| Step | What you learn |
+|------|---------------|
+| [10 Parent Document](modules/10_parent_document/) | Index small chunks; return large parents — best of both precision and context |
+| [13 Contextual RAG](modules/13_contextual_rag/) | Prepend document context to each chunk; 49% fewer retrieval failures |
+| [16 Self-RAG](modules/16_self_rag/) | Model critiques its own retrieval and generation quality |
+| [17 Corrective RAG](modules/17_corrective_rag/) | Automatic web fallback when the corpus cannot answer the query |
 
-> Explore patterns that reason about their own answers, self-correct, and use tools.
+> After this path you can handle long regulatory documents and self-checking compliance answers.
+
+---
+
+### Advanced — the full Tier 1 path (10 modules, ~8 hours)
+
+```
+Beginner + Intermediate  +  06_hyde  →  20_adaptive_rag  →  22_agentic_rag
+```
+
+| Step | What you learn |
+|------|---------------|
+| [06 HyDE](modules/06_hyde/) | Embed a hypothetical answer instead of the query — bridges vocabulary gap |
+| [20 Adaptive RAG](modules/20_adaptive_rag/) | Classify queries and route to the cheapest pattern that can answer them |
+| [22 Agentic RAG](modules/22_agentic_rag/) | LLM agent with retrieve / web search / calculate tools — the capstone pattern |
+
+> After this path you understand the full design space and can select and compose patterns for any use case.
 
 ---
 
@@ -182,6 +234,85 @@ Need to optimize cost for mixed-complexity traffic?
 ```
 
 Full decision guide: [docs/architecture/pattern_selection.md](docs/architecture/pattern_selection.md)
+
+---
+
+## Fintech use cases
+
+Every module uses the same synthetic fintech corpus — Basel III regulatory text, ISDA contract excerpts, earnings reports, and internal loan policy documents. Here is how each major fintech domain maps to specific patterns.
+
+### Regulatory compliance
+
+| Problem | Pattern | Why |
+|---------|---------|-----|
+| "What does Basel III say about CET1 minimums?" | [Hybrid RAG (03)](modules/03_hybrid_rag/) | "CET1" is an exact term; BM25 finds it reliably |
+| "What was the leverage ratio requirement before the 2019 amendment?" | [Temporal RAG (26)](modules/26_temporal_rag/) | Point-in-time query across version chain |
+| "Is this loan application compliant with all underwriting rules?" | [IRCoT (18)](modules/18_ircot/) | Each rule requires a separate retrieval step |
+| "Map all obligations that apply to this counterparty" | [Graph RAG (24)](modules/24_graph_rag/) | Obligation chains are relational, not keyword-searchable |
+
+### Credit and lending
+
+| Problem | Pattern | Why |
+|---------|---------|-----|
+| "What FICO score do I need for a personal loan?" | [Naive RAG (01)](modules/01_naive_rag/) or [Hybrid RAG (03)](modules/03_hybrid_rag/) | Simple factual lookup |
+| "Does this HELOC application meet all eligibility criteria?" | [Corrective RAG (17)](modules/17_corrective_rag/) | Self-verifies before returning an answer |
+| "What was the underwriting policy on the date this loan was approved?" | [Temporal RAG (26)](modules/26_temporal_rag/) | Audit requires point-in-time accuracy |
+| "Extract all covenants from this loan agreement" | [Contextual RAG (13)](modules/13_contextual_rag/) | Dense legal text; each clause needs document context to be retrievable |
+
+### Document intelligence
+
+| Problem | Pattern | Why |
+|---------|---------|-----|
+| "What does Figure 3 in the earnings report show?" | [Multimodal RAG (25)](modules/25_multimodal_rag/) | Answer is in a chart, not prose |
+| "Compare Meridian Bank's Q3 guidance vs actual revenue" | [Long-Context RAG (15)](modules/15_long_context_rag/) | Entire report fits in 200k-token window |
+| "What did the prospectus say about management fees?" | [Parent Document (10)](modules/10_parent_document/) | Dense PDF; return full section for context |
+| "Summarise all risk factors mentioned across these 10-K filings" | [RAPTOR (12)](modules/12_raptor/) | Hierarchical synthesis across multiple long docs |
+
+### Risk and counterparty
+
+| Problem | Pattern | Why |
+|---------|---------|-----|
+| "Which entities have exposure to Lehman Brothers?" | [Graph RAG (24)](modules/24_graph_rag/) | Entity relationship query |
+| "Trace UBO from counterparty to jurisdiction to applicable sanctions" | [Multi-Hop RAG (23)](modules/23_multi_hop_rag/) | Fixed chain: entity → parent → jurisdiction → obligations |
+| "What is the current credit outlook for this issuer?" | [Agentic RAG (22)](modules/22_agentic_rag/) | Requires live web data not in the static corpus |
+| "Mixed query traffic across all of the above" | [Adaptive RAG (20)](modules/20_adaptive_rag/) | Routes each query to the cheapest capable pattern |
+
+---
+
+## Pattern catalog
+
+All 26 patterns at a glance. Click any module link to jump to the full description with architecture diagram.
+
+| # | Pattern | Category | Core idea | Tier |
+|---|---------|----------|-----------|------|
+| 01 | [Naive RAG](modules/01_naive_rag/) | Foundational | Chunk → embed → retrieve → generate | 1 |
+| 02 | [Advanced RAG](modules/02_advanced_rag/) | Foundational | Rewrite + retrieve + rerank + compress | 1 |
+| 03 | [Hybrid RAG](modules/03_hybrid_rag/) | Retrieval | BM25 + dense fused via RRF | 1 |
+| 04 | [RAG Fusion](modules/04_rag_fusion/) | Retrieval | N query variants → N ranked lists → RRF | 2 |
+| 05 | [Multi-Query RAG](modules/05_multi_query_rag/) | Retrieval | 3–5 query phrasings → union of results | 2 |
+| 06 | [HyDE](modules/06_hyde/) | Retrieval | Embed a hypothetical answer, not the query | 1 |
+| 07 | [Step-Back RAG](modules/07_step_back_rag/) | Retrieval | Abstract query → retrieve general + specific | 2 |
+| 08 | [FLARE](modules/08_flare/) | Retrieval | Retrieve mid-generation when confidence drops | 3 |
+| 09 | [Ensemble RAG](modules/09_ensemble_rag/) | Retrieval | Weighted combination of multiple retrievers | 2 |
+| 10 | [Parent Document](modules/10_parent_document/) | Indexing | Index small children; return large parents | 1 |
+| 11 | [Sentence Window](modules/11_sentence_window/) | Indexing | Index sentences; return surrounding window | 2 |
+| 12 | [RAPTOR](modules/12_raptor/) | Indexing | Recursive summary tree for hierarchical retrieval | 2 |
+| 13 | [Contextual RAG](modules/13_contextual_rag/) | Indexing | LLM prepends doc context to each chunk at index time | 1 |
+| 14 | [Multi-Vector RAG](modules/14_multi_vector_rag/) | Indexing | Multiple embeddings per doc (text + summary + Q) | 2 |
+| 15 | [Long-Context RAG](modules/15_long_context_rag/) | Retrieval | Skip chunking; put the whole doc in the window | 3 |
+| 16 | [Self-RAG](modules/16_self_rag/) | Reasoning | Model critiques its own retrieval + generation | 1 |
+| 17 | [Corrective RAG](modules/17_corrective_rag/) | Reasoning | Grade relevance; fall back to web if corpus fails | 1 |
+| 18 | [IRCoT](modules/18_ircot/) | Reasoning | Interleave retrieval and chain-of-thought steps | 3 |
+| 19 | [Speculative RAG](modules/19_speculative_rag/) | Reasoning | Draft speculatively; verify with retrieval | 2 |
+| 20 | [Adaptive RAG](modules/20_adaptive_rag/) | Orchestration | Classify query → route to cheapest capable pattern | 1 |
+| 21 | [Modular RAG](modules/21_modular_rag/) | Orchestration | Composable pipeline — swap any module | 2 |
+| 22 | [Agentic RAG](modules/22_agentic_rag/) | Orchestration | LLM agent with retrieve / web search / calculate tools | 1 |
+| 23 | [Multi-Hop RAG](modules/23_multi_hop_rag/) | Specialized | Fixed reasoning chain: A → B → C | 2 |
+| 24 | [Graph RAG](modules/24_graph_rag/) | Specialized | Entity graph + BFS traversal + vector search | 3 |
+| 25 | [Multimodal RAG](modules/25_multimodal_rag/) | Specialized | Text + tables + chart descriptions in one index | 3 |
+| 26 | [Temporal RAG](modules/26_temporal_rag/) | Specialized | Time-decay scoring + document version filtering | 3 |
+
+**Tier 1** = workshop demo-ready · **Tier 2** = extended reference · **Tier 3** = specialized
 
 ---
 
@@ -962,25 +1093,9 @@ Full details with architecture diagrams: [docs/architecture/design_layers.md](do
 
 ---
 
-## Quick start
+## Setup details
 
-```bash
-# Clone
-git clone https://github.com/<owner>/rag-patterns-in-practice.git
-cd rag-patterns-in-practice
-
-# Environment
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-
-# API keys
-cp .env.example .env
-# Edit .env: add ANTHROPIC_API_KEY and OPENAI_API_KEY (required)
-# Optional: COHERE_API_KEY, TAVILY_API_KEY
-
-# Run your first pattern
-jupyter lab modules/01_naive_rag/demo.ipynb
-```
+See [docs/workshop/setup_guide.md](docs/workshop/setup_guide.md) for the full attendee setup checklist, pre-flight test, and troubleshooting guide.
 
 ### Required API keys
 
@@ -989,7 +1104,7 @@ jupyter lab modules/01_naive_rag/demo.ipynb
 | `ANTHROPIC_API_KEY` | Yes | LLM generation (Claude) |
 | `OPENAI_API_KEY` | Yes | Embeddings (text-embedding-3-small) |
 | `COHERE_API_KEY` | No | Reranking (Advanced RAG, Modular RAG) |
-| `TAVILY_API_KEY` | No | Web search fallback (Corrective RAG) |
+| `TAVILY_API_KEY` | No | Web search fallback (Corrective RAG, Agentic RAG) |
 
 ---
 
@@ -1023,7 +1138,7 @@ modules/01_naive_rag/
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add new pattern modules.
+Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request — it covers the 4-phase module build process (SKILL.md → slides → notebook → tests), the notebook cell standard, and the fintech domain requirements every new pattern must meet.
 
 ---
 
@@ -1040,6 +1155,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for how to add new pattern modules.
 
 ## License
 
-Proprietary. All rights reserved.
+MIT License — see [LICENSE](LICENSE) for the full text.
 
-This project is the intellectual property of the repository owner. No use, reproduction, modification, or distribution is permitted without explicit permission.
+You are free to use, copy, modify, and distribute this repository for any purpose, including commercial use, provided the original copyright notice is retained.
