@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
 Last updated: 2026-03-27
-Session count: 16
+Session count: 17
 
 ---
 
@@ -11,11 +11,11 @@ Session count: 16
 |----------|----------|------|-------------|-------------|
 | Foundational | 2 | 2 | 0 | 0 |
 | Retrieval Enhancement | 7 | 5 | 0 | 2 |
-| Indexing & Chunking | 6 | 2 | 0 | 4 |
+| Indexing & Chunking | 6 | 3 | 0 | 3 |
 | Reasoning & Self-Correction | 5 | 4 | 0 | 1 |
 | Architectural | 3 | 1 | 0 | 2 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **14** | **0** | **12** |
+| **TOTAL** | **26** | **15** | **0** | **11** |
 
 ---
 
@@ -39,7 +39,7 @@ Session count: 16
 
 ### Indexing & chunking
 - [x] `10_parent_document` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
-- [ ] `11_sentence_window` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
+- [x] `11_sentence_window` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `12_raptor` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [x] `13_contextual_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `14_multi_vector_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
@@ -65,6 +65,15 @@ Session count: 16
 ---
 
 ## Session log
+
+### Session 17 — 2026-03-27
+- Completed module 11_sentence_window — all phases (A/B/C/D):
+  - SKILL.md: LlamaIndex SentenceWindowNodeParser Jerry Liu 2023; decouples embedding unit (sentence) from generation unit (window); MetadataReplacementPostProcessor mechanics; Mermaid with sentence parse → index → matched sentence → window expansion → generate; term sheet/ISDA/earnings/KYC fintech use cases; precision ★★★★★, answer quality ★★★★☆, complexity ★★★☆☆; pitfalls (window boundary cuts, segmentation errors, postprocessor chain ordering, index size); relates Parent Document + RAPTOR + Multi-Vector
+  - slides.md: "Precision Retrieval, Contextual Generation"; chunk-averaging problem table; ASCII pipeline + Mermaid; key insight callout; ISDA early termination fintech table; tradeoffs + window tuning note; transition to RAPTOR horizontal vs vertical (165 prose words ✓)
+  - README.md: 6–7 min; framing script; 5-step live demo (ISDA excerpt → matched sentence → window → baseline comparison → answer); Q&As (±2–5 sizing, vs Parent Document, segmentation); transition (398 words ✓)
+  - demo.ipynb: 12 cells; LlamaIndex + OpenAI embeddings + Anthropic SDK; build_sentence_index() (SentenceWindowNodeParser.from_defaults window_size=3, VectorStoreIndex, MetadataReplacementPostProcessor); sentence_window_rag(); margin call query Cell 4; per-node sentence vs window expansion + citation trail + LangChain baseline comparison Cell 5; early termination clause query with expansion metrics Cell 6
+- Validation: SKILL.md 22/22 | slides.md 13/13 | README.md 13/13 | demo.ipynb 36/36
+- Status: 15/26 modules complete. Tier 1: 10/10. Tier 2: 5/9. Indexing & Chunking: 3/6.
 
 ### Session 16 — 2026-03-27
 - Completed module 07_step_back_rag — all phases (A/B/C/D):
