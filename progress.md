@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
 Last updated: 2026-03-28
-Session count: 26
+Session count: 27
 
 ---
 
@@ -14,8 +14,8 @@ Session count: 26
 | Indexing & Chunking | 6 | 6 | 0 | 0 |
 | Reasoning & Self-Correction | 5 | 5 | 0 | 0 |
 | Architectural | 3 | 3 | 0 | 0 |
-| Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **24** | **0** | **2** |
+| Specialized | 3 | 1 | 0 | 2 |
+| **TOTAL** | **26** | **25** | **0** | **1** |
 
 ---
 
@@ -58,13 +58,22 @@ Session count: 26
 - [x] `23_multi_hop_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 
 ### Specialized
-- [ ] `24_graph_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
+- [x] `24_graph_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `25_multimodal_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `26_temporal_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 
 ---
 
 ## Session log
+
+### Session 27 — 2026-03-28
+- Completed module 24_graph_rag — all phases (A/B/C/D):
+  - SKILL.md: Edge et al. Microsoft Research 2024 arXiv:2404.16130; 6-component architecture (entity extractor, graph builder, graph traversal, vector retriever, context merger, LLM synthesiser); NetworkX DiGraph with deduplicating edge merge and provenance (source_docs per edge); BFS up to MAX_HOPS=2, MAX_GRAPH_NODES=20; fintech use cases (counterparty network risk, regulatory obligation mapping, financial statement consolidation hierarchy, derivatives eligibility network); relational quality ★★★★★ vs construction cost ★☆☆☆☆ vs complexity ★★★★★; 6 pitfalls (extraction quality, entity disambiguation, schema as product decision, graph staleness invalidation, over-traversal cap, synthesis prompt requiring graph citation); relates 23 Multi-Hop RAG + 12 RAPTOR + 22 Agentic RAG
+  - slides.md: "Knowledge Graphs Meet Vector Search"; counterparty exposure problem (Delta Fund CDS → Sigma Corp repo → Gamma Holdings consolidation); 5-row use case table distinguishing graph-only vs vector-only steps; two parallel retrieval paths diagram; construction cost ★☆☆☆☆ prominent; use/avoid conditions
+  - README.md: 8-10 min; entity triple printout as mandatory demo anchor; 5 Q&As (networkx vs Neo4j, entity disambiguation levels, construction cost with async tip, Edge et al. community summaries, incremental re-extraction strategy); demo contrast "vector-only answers about policies; graph-augmented answers about networks"; transition "Graph RAG handles entities -- Multimodal handles images" → Module 25; 5 delivery anti-patterns
+  - demo.ipynb: 12 cells; 8 synthetic financial news docs (Lehman bankruptcy, AIG CDS, Basel III, Barclays acquisition, Goldman TARP, Dodd-Frank); `extract_entities_and_triples` (Haiku, JSON triples with predicate vocabulary); `normalise` (legal suffix stripping for deduplication); `build_graph` (deduplicating edge merger with source_docs provenance); `traverse_graph` (bidirectional BFS, both in/out edges); `detect_communities` (weakly connected components); `build_vector_index` (Chroma, title prepended); `extract_query_entities` (Haiku); `graph_rag_retrieve` (hybrid, graph summary first); Cell 4: Lehman network query; Cell 5: degree table + BFS hop layers + predicate distribution + vector-only baseline; Cell 6: AIG counterparty exposure with 5-section RISK_SYSTEM + "Why Graph RAG is essential" section
+- Validation: 58/58 checks passed; all 4 files present; all 6 code cells parse cleanly
+- Status: 25/26 modules complete. Specialized: 1/3. One module remaining: 25_multimodal_rag.
 
 ### Session 26 — 2026-03-28
 - Completed module 18_ircot — all phases (A/B/C/D):
