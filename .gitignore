@@ -1,3 +1,7 @@
+# ── Site (GitHub Pages) ───────────────────────────────────────────────────────
+site/node_modules/
+site/dist/
+
 # ── Environment ───────────────────────────────────────────────────────────────
 .env
 .env.local
@@ -71,4 +75,5 @@ Thumbs.db
 *.bak
 RAG_WORKSHOP_PLAN.md
 RAG_WORKSHOP_VISUALS_ADDENDUM.md
+CLAUDE.md
 
