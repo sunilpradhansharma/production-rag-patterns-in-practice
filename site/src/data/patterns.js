@@ -30,12 +30,12 @@ export const CATEGORY_META = {
 }
 
 export const CATEGORY_COLORS = {
-  foundational:             { bg: 'rgba(56,189,248,0.11)',  border: 'rgba(56,189,248,0.28)',  text: '#38bdf8' },
-  retrieval_enhancement:    { bg: 'rgba(167,139,250,0.11)', border: 'rgba(167,139,250,0.28)', text: '#a78bfa' },
-  indexing_chunking:        { bg: 'rgba(52,211,153,0.11)',  border: 'rgba(52,211,153,0.28)',  text: '#34d399' },
-  reasoning_self_correction:{ bg: 'rgba(251,191,36,0.11)',  border: 'rgba(251,191,36,0.28)',  text: '#fbbf24' },
-  architectural:            { bg: 'rgba(248,113,113,0.11)', border: 'rgba(248,113,113,0.28)', text: '#f87171' },
-  specialized:              { bg: 'rgba(251,146,60,0.11)',  border: 'rgba(251,146,60,0.28)',  text: '#fb923c' },
+  foundational:             { bg: '#eff6ff',  border: '#bfdbfe',  text: '#2563b0' },
+  retrieval_enhancement:    { bg: '#f5f3ff',  border: '#ddd6fe',  text: '#7c3aed' },
+  indexing_chunking:        { bg: '#f0fdf4',  border: '#bbf7d0',  text: '#059669' },
+  reasoning_self_correction:{ bg: '#fffbeb',  border: '#fde68a',  text: '#b45309' },
+  architectural:            { bg: '#fff1f2',  border: '#fecdd3',  text: '#be123c' },
+  specialized:              { bg: '#fff7ed',  border: '#fed7aa',  text: '#c2410c' },
 }
 
 // ─── Patterns ────────────────────────────────────────────────────────────────

@@ -29,11 +29,11 @@ export default function Navbar() {
         position: 'fixed',
         top: 0, left: 0, right: 0,
         zIndex: 50,
-        background: scrolled ? 'rgba(5,10,18,0.88)' : 'transparent',
+        background: scrolled ? 'rgba(250,249,246,0.92)' : 'transparent',
         backdropFilter: scrolled ? 'blur(22px) saturate(180%)' : 'none',
         WebkitBackdropFilter: scrolled ? 'blur(22px) saturate(180%)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.065)' : '1px solid transparent',
-        boxShadow: scrolled ? '0 1px 0 rgba(56,189,248,0.04)' : 'none',
+        borderBottom: scrolled ? '1px solid #e4e0d8' : '1px solid transparent',
+        boxShadow: scrolled ? '0 1px 0 rgba(0,0,0,0.06)' : 'none',
         transition: 'all 0.3s ease',
       }}
     >
@@ -42,7 +42,7 @@ export default function Navbar() {
           position: 'absolute',
           top: 0, left: '20%', right: '20%',
           height: 1,
-          background: 'linear-gradient(90deg, transparent, rgba(56,189,248,0.18), transparent)',
+          background: 'linear-gradient(90deg, transparent, rgba(37,99,176,0.15), transparent)',
           pointerEvents: 'none',
         }} />
       )}
@@ -55,9 +55,9 @@ export default function Navbar() {
             <div style={{
               width: 30, height: 30,
               borderRadius: 7,
-              background: 'linear-gradient(135deg, #0369a1 0%, #0284c7 50%, #0ea5e9 100%)',
+              background: 'linear-gradient(135deg, #1d4ed8 0%, #2563b0 50%, #3b82f6 100%)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: '0 2px 10px rgba(14,165,233,0.35), 0 0 0 1px rgba(56,189,248,0.2)',
+              boxShadow: '0 2px 10px rgba(37,99,176,0.3), 0 0 0 1px rgba(37,99,176,0.15)',
             }}>
               <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
                 <circle cx="8" cy="8" r="4" fill="none" stroke="rgba(255,255,255,0.9)" strokeWidth="1.5"/>
@@ -69,10 +69,10 @@ export default function Navbar() {
               </svg>
             </div>
             <div>
-              <div style={{ color: '#e2e8f0', fontWeight: 700, fontSize: 14, letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+              <div style={{ color: '#1a1a18', fontWeight: 700, fontSize: 14, letterSpacing: '-0.02em', lineHeight: 1.1 }}>
                 RAG Patterns
               </div>
-              <div style={{ color: '#3d5068', fontSize: 10, fontWeight: 500, letterSpacing: '0.04em' }}>
+              <div style={{ color: '#9a9890', fontSize: 10, fontWeight: 500, letterSpacing: '0.04em' }}>
                 in Practice
               </div>
             </div>
@@ -85,7 +85,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 style={{
-                  color: '#4a6070',
+                  color: '#9a9890',
                   textDecoration: 'none',
                   fontSize: 13.5,
                   fontWeight: 500,
@@ -95,11 +95,11 @@ export default function Navbar() {
                   letterSpacing: '-0.01em',
                 }}
                 onMouseEnter={e => {
-                  e.target.style.color = '#cbd5e1'
-                  e.target.style.background = 'rgba(255,255,255,0.055)'
+                  e.target.style.color = '#1a1a18'
+                  e.target.style.background = 'rgba(0,0,0,0.04)'
                 }}
                 onMouseLeave={e => {
-                  e.target.style.color = '#4a6070'
+                  e.target.style.color = '#9a9890'
                   e.target.style.background = 'transparent'
                 }}
               >
@@ -115,29 +115,29 @@ export default function Navbar() {
             rel="noopener noreferrer"
             style={{
               display: 'flex', alignItems: 'center', gap: 6,
-              color: '#64748b',
+              color: '#6a6860',
               textDecoration: 'none',
               fontSize: 13, fontWeight: 500,
               padding: '7px 14px',
               borderRadius: 7,
-              border: '1px solid rgba(255,255,255,0.09)',
-              borderTopColor: 'rgba(255,255,255,0.12)',
-              background: 'rgba(255,255,255,0.04)',
+              border: '1px solid #e4e0d8',
+              borderTopColor: '#e4e0d8',
+              background: '#ffffff',
               transition: 'all 0.18s ease',
               letterSpacing: '-0.01em',
-              boxShadow: '0 1px 0 rgba(255,255,255,0.04) inset',
+              boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
             }}
             onMouseEnter={e => {
-              e.currentTarget.style.color = '#94a3b8'
-              e.currentTarget.style.borderColor = 'rgba(56,189,248,0.25)'
-              e.currentTarget.style.borderTopColor = 'rgba(56,189,248,0.32)'
-              e.currentTarget.style.background = 'rgba(56,189,248,0.07)'
+              e.currentTarget.style.color = '#1a1a18'
+              e.currentTarget.style.borderColor = '#bfdbfe'
+              e.currentTarget.style.borderTopColor = '#93c5fd'
+              e.currentTarget.style.background = '#eff6ff'
             }}
             onMouseLeave={e => {
-              e.currentTarget.style.color = '#64748b'
-              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.09)'
-              e.currentTarget.style.borderTopColor = 'rgba(255,255,255,0.12)'
-              e.currentTarget.style.background = 'rgba(255,255,255,0.04)'
+              e.currentTarget.style.color = '#6a6860'
+              e.currentTarget.style.borderColor = '#e4e0d8'
+              e.currentTarget.style.borderTopColor = '#e4e0d8'
+              e.currentTarget.style.background = '#ffffff'
             }}
           >
             <Github size={13} strokeWidth={2} />

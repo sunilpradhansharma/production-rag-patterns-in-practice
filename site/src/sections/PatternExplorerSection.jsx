@@ -47,11 +47,11 @@ export default function PatternExplorerSection() {
           <h2 style={{
             fontSize: 'clamp(1.8rem, 4vw, 2.6rem)',
             fontWeight: 800, letterSpacing: '-0.03em',
-            color: '#f1f5f9', marginBottom: 14, lineHeight: 1.1,
+            color: '#1a1a18', marginBottom: 14, lineHeight: 1.1,
           }}>
             All 26 RAG Patterns
           </h2>
-          <p style={{ color: '#4a6070', maxWidth: 460, margin: '0 auto', fontSize: 15, lineHeight: 1.65 }}>
+          <p style={{ color: '#6a6860', maxWidth: 460, margin: '0 auto', fontSize: 15, lineHeight: 1.65 }}>
             From foundational baselines to agentic systems — every pattern with notebooks and fintech examples.
           </p>
         </motion.div>
@@ -69,7 +69,7 @@ export default function PatternExplorerSection() {
             <Search size={13} style={{
               position: 'absolute', left: 13, top: '50%',
               transform: 'translateY(-50%)',
-              color: '#374455', pointerEvents: 'none',
+              color: '#9a9890', pointerEvents: 'none',
             }} />
             <input
               type="text"
@@ -79,28 +79,28 @@ export default function PatternExplorerSection() {
               style={{
                 width: '100%',
                 padding: '10px 36px 10px 36px',
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.085)',
-                borderTopColor: 'rgba(255,255,255,0.11)',
+                background: '#ffffff',
+                border: '1px solid #e4e0d8',
+                borderTopColor: '#e4e0d8',
                 borderRadius: 9,
-                color: '#e2e8f0', fontSize: 13,
+                color: '#1a1a18', fontSize: 13,
                 outline: 'none',
                 transition: 'all 0.2s ease',
                 fontFamily: 'Inter, sans-serif',
                 letterSpacing: '-0.01em',
-                boxShadow: '0 1px 0 rgba(255,255,255,0.04) inset, 0 2px 10px rgba(0,0,0,0.18)',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
               }}
               onFocus={e => {
-                e.target.style.borderColor = 'rgba(56,189,248,0.3)'
-                e.target.style.borderTopColor = 'rgba(56,189,248,0.38)'
-                e.target.style.background = 'rgba(255,255,255,0.055)'
-                e.target.style.boxShadow = '0 1px 0 rgba(56,189,248,0.06) inset, 0 0 0 3px rgba(56,189,248,0.06), 0 2px 10px rgba(0,0,0,0.2)'
+                e.target.style.borderColor = '#bfdbfe'
+                e.target.style.borderTopColor = '#93c5fd'
+                e.target.style.background = '#ffffff'
+                e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.05), 0 0 0 3px rgba(37,99,176,0.08)'
               }}
               onBlur={e => {
-                e.target.style.borderColor = 'rgba(255,255,255,0.085)'
-                e.target.style.borderTopColor = 'rgba(255,255,255,0.11)'
-                e.target.style.background = 'rgba(255,255,255,0.04)'
-                e.target.style.boxShadow = '0 1px 0 rgba(255,255,255,0.04) inset, 0 2px 10px rgba(0,0,0,0.18)'
+                e.target.style.borderColor = '#e4e0d8'
+                e.target.style.borderTopColor = '#e4e0d8'
+                e.target.style.background = '#ffffff'
+                e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.05)'
               }}
             />
             {searchQuery && (
@@ -110,7 +110,7 @@ export default function PatternExplorerSection() {
                   position: 'absolute', right: 10, top: '50%',
                   transform: 'translateY(-50%)',
                   background: 'none', border: 'none',
-                  cursor: 'pointer', color: '#3d5068',
+                  cursor: 'pointer', color: '#9a9890',
                   display: 'flex', alignItems: 'center', padding: 2,
                 }}
               >
@@ -132,15 +132,15 @@ export default function PatternExplorerSection() {
                     fontSize: 12, fontWeight: isActive ? 600 : 500,
                     padding: '6px 14px', borderRadius: 20,
                     border: isActive
-                      ? `1px solid ${colors ? colors.border : 'rgba(56,189,248,0.35)'}`
-                      : '1px solid rgba(255,255,255,0.075)',
+                      ? `1px solid ${colors ? colors.border : '#bfdbfe'}`
+                      : '1px solid #e4e0d8',
                     borderTopColor: isActive
-                      ? (colors ? colors.border : 'rgba(56,189,248,0.45)')
-                      : 'rgba(255,255,255,0.10)',
+                      ? (colors ? colors.border : '#93c5fd')
+                      : '#e4e0d8',
                     background: isActive
-                      ? (colors ? colors.bg : 'rgba(56,189,248,0.1)')
-                      : 'rgba(255,255,255,0.03)',
-                    color: isActive ? (colors ? colors.text : '#38bdf8') : '#3d5068',
+                      ? (colors ? colors.bg : '#eff6ff')
+                      : 'transparent',
+                    color: isActive ? (colors ? colors.text : '#2563b0') : '#9a9890',
                     cursor: 'pointer', transition: 'all 0.15s ease',
                     display: 'flex', alignItems: 'center', gap: 5,
                     boxShadow: isActive ? '0 1px 0 rgba(255,255,255,0.055) inset, 0 2px 8px rgba(0,0,0,0.15)' : 'none',
@@ -148,16 +148,16 @@ export default function PatternExplorerSection() {
                   }}
                   onMouseEnter={e => {
                     if (!isActive) {
-                      e.currentTarget.style.background = 'rgba(255,255,255,0.055)'
-                      e.currentTarget.style.color = '#8899a8'
-                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.11)'
+                      e.currentTarget.style.background = 'rgba(0,0,0,0.04)'
+                      e.currentTarget.style.color = '#1a1a18'
+                      e.currentTarget.style.borderColor = '#d4d0c8'
                     }
                   }}
                   onMouseLeave={e => {
                     if (!isActive) {
-                      e.currentTarget.style.background = 'rgba(255,255,255,0.03)'
-                      e.currentTarget.style.color = '#3d5068'
-                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.075)'
+                      e.currentTarget.style.background = 'transparent'
+                      e.currentTarget.style.color = '#9a9890'
+                      e.currentTarget.style.borderColor = '#e4e0d8'
                     }
                   }}
                 >
@@ -167,8 +167,8 @@ export default function PatternExplorerSection() {
                   {cat.label}
                   <span style={{
                     fontSize: 10, fontWeight: 600,
-                    background: isActive ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.06)',
-                    color: isActive ? (colors ? colors.text : '#38bdf8') : '#2a3f52',
+                    background: isActive ? 'rgba(0,0,0,0.07)' : 'rgba(0,0,0,0.04)',
+                    color: isActive ? (colors ? colors.text : '#2563b0') : '#9a9890',
                     padding: '0 5px', borderRadius: 6,
                     lineHeight: '16px', display: 'inline-block',
                     minWidth: 18, textAlign: 'center',
@@ -183,14 +183,14 @@ export default function PatternExplorerSection() {
         </motion.div>
 
         {/* Result count */}
-        <div style={{ textAlign: 'center', marginBottom: 24, fontSize: 11.5, color: '#2f4258', letterSpacing: '0.02em' }}>
+        <div style={{ textAlign: 'center', marginBottom: 24, fontSize: 11.5, color: '#9a9890', letterSpacing: '0.02em' }}>
           {filtered.length === PATTERNS.length
             ? `Showing all ${PATTERNS.length} patterns`
             : `${filtered.length} pattern${filtered.length !== 1 ? 's' : ''} found`}
           {activeCategory !== 'all' && (
             <button
               onClick={() => setActiveCategory('all')}
-              style={{ marginLeft: 10, color: '#38bdf8', background: 'none', border: 'none', cursor: 'pointer', fontSize: 11.5, textDecoration: 'underline' }}
+              style={{ marginLeft: 10, color: '#2563b0', background: 'none', border: 'none', cursor: 'pointer', fontSize: 11.5, textDecoration: 'underline' }}
             >
               clear filter
             </button>

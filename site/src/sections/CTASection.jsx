@@ -28,7 +28,7 @@ export default function CTASection() {
           <h2 style={{
             fontSize: 'clamp(2rem, 5vw, 3rem)',
             fontWeight: 800, letterSpacing: '-0.03em',
-            lineHeight: 1.1, marginBottom: 18, color: '#f1f5f9',
+            lineHeight: 1.1, marginBottom: 18, color: '#1a1a18',
           }}>
             Start building{' '}
             <span className="gradient-text-blue">production RAG</span>
@@ -36,7 +36,7 @@ export default function CTASection() {
           </h2>
 
           <p style={{
-            color: '#64748b', fontSize: 16, lineHeight: 1.65,
+            color: '#6a6860', fontSize: 16, lineHeight: 1.65,
             maxWidth: 520, margin: '0 auto 36px',
           }}>
             All 26 patterns. 26 runnable notebooks. Real fintech data. Production-grade architecture.
@@ -67,11 +67,11 @@ export default function CTASection() {
               <div key={stat.label} style={{ textAlign: 'center' }}>
                 <div style={{
                   fontSize: 22, fontWeight: 800, letterSpacing: '-0.02em',
-                  color: '#38bdf8', lineHeight: 1, marginBottom: 4,
+                  color: '#2563b0', lineHeight: 1, marginBottom: 4,
                 }}>
                   {stat.value}
                 </div>
-                <div style={{ fontSize: 11, color: '#475569', fontWeight: 500, letterSpacing: '0.04em' }}>
+                <div style={{ fontSize: 11, color: '#9a9890', fontWeight: 500, letterSpacing: '0.04em' }}>
                   {stat.label}
                 </div>
               </div>
@@ -89,8 +89,8 @@ export default function CTASection() {
         style={{
           textAlign: 'center', marginTop: 64,
           paddingTop: 28,
-          borderTop: '1px solid rgba(255,255,255,0.06)',
-          color: '#334155', fontSize: 12,
+          borderTop: '1px solid #e4e0d8',
+          color: '#9a9890', fontSize: 12,
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, flexWrap: 'wrap' }}>
@@ -99,9 +99,9 @@ export default function CTASection() {
           <a
             href={GITHUB_URL}
             target="_blank" rel="noopener noreferrer"
-            style={{ color: '#475569', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 4 }}
-            onMouseEnter={e => (e.currentTarget.style.color = '#38bdf8')}
-            onMouseLeave={e => (e.currentTarget.style.color = '#475569')}
+            style={{ color: '#9a9890', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 4 }}
+            onMouseEnter={e => (e.currentTarget.style.color = '#2563b0')}
+            onMouseLeave={e => (e.currentTarget.style.color = '#9a9890')}
           >
             <Github size={12} />
             GitHub

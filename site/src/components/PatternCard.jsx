@@ -16,7 +16,7 @@ function ComplexityBar({ value, max = 5, color }) {
             borderRadius: 2,
             background: i < value
               ? `linear-gradient(90deg, ${color}cc, ${color})`
-              : 'rgba(255,255,255,0.08)',
+              : '#e4e0d8',
             transition: 'all 0.2s ease',
           }}
         />
@@ -28,9 +28,9 @@ function ComplexityBar({ value, max = 5, color }) {
 const COMPLEXITY_LABELS = { 1: 'Minimal', 2: 'Low', 3: 'Medium', 4: 'High', 5: 'Expert' }
 
 const TIER_CONFIG = {
-  1: { label: 'Tier 1', bg: 'rgba(56,189,248,0.09)', border: 'rgba(56,189,248,0.2)', text: '#38bdf8' },
-  2: { label: 'Tier 2', bg: 'rgba(167,139,250,0.09)', border: 'rgba(167,139,250,0.2)', text: '#a78bfa' },
-  3: { label: 'Tier 3', bg: 'rgba(251,146,60,0.09)',  border: 'rgba(251,146,60,0.2)',  text: '#fb923c' },
+  1: { label: 'Tier 1', bg: '#eff6ff', border: '#bfdbfe', text: '#1d4ed8' },
+  2: { label: 'Tier 2', bg: '#fff7ed', border: '#fed7aa', text: '#b45309' },
+  3: { label: 'Tier 3', bg: '#fef2f2', border: '#fecaca', text: '#b91c1c' },
 }
 
 export default function PatternCard({ pattern, index, onClick }) {
@@ -52,18 +52,16 @@ export default function PatternCard({ pattern, index, onClick }) {
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
-        background: hovered
-          ? 'linear-gradient(145deg, rgba(255,255,255,0.072) 0%, rgba(255,255,255,0.04) 100%)'
-          : 'linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.026) 100%)',
+        background: '#ffffff',
         border: hovered
           ? `1px solid ${cat.border}`
-          : '1px solid rgba(255,255,255,0.085)',
-        borderTopColor: hovered ? cat.border : 'rgba(255,255,255,0.115)',
+          : '1px solid #e4e0d8',
+        borderTopColor: hovered ? cat.border : '#e4e0d8',
         borderRadius: 14,
         overflow: 'hidden',
         boxShadow: hovered
-          ? `0 1px 0 rgba(255,255,255,0.06) inset, 0 8px 32px rgba(0,0,0,0.3), 0 0 40px ${cat.bg}`
-          : '0 1px 0 rgba(255,255,255,0.05) inset, 0 3px 16px rgba(0,0,0,0.2)',
+          ? `0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.08), 0 0 40px ${cat.bg}`
+          : '0 1px 3px rgba(0,0,0,0.05)',
         transition: 'all 0.22s ease',
         cursor: 'pointer',
       }}
@@ -89,9 +87,9 @@ export default function PatternCard({ pattern, index, onClick }) {
             fontFamily: 'JetBrains Mono, monospace',
             fontSize: 10.5,
             fontWeight: 700,
-            color: hovered ? cat.text : '#334155',
-            background: hovered ? cat.bg : 'rgba(255,255,255,0.04)',
-            border: `1px solid ${hovered ? cat.border : 'rgba(255,255,255,0.07)'}`,
+            color: hovered ? cat.text : '#9a9890',
+            background: hovered ? cat.bg : '#f5f3ee',
+            border: `1px solid ${hovered ? cat.border : '#e4e0d8'}`,
             padding: '3px 8px',
             borderRadius: 5,
             letterSpacing: '0.1em',
@@ -105,9 +103,9 @@ export default function PatternCard({ pattern, index, onClick }) {
               display: 'inline-flex', alignItems: 'center', gap: 3,
               fontSize: 9.5, fontWeight: 600, letterSpacing: '0.05em',
               padding: '2px 7px', borderRadius: 6,
-              background: hovered ? `${cat.text}15` : 'rgba(255,255,255,0.035)',
-              border: `1px solid ${hovered ? cat.text + '35' : 'rgba(255,255,255,0.065)'}`,
-              color: hovered ? cat.text : '#3a5068',
+              background: hovered ? `${cat.text}18` : '#f5f3ee',
+              border: `1px solid ${hovered ? cat.text + '55' : '#e4e0d8'}`,
+              color: hovered ? cat.text : '#9a9890',
               transition: 'all 0.2s ease',
             }}>
               <GitBranch size={8} />
@@ -131,7 +129,7 @@ export default function PatternCard({ pattern, index, onClick }) {
         {/* Name + category */}
         <div>
           <h3 style={{
-            color: '#f1f5f9',
+            color: '#1a1a18',
             fontWeight: 700,
             fontSize: 14.5,
             letterSpacing: '-0.015em',
@@ -160,7 +158,7 @@ export default function PatternCard({ pattern, index, onClick }) {
 
         {/* Core concept */}
         <p style={{
-          color: '#5a6b80',
+          color: '#6a6860',
           fontSize: 12.5,
           lineHeight: 1.65,
           flex: 1,
@@ -183,12 +181,12 @@ export default function PatternCard({ pattern, index, onClick }) {
           alignItems: 'center',
           justifyContent: 'space-between',
           paddingTop: 12,
-          borderTop: `1px solid ${hovered ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.055)'}`,
+          borderTop: `1px solid ${hovered ? '#d4d0c8' : '#e4e0d8'}`,
           transition: 'border-color 0.2s ease',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
             <ComplexityBar value={pattern.complexity} color={cat.text} />
-            <span style={{ fontSize: 10, color: '#3d5068', fontWeight: 500 }}>
+            <span style={{ fontSize: 10, color: '#9a9890', fontWeight: 500 }}>
               {COMPLEXITY_LABELS[pattern.complexity]}
             </span>
           </div>
@@ -197,10 +195,10 @@ export default function PatternCard({ pattern, index, onClick }) {
             <span style={{
               display: 'flex', alignItems: 'center', gap: 3,
               fontSize: 10.5, fontWeight: 600, letterSpacing: '-0.01em',
-              color: hovered ? cat.text : '#38bdf8',
+              color: hovered ? cat.text : '#2563b0',
               padding: '4px 9px', borderRadius: 6,
-              background: hovered ? cat.bg : 'rgba(56,189,248,0.07)',
-              border: `1px solid ${hovered ? cat.border : 'rgba(56,189,248,0.14)'}`,
+              background: hovered ? cat.bg : '#eff6ff',
+              border: `1px solid ${hovered ? cat.border : '#bfdbfe'}`,
               transition: 'all 0.18s ease',
               pointerEvents: 'none',
             }}>
@@ -215,20 +213,20 @@ export default function PatternCard({ pattern, index, onClick }) {
               style={{
                 display: 'flex', alignItems: 'center', gap: 3,
                 fontSize: 10.5, fontWeight: 500,
-                color: '#3d5068',
+                color: '#9a9890',
                 textDecoration: 'none',
                 padding: '4px 8px', borderRadius: 6,
-                background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(255,255,255,0.06)',
+                background: '#f5f3ee',
+                border: '1px solid #e4e0d8',
                 transition: 'all 0.15s ease',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.color = '#64748b'
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'
+                e.currentTarget.style.color = '#1a1a18'
+                e.currentTarget.style.borderColor = '#ccc9c0'
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.color = '#3d5068'
-                e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'
+                e.currentTarget.style.color = '#9a9890'
+                e.currentTarget.style.borderColor = '#e4e0d8'
               }}
             >
               <ExternalLink size={9} strokeWidth={2.5} />
