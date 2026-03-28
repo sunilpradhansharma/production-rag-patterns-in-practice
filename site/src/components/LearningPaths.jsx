@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion'
 import { Clock, ChevronRight, ArrowRight } from 'lucide-react'
-import { LEARNING_PATHS } from '../data/patterns.js'
-
-const REPO_BASE = 'https://github.com/sunilpradhansharma/production-rag-patterns-in-practice/blob/main/'
+import { LEARNING_PATHS } from '../data/learningPaths.js'
 
 export default function LearningPaths() {
   return (
@@ -103,14 +101,14 @@ export default function LearningPaths() {
                 </p>
               </div>
 
-              {/* Pattern list */}
+              {/* Step list */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 20 }}>
-                {path.patterns.map((p, j) => (
+                {path.steps.map((step, j) => (
                   <div
-                    key={p.id}
+                    key={step.id}
                     style={{
                       display: 'flex',
-                      alignItems: 'center',
+                      alignItems: 'flex-start',
                       gap: 10,
                       padding: '7px 10px',
                       borderRadius: 6,
@@ -131,14 +129,20 @@ export default function LearningPaths() {
                       color: path.color,
                       flexShrink: 0,
                       fontFamily: 'JetBrains Mono, monospace',
+                      marginTop: 1,
                     }}>
                       {j + 1}
                     </div>
-                    <span style={{ color: '#94a3b8', fontSize: 12.5, fontWeight: 500 }}>
-                      {p.name}
-                    </span>
-                    {j < path.patterns.length - 1 && (
-                      <ChevronRight size={10} style={{ color: '#334155', marginLeft: 'auto' }} />
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ color: '#94a3b8', fontSize: 12.5, fontWeight: 600, marginBottom: 1 }}>
+                        {step.name}
+                      </div>
+                      <div style={{ color: '#3d5068', fontSize: 11, lineHeight: 1.4 }}>
+                        {step.what}
+                      </div>
+                    </div>
+                    {j < path.steps.length - 1 && (
+                      <ChevronRight size={10} style={{ color: '#334155', flexShrink: 0, marginTop: 4 }} />
                     )}
                   </div>
                 ))}
@@ -146,7 +150,7 @@ export default function LearningPaths() {
 
               {/* CTA */}
               <a
-                href={`${REPO_BASE}modules/${String(path.patterns[0].id).padStart(2, '0')}_${path.patterns[0].name.toLowerCase().replace(/[^a-z0-9]+/g, '_')}/demo.ipynb`}
+                href={path.startNotebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -174,7 +178,7 @@ export default function LearningPaths() {
                   e.currentTarget.style.borderColor = `${path.color}2a`
                 }}
               >
-                Start with {path.patterns[0].name}
+                Start with {path.steps[0].name}
                 <ArrowRight size={13} />
               </a>
             </motion.div>

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Shield, CreditCard, FileText, AlertTriangle, Eye, UserCheck } from 'lucide-react'
-import { USE_CASES } from '../data/patterns.js'
+import { USE_CASES } from '../data/useCases.js'
 
 const ICON_MAP = { Shield, CreditCard, FileText, AlertTriangle, Eye, UserCheck }
 
@@ -100,31 +100,59 @@ export default function UseCases() {
 
                 {/* Examples */}
                 <div style={{ marginBottom: 14 }}>
-                  <div style={{ fontSize: 10, fontWeight: 600, color: '#334155', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>
+                  <div style={{
+                    fontSize: 10,
+                    fontWeight: 600,
+                    color: '#334155',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    marginBottom: 8,
+                  }}>
                     Examples
                   </div>
-                  <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: 4 }}>
-                    {uc.examples.map(ex => (
-                      <li
-                        key={ex}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                    {uc.examples.map((ex, j) => (
+                      <div
+                        key={j}
                         style={{
-                          fontSize: 12,
-                          color: '#64748b',
-                          display: 'flex',
-                          alignItems: 'flex-start',
-                          gap: 6,
+                          padding: '7px 9px',
+                          borderRadius: 6,
+                          background: 'rgba(255,255,255,0.02)',
+                          border: '1px solid rgba(255,255,255,0.055)',
                         }}
                       >
-                        <span style={{ color: uc.color, marginTop: 2, flexShrink: 0 }}>›</span>
-                        {ex}
-                      </li>
+                        <div style={{ fontSize: 11.5, color: '#94a3b8', marginBottom: 3, lineHeight: 1.4 }}>
+                          {ex.problem}
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                          <span style={{
+                            fontSize: 10,
+                            fontWeight: 600,
+                            color: uc.color,
+                            fontFamily: 'JetBrains Mono, monospace',
+                          }}>
+                            {ex.pattern}
+                          </span>
+                          <span style={{ fontSize: 10, color: '#2a3f52' }}>—</span>
+                          <span style={{ fontSize: 10, color: '#3d5068', lineHeight: 1.4 }}>
+                            {ex.why}
+                          </span>
+                        </div>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
 
                 {/* Pattern tags */}
                 <div>
-                  <div style={{ fontSize: 10, fontWeight: 600, color: '#334155', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 8 }}>
+                  <div style={{
+                    fontSize: 10,
+                    fontWeight: 600,
+                    color: '#334155',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    marginBottom: 8,
+                  }}>
                     Key Patterns
                   </div>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
