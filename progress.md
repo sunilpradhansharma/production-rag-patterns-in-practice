@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
-Last updated: 2026-03-28
-Session count: 22
+Last updated: 2026-03-27
+Session count: 23
 
 ---
 
@@ -10,12 +10,12 @@ Session count: 22
 | Category | Patterns | Done | In progress | Not started |
 |----------|----------|------|-------------|-------------|
 | Foundational | 2 | 2 | 0 | 0 |
-| Retrieval Enhancement | 7 | 5 | 0 | 2 |
+| Retrieval Enhancement | 7 | 6 | 0 | 1 |
 | Indexing & Chunking | 6 | 5 | 0 | 1 |
 | Reasoning & Self-Correction | 5 | 5 | 0 | 0 |
 | Architectural | 3 | 3 | 0 | 0 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **20** | **0** | **6** |
+| **TOTAL** | **26** | **21** | **0** | **5** |
 
 ---
 
@@ -34,7 +34,7 @@ Session count: 22
 - [x] `05_multi_query_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [x] `06_hyde` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [x] `07_step_back_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
-- [ ] `08_flare` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
+- [x] `08_flare` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `09_ensemble_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 
 ### Indexing & chunking
@@ -65,6 +65,16 @@ Session count: 22
 ---
 
 ## Session log
+
+### Session 23 — 2026-03-27
+- Completed module 08_flare — all phases (A/B/C/D):
+  - SKILL.md: Jiang et al. EMNLP 2023 arXiv:2305.06983; sentence-by-sentence generation with uncertainty detection; log-prob caveat (Anthropic API does not expose token probabilities — hedge word proxy used); `SentenceResult` dataclass; `detect_hedges`/`generate_next_sentence`/`flare_generate` components; output quality ★★★★☆, latency ★☆☆☆☆, cost ★★☆☆☆, complexity ★★★★★; pitfalls (calibration-dependent uncertainty, excessive retrieval on weak domains, sentence boundary fragility, context accumulation overflow, retrieval query quality); relates 16 Self-RAG + 18 IRCoT + 22 Agentic
+  - slides.md: "Retrieve Only When Uncertain"; upfront retrieval waste problem table; ASCII confident/uncertain/grounded sequence; Mermaid loop diagram; 4-row compliance report table; key insight callout; tradeoffs; transition to Module 09 (143 prose words ✓)
+  - README.md: 6–7 min; framing script; simplified demo (prompt-based, log-probs unavailable); Q&As (uncertainty detection with 3 approaches + hedging heuristic, when to use vs standard RAG, production-readiness + lighter version); transition "sequential and conditional vs. parallel and additive" (400 words ✓)
+  - demo.ipynb: 12 cells; `HEDGE_WORDS` list (12 words); `SentenceResult` dataclass; `detect_hedges` (whole-word regex); `generate_next_sentence` (Haiku, max_tokens=120, first-sentence regex extraction, grounded regeneration with "do not hedge" instruction); `flare_generate` loop (tentative → detect → retrieve if hedged → `injected_context[:800]` bounded window → regenerate); returns `total_sentences` + `retrieval_count`; Cell 4 Basel III long-form explanation; Cell 5 per-sentence detail + figure diff (numbers added by retrieval) + summary table; Cell 6 compliance report + retrieval efficiency comparison
+- Fix applied during Phase D: `flare_generate` return dict was missing `total_sentences` key — added before validation
+- Validation: demo.ipynb 20/20 checks; all 4 files present
+- Status: 21/26 modules complete. Tier 1: 10/10. Tier 2: 9/9. Tier 3: 1/7.
 
 ### Session 22 — 2026-03-28
 - Completed module 23_multi_hop_rag — all phases (A/B/C/D):
