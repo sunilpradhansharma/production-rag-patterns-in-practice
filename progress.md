@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
 Last updated: 2026-03-27
-Session count: 15
+Session count: 16
 
 ---
 
@@ -10,12 +10,12 @@ Session count: 15
 | Category | Patterns | Done | In progress | Not started |
 |----------|----------|------|-------------|-------------|
 | Foundational | 2 | 2 | 0 | 0 |
-| Retrieval Enhancement | 7 | 4 | 0 | 3 |
+| Retrieval Enhancement | 7 | 5 | 0 | 2 |
 | Indexing & Chunking | 6 | 2 | 0 | 4 |
 | Reasoning & Self-Correction | 5 | 4 | 0 | 1 |
 | Architectural | 3 | 1 | 0 | 2 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **13** | **0** | **13** |
+| **TOTAL** | **26** | **14** | **0** | **12** |
 
 ---
 
@@ -33,7 +33,7 @@ Session count: 15
 - [x] `04_rag_fusion` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [x] `05_multi_query_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [x] `06_hyde` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
-- [ ] `07_step_back_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
+- [x] `07_step_back_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `08_flare` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `09_ensemble_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 
@@ -65,6 +65,15 @@ Session count: 15
 ---
 
 ## Session log
+
+### Session 16 — 2026-03-27
+- Completed module 07_step_back_rag — all phases (A/B/C/D):
+  - SKILL.md: Zheng et al. ICLR 2024 arXiv:2310.06117; dual parallel retrieval (abstract k=5 + specific k=3); labelled combined context; abstraction generator + abstract retriever + specific retriever + combiner + generator components; barrier option and CRR Tier 2 fintech use cases; quality/answer ★★★★☆, latency ★★★☆☆, complexity ★★☆☆☆; pitfalls (too vague, lose specifics, overhead on simple queries, weak model); relates HyDE+Multi-Query+Adaptive RAG
+  - slides.md: "Abstract Then Answer"; barrier option specificity problem; ASCII dual-path pipeline + Mermaid; key insight callout; Tier 2 CRR compliance table (step-back vs original paths); tradeoffs; transition to chunking (196 prose words ✓)
+  - README.md: 5–6 min; framing script (vs Multi-Query: down vs up); 5-step live demo (Basel III Pillar 1); Q&As (when fails, how generated, combining with Multi-Query); transition (399 words ✓)
+  - demo.ipynb: 12 cells; generate_step_back_question() (Haiku, one-level-up prompt); step_back_rag() (abstract → dual retrieve → dedup → labelled context → generate); CET1/G-SIB query Cell 4; overlap analysis + baseline comparison Cell 5; capital conservation buffer fintech Cell 6
+- Validation: SKILL.md 21/21 | slides.md 10/10 | README.md 12/12 | demo.ipynb 29/29
+- Status: 14/26 modules complete. Tier 1: 10/10. Tier 2: 4/9.
 
 ### Session 15 — 2026-03-27
 - Completed module 05_multi_query_rag — all phases (A/B/C/D):
