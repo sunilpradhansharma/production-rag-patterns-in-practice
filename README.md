@@ -1155,4 +1155,6 @@ Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before
 
 ## License
 
-You are free to use, copy, modify, and distribute this repository for any purpose, including commercial use, provided the original copyright notice is retained.
+Copyright © Sunil Pradhan Sharma. All rights reserved.
+
+This repository is made available for personal and educational use. Any redistribution, commercial use, or derivative works require explicit written permission from the author.
