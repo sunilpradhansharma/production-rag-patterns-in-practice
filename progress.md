@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
-Last updated: 2026-03-27
-Session count: 23
+Last updated: 2026-03-28
+Session count: 24
 
 ---
 
@@ -10,12 +10,12 @@ Session count: 23
 | Category | Patterns | Done | In progress | Not started |
 |----------|----------|------|-------------|-------------|
 | Foundational | 2 | 2 | 0 | 0 |
-| Retrieval Enhancement | 7 | 6 | 0 | 1 |
+| Retrieval Enhancement | 7 | 7 | 0 | 0 |
 | Indexing & Chunking | 6 | 5 | 0 | 1 |
 | Reasoning & Self-Correction | 5 | 5 | 0 | 0 |
 | Architectural | 3 | 3 | 0 | 0 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **21** | **0** | **5** |
+| **TOTAL** | **26** | **22** | **0** | **4** |
 
 ---
 
@@ -35,7 +35,7 @@ Session count: 23
 - [x] `06_hyde` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [x] `07_step_back_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [x] `08_flare` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
-- [ ] `09_ensemble_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
+- [x] `09_ensemble_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 
 ### Indexing & chunking
 - [x] `10_parent_document` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
@@ -65,6 +65,15 @@ Session count: 23
 ---
 
 ## Session log
+
+### Session 24 — 2026-03-28
+- Completed module 09_ensemble_rag — all phases (A/B/C/D):
+  - SKILL.md: LangChain EnsembleRetriever docs 2023–2024 + Manning et al. IR textbook; 3-retriever parallel architecture (BM25, dense, keyword); weighted RRF combiner with `[0.4, 0.4, 0.2]` default; multi-regulator compliance fintech use cases (FINRA/SEC/CFTC vocabulary diversity); quality ★★★★★, latency ★★☆☆☆, cost ★★☆☆☆, complexity ★★★★☆; pitfalls (RRF k tuning, index staleness skew, document ID deduplication, diminishing returns after 3 retrievers, answer-level ensemble warning); relates 03 Hybrid + 04 RAG Fusion + 21 Modular RAG
+  - slides.md: "Majority Vote for Quality"; regulatory vocabulary mismatch problem; 3-retriever → RRF combiner → LLM ASCII + Mermaid diagram; key insight "consensus beats dominance"; margin call FINRA/SEC/CFTC fintech table; tradeoffs; explicit "don't use it when" guidance
+  - README.md: 6–7 min; naive → hybrid → ensemble side-by-side demo script with the specific "chunk ranked 11th by BM25 and 9th by dense surfaced at #4" moment; 5 Q&As (strategy count, weight tuning, RRF vs score normalization, answer-level ensemble, relationship to Hybrid RAG); transition to Module 15 (Long Context RAG)
+  - demo.ipynb: 12 cells; all 4 sample docs as shared flat corpus; `naive_retrieve` (pure cosine); `hybrid_retrieve` (BM25 + dense 2-way RRF); `hyde_retrieve` (Haiku hypothesis → embed → search); `weighted_rrf_ensemble` (3-way weighted RRF, `found_in` provenance tracking); `ensemble_retrieve` (ThreadPoolExecutor max_workers=3, parallel execution); ENSEMBLE_WEIGHTS=[0.35, 0.40, 0.25]; Cell 4 capital requirements query with consensus badges (***/**/*); Cell 5 3 individual answers in parallel + coverage matrix (Y/- per strategy) + ensemble comparison; Cell 6 compliance briefing query top_k=7, multi-source attribution, verification summary
+- Validation: demo.ipynb 65/65 checks passed; all 4 files present
+- Status: 22/26 modules complete. Tier 1: 10/10. Tier 2: 9/9. Retrieval Enhancement: 7/7 (complete). Tier 3: 2/7.
 
 ### Session 23 — 2026-03-27
 - Completed module 08_flare — all phases (A/B/C/D):
