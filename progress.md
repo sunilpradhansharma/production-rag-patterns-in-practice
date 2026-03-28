@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
 Last updated: 2026-03-27
-Session count: 18
+Session count: 19
 
 ---
 
@@ -11,11 +11,11 @@ Session count: 18
 |----------|----------|------|-------------|-------------|
 | Foundational | 2 | 2 | 0 | 0 |
 | Retrieval Enhancement | 7 | 5 | 0 | 2 |
-| Indexing & Chunking | 6 | 4 | 0 | 2 |
+| Indexing & Chunking | 6 | 5 | 0 | 1 |
 | Reasoning & Self-Correction | 5 | 4 | 0 | 1 |
 | Architectural | 3 | 1 | 0 | 2 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **16** | **0** | **10** |
+| **TOTAL** | **26** | **17** | **0** | **9** |
 
 ---
 
@@ -42,7 +42,7 @@ Session count: 18
 - [x] `11_sentence_window` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [x] `12_raptor` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [x] `13_contextual_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
-- [ ] `14_multi_vector_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
+- [x] `14_multi_vector_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `15_long_context_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 
 ### Reasoning & self-correction
@@ -65,6 +65,15 @@ Session count: 18
 ---
 
 ## Session log
+
+### Session 19 — 2026-03-27
+- Completed module 14_multi_vector_rag — all phases (A/B/C/D):
+  - SKILL.md: LangChain MultiVectorRetriever 2023; multiple representations per chunk (summary + questions + keywords); two-layer architecture (Chroma vectorstore for reps + InMemoryStore for originals); doc_id link; 9-step walkthrough; Basel III + earnings report + product brochure + lending policy fintech use cases; quality ★★★★☆, indexing cost/storage ★★☆☆☆, complexity ★★★★☆; storage multiplier pitfall; rep quality ceiling; de-duplication semantics; relates 13/12/06
+  - slides.md: "Multiple Representations, One Chunk"; 3-query-style problem table; ASCII pipeline + Mermaid; Basel III 3-way query fintech table; key insight callout; tradeoffs; transition to Module 19 (152 prose words ✓)
+  - README.md: 7–8 min; framing script; 5-step demo; Q&As (2–4 reps, storage tradeoff, vs Contextual, vs HyDE); transition (400 words ✓)
+  - demo.ipynb: 12 cells; generate_summary/generate_questions/extract_keywords (Haiku); build_multi_vector_index (doc_ids, 3 reps per chunk, Chroma + InMemoryStore + MultiVectorRetriever); multi_vector_rag (direct vectorstore search for rep inspection + retriever.invoke for originals); 3 query styles Cell 4; storage breakdown + per-query rep match table Cell 5; 3 analyst personas Cell 6
+- Validation: SKILL.md 26/26 | slides.md 15/15 | demo.ipynb 20/20
+- Status: 17/26 modules complete. Tier 1: 10/10. Tier 2: 7/9. Indexing & Chunking: 5/6.
 
 ### Session 18 — 2026-03-27
 - Completed module 12_raptor — Phase C (demo.ipynb) and Phase D (validation):
