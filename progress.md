@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
 Last updated: 2026-03-28
-Session count: 21
+Session count: 22
 
 ---
 
@@ -13,9 +13,9 @@ Session count: 21
 | Retrieval Enhancement | 7 | 5 | 0 | 2 |
 | Indexing & Chunking | 6 | 5 | 0 | 1 |
 | Reasoning & Self-Correction | 5 | 5 | 0 | 0 |
-| Architectural | 3 | 2 | 0 | 1 |
+| Architectural | 3 | 3 | 0 | 0 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **19** | **0** | **7** |
+| **TOTAL** | **26** | **20** | **0** | **6** |
 
 ---
 
@@ -55,7 +55,7 @@ Session count: 21
 ### Architectural
 - [x] `21_modular_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [x] `22_agentic_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
-- [ ] `23_multi_hop_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
+- [x] `23_multi_hop_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 
 ### Specialized
 - [ ] `24_graph_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
@@ -65,6 +65,15 @@ Session count: 21
 ---
 
 ## Session log
+
+### Session 22 — 2026-03-28
+- Completed module 23_multi_hop_rag — all phases (A/B/C/D):
+  - SKILL.md: Khattab et al. DSP 2022 arXiv:2212.14024 (primary) + Yang et al. HotpotQA EMNLP 2018 (benchmark); bridge entity extraction per hop; `HopResult` path tracker; `MAX_HOPS=3` hard ceiling; entity extractor/hop controller/path tracker/synthesiser components; KYC UBO + counterparty exposure + regulatory cross-reference + supply chain fintech use cases; answer quality ★★★★☆, latency ★★☆☆☆, complexity ★★★★☆, robustness ★★★☆☆; infinite loop / bridge accuracy / entity naming / context overflow pitfalls; relates 24 Graph RAG + 22 Agentic + 05 Multi-Query
+  - slides.md: "Connect the Dots Across Documents"; 3-row problem table; 3-hop ASCII UBO chain; Mermaid loop diagram; KYC 4-row hop table; key insight callout; transition "signs vs map" (129 prose words ✓)
+  - README.md: 8–10 min; framing script; 5-step demo (TechCorp → Nexus Holdings → Viktor Sorin → OFAC); Q&As (2-4 hops + MAX_HOPS, extraction failure fallback, agent vs multi-hop); transition (400 words ✓)
+  - demo.ipynb: 12 cells; `ExtractionResult` + `HopResult` dataclasses; `extract_bridge_entity` (Haiku, JSON with bridge_entity/terminal/reasoning, regex + fallback); `synthesise_answer` (Sonnet, full chain); `multi_hop_rag` loop (hard ceiling, terminal break, bridge becomes next query); 5-doc synthetic corpus (TechCorp → Nexus Holdings → Viktor Sorin → OFAC SDN → BVI obligations → screening policy); Cell 4 sanctions connectivity query; Cell 5 chain visualisation + latency table + standard RAG baseline; Cell 6 two KYC queries
+- Validation: demo.ipynb 44/44 checks; all 4 files present
+- Status: 20/26 modules complete. Tier 1: 10/10 (complete). Tier 2: 9/9 (complete). Architectural: 3/3 (complete).
 
 ### Session 21 — 2026-03-28
 - Completed module 21_modular_rag — all phases (A/B/C/D):
