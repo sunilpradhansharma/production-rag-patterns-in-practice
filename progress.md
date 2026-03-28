@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
 Last updated: 2026-03-28
-Session count: 27
+Session count: 28
 
 ---
 
@@ -14,7 +14,7 @@ Session count: 27
 | Indexing & Chunking | 6 | 6 | 0 | 0 |
 | Reasoning & Self-Correction | 5 | 5 | 0 | 0 |
 | Architectural | 3 | 3 | 0 | 0 |
-| Specialized | 3 | 1 | 0 | 2 |
+| Specialized | 3 | 2 | 0 | 1 |
 | **TOTAL** | **26** | **25** | **0** | **1** |
 
 ---
@@ -59,12 +59,21 @@ Session count: 27
 
 ### Specialized
 - [x] `24_graph_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
-- [ ] `25_multimodal_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
+- [x] `25_multimodal_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `26_temporal_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
 
 ---
 
 ## Session log
+
+### Session 28 — 2026-03-28
+- Completed module 25_multimodal_rag — all phases (A/B/C/D):
+  - SKILL.md: Chen et al. arXiv:2407.01004 (MMRet 2024); 7-component architecture (multimodal extractor, vision descriptor, text/image embedder, unified index, cross-modal retriever, context builder, vision LLM synthesiser); key insight: images embedded via text descriptions not raw bytes; fintech use cases (earnings chart Q&A, prospectus table extraction, trading dashboard screenshots, Basel III Pillar 3 tables); visual query quality ★★★★☆ vs vision LLM cost ★★☆☆☆; 6 pitfalls (PDF extraction variance, structured description prompts, table parsing hardness, index-time cost, MAX_IMAGES=3 context budget, modality diversity enforcement); relates 15 Long-Context + 13 Contextual RAG + 14 Multi-Vector RAG
+  - slides.md: "Images, Tables, and Text"; "see Figure 1" as the opening problem; three-stream ASCII extraction diagram; 5-row earnings use case table with modality labels; "without multimodal RAG" failure mode stated explicitly; use/avoid conditions
+  - README.md: 8-10 min; vision description printout as mandatory demo anchor ("read it aloud"); 5 Q&As (scanned PDFs + OCR, why description not raw bytes + CLIP alternative, large table splitting, PowerPoint support, MAX_IMAGES=3 token budget); demo contrast "text says only 'see Figure 1'; values came from the chart"; transition "Multimodal handles visuals -- Temporal handles time" → Module 26; 5 delivery anti-patterns
+  - demo.ipynb: 12 cells; synthetic Meridian Financial Corp. Q4 2024 earnings (4 text sections, 3 markdown tables, 3 pre-written chart descriptions); `VISION_DESCRIPTION_PROMPT` (structured: axes/values/trend); `parse_markdown_table` (headers/rows preserved from markdown); `build_multimodal_index` (unified Chroma with modality metadata); `multimodal_retrieve` (per-modality top-k with filter= for diversity); `build_context_and_synthesise` (text/table/image sections); Cell 4: Q3 revenue query (table + chart); Cell 5: parsed table rows + modality score comparison + vision API call code pattern + text-only baseline; Cell 6: capital adequacy (table-heavy) + NPL trend (chart-heavy) + modality routing comparison table
+- Validation: 53/53 checks passed; all 4 files present; all 6 code cells parse cleanly
+- Status: 25/26 modules complete. Specialized: 2/3. One module remaining: 26_temporal_rag.
 
 ### Session 27 — 2026-03-28
 - Completed module 24_graph_rag — all phases (A/B/C/D):
