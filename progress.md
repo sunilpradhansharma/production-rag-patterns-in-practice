@@ -1,7 +1,7 @@
 # Workshop Progress Tracker
 
 Last updated: 2026-03-27
-Session count: 17
+Session count: 18
 
 ---
 
@@ -11,11 +11,11 @@ Session count: 17
 |----------|----------|------|-------------|-------------|
 | Foundational | 2 | 2 | 0 | 0 |
 | Retrieval Enhancement | 7 | 5 | 0 | 2 |
-| Indexing & Chunking | 6 | 3 | 0 | 3 |
+| Indexing & Chunking | 6 | 4 | 0 | 2 |
 | Reasoning & Self-Correction | 5 | 4 | 0 | 1 |
 | Architectural | 3 | 1 | 0 | 2 |
 | Specialized | 3 | 0 | 0 | 3 |
-| **TOTAL** | **26** | **15** | **0** | **11** |
+| **TOTAL** | **26** | **16** | **0** | **10** |
 
 ---
 
@@ -40,7 +40,7 @@ Session count: 17
 ### Indexing & chunking
 - [x] `10_parent_document` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [x] `11_sentence_window` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
-- [ ] `12_raptor` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
+- [x] `12_raptor` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [x] `13_contextual_rag` *(Tier 1)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `14_multi_vector_rag` *(Tier 2)* — SKILL.md | notebook | slides | speaker notes
 - [ ] `15_long_context_rag` *(Tier 3)* — SKILL.md | notebook | slides | speaker notes
@@ -65,6 +65,13 @@ Session count: 17
 ---
 
 ## Session log
+
+### Session 18 — 2026-03-27
+- Completed module 12_raptor — Phase C (demo.ipynb) and Phase D (validation):
+  - demo.ipynb: 12 cells; chunk_document (RecursiveCharacterTextSplitter 400/60); optimal_k (KMeans, silhouette score, MAX_K=6); summarize_cluster (Haiku, level-aware instruction); build_raptor_tree (recursive: embed → cluster → summarise → recurse, stops at MIN_NODES=3 with root collapse); build_unified_index (Chroma, all nodes tagged with level+node_id metadata); raptor_rag (collapsed-tree retrieval, context ordered highest-level first); earnings_report.txt Cell 4 "What is the overall business outlook?"; Cell 5 tree structure visualisation + level match comparison (thematic vs specific); Cell 6 inline prospectus + "What are the main risk themes?" thematic query
+  - Phase B also completed this session: slides.md (193 prose words ✓) + README.md (399 words ✓)
+- Validation: demo.ipynb 12/12 checks
+- Status: 16/26 modules complete. Tier 1: 10/10. Tier 2: 6/9. Indexing & Chunking: 4/6.
 
 ### Session 17 — 2026-03-27
 - Completed module 11_sentence_window — all phases (A/B/C/D):
