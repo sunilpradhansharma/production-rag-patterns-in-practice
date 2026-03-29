@@ -7,6 +7,9 @@
 [![Patterns: 26](https://img.shields.io/badge/RAG_patterns-26-purple.svg)](#pattern-catalog)
 [![License: Sunil Pradhan Sharma](https://img.shields.io/badge/license-Sunil%20Pradhan%20Sharma-green.svg)](https://www.linkedin.com/in/sunil-p-sharma/)
 
+> **Live site:** [sunilpradhansharma.github.io/production-rag-patterns-in-practice](https://sunilpradhansharma.github.io/production-rag-patterns-in-practice/)
+> Browse all 26 patterns, filter by category, view animated architecture diagrams, and jump directly to notebooks — no setup required.
+
 ---
 
 ## What this workshop is
