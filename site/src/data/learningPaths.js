@@ -42,8 +42,8 @@ export const LEARNING_PATHS = [
         what: 'BM25 + dense fusion via RRF; the single best retrieval upgrade',
       },
     ],
-    color: '#38bdf8',
-    colorDim: 'rgba(56,189,248,0.10)',
+    color: '#3730A3',
+    colorDim: 'rgba(55,48,163,0.10)',
     startNotebook: `${REPO}/blob/main/modules/01_naive_rag/demo.ipynb`,
   },
   {

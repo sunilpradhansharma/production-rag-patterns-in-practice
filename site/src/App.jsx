@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { initAnimations } from './lib/animations.js'
 import Navbar from './components/Navbar.jsx'
 import SectionDivider from './components/SectionDivider.jsx'
 import HeroSection from './sections/HeroSection.jsx'
@@ -10,6 +12,8 @@ import FAQSection from './sections/FAQSection.jsx'
 import CTASection from './sections/CTASection.jsx'
 
 export default function App() {
+  useEffect(() => { initAnimations() }, [])
+
   return (
     <div className="page-bg">
       <Navbar />

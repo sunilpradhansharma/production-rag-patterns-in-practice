@@ -15,8 +15,8 @@ export const USE_CASES = [
   {
     domain: 'Regulatory Compliance',
     icon: 'Shield',
-    color: '#38bdf8',
-    colorDim: 'rgba(56,189,248,0.08)',
+    color: '#3730A3',
+    colorDim: 'rgba(55,48,163,0.08)',
     // README: "Every module uses the same synthetic fintech corpus — Basel III
     // regulatory text, ISDA contract excerpts, earnings reports..."
     description: 'Basel III, ISDA agreements, MiFID II, Dodd-Frank. The shared sample corpus ships with the repo.',

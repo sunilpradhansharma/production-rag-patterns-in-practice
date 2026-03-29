@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { GITHUB_URL } from '../lib/constants.js'
 
 const FOOTER_COLS = [
@@ -35,76 +34,40 @@ const FOOTER_COLS = [
 
 export default function CTASection() {
   return (
-    <section style={{ borderTop: '1px solid #e8e8e8' }}>
+    <section style={{ borderTop: '1px solid #F0E8D8' }}>
       {/* 3-column footer grid */}
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        style={{
-          display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24,
-          padding: '40px 32px', maxWidth: 960, margin: '0 auto',
-        }}
-      >
+      <div className="site-footer">
         {FOOTER_COLS.map(col => (
           <div key={col.title}>
-            <div style={{ fontSize: 12, fontWeight: 600, color: '#202124', marginBottom: 12 }}>
-              {col.title}
-            </div>
+            <div className="footer-col-title">{col.title}</div>
             {col.links.map(link => (
               <a
                 key={link.label}
                 href={link.href}
                 target={link.external ? '_blank' : undefined}
                 rel={link.external ? 'noopener noreferrer' : undefined}
-                style={{
-                  fontSize: 12, color: '#5f6368', display: 'block',
-                  marginBottom: 8, textDecoration: 'none', transition: 'color 0.15s ease',
-                }}
-                onMouseEnter={e => { e.currentTarget.style.color = '#202124' }}
-                onMouseLeave={e => { e.currentTarget.style.color = '#5f6368' }}
+                className="footer-link"
               >
                 {link.label}
               </a>
             ))}
           </div>
         ))}
-      </motion.div>
+      </div>
 
       {/* Bottom bar */}
-      <div style={{
-        borderTop: '1px solid #e8e8e8',
-        padding: '16px 32px',
-        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        maxWidth: 960, margin: '0 auto',
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2C12 2 12 10 4 12C12 14 12 22 12 22C12 22 12 14 20 12C12 10 12 2 12 2Z" fill="#4285F4"/>
-          </svg>
-          <span style={{ fontSize: 12, color: '#9aa0a6' }}>RAG Patterns in Practice</span>
-        </div>
-        <div style={{ display: 'flex', gap: 20 }}>
-          {[
-            { label: 'License', href: `${GITHUB_URL}/blob/main/LICENSE` },
-            { label: 'GitHub',  href: GITHUB_URL },
-          ].map(link => (
-            <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                fontSize: 12, color: '#5f6368', textDecoration: 'none',
-                transition: 'color 0.15s ease',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.color = '#202124' }}
-              onMouseLeave={e => { e.currentTarget.style.color = '#5f6368' }}
-            >
-              {link.label}
-            </a>
-          ))}
+      <div className="footer-bottom-wrap">
+        <div className="footer-bottom">
+          <div className="footer-logo">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2C12 2 12 10 4 12C12 14 12 22 12 22C12 22 12 14 20 12C12 10 12 2 12 2Z" fill="#3730A3"/>
+            </svg>
+            RAG Patterns in Practice
+          </div>
+          <div className="footer-legal">
+            <a href={`${GITHUB_URL}/blob/main/LICENSE`} target="_blank" rel="noopener noreferrer">License</a>
+            <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
         </div>
       </div>
     </section>

@@ -9,25 +9,19 @@ export default function LearningPathsSection() {
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          style={{ textAlign: 'center', marginBottom: 52 }}
-        >
+        <div data-section-header="" style={{ textAlign: 'center', marginBottom: 52 }}>
           <SectionLabel centered mb={12}>Learning Paths</SectionLabel>
           <h2 style={{
             fontSize: 42,
             fontWeight: 700, letterSpacing: '-0.02em',
-            color: '#202124', marginBottom: 16, lineHeight: 1.12, textAlign: 'center',
+            color: '#1C1917', marginBottom: 16, lineHeight: 1.12, textAlign: 'center',
           }}>
-            Choose your <span style={{ color: '#4285F4' }}>path</span>
+            Choose your <span style={{ color: '#3730A3' }}>path</span>
           </h2>
-          <p style={{ color: '#5f6368', maxWidth: 480, margin: '0 auto', fontSize: 15, lineHeight: 1.6 }}>
+          <p style={{ color: '#57534E', maxWidth: 480, margin: '0 auto', fontSize: 15, lineHeight: 1.6 }}>
             Structured paths from zero to production. Each path builds on the previous.
           </p>
-        </motion.div>
+        </div>
 
         {/* Cards */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 20 }}>
@@ -61,16 +55,16 @@ export default function LearningPathsSection() {
                   </span>
                 </div>
 
-                <h3 style={{ color: '#202124', fontWeight: 700, fontSize: 18, letterSpacing: '-0.015em', marginBottom: 6 }}>
+                <h3 style={{ color: '#1C1917', fontWeight: 700, fontSize: 18, letterSpacing: '-0.015em', marginBottom: 6 }}>
                   {path.title}
                 </h3>
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10 }}>
-                  <Clock size={12} style={{ color: '#9aa0a6' }} />
-                  <span style={{ fontSize: 12, color: '#9aa0a6' }}>{path.duration}</span>
+                  <Clock size={12} style={{ color: '#A8A29E' }} />
+                  <span style={{ fontSize: 12, color: '#A8A29E' }}>{path.duration}</span>
                 </div>
 
-                <p style={{ color: '#5f6368', fontSize: 13, lineHeight: 1.6 }}>{path.description}</p>
+                <p style={{ color: '#57534E', fontSize: 13, lineHeight: 1.6 }}>{path.description}</p>
               </div>
 
               {/* Step list */}
@@ -79,8 +73,8 @@ export default function LearningPathsSection() {
                   <div key={step.id} style={{
                     display: 'flex', alignItems: 'flex-start', gap: 10,
                     padding: '7px 10px', borderRadius: 6,
-                    background: '#f8f9fa',
-                    border: '1px solid #e8e8e8',
+                    background: '#FFF8ED',
+                    border: '1px solid #F0E8D8',
                   }}>
                     <div style={{
                       width: 20, height: 20, borderRadius: 4,
@@ -93,13 +87,13 @@ export default function LearningPathsSection() {
                       {j + 1}
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ color: '#202124', fontSize: 12.5, fontWeight: 600, marginBottom: 1 }}>
+                      <div style={{ color: '#1C1917', fontSize: 12.5, fontWeight: 600, marginBottom: 1 }}>
                         {step.name}
                       </div>
-                      <div style={{ color: '#5f6368', fontSize: 11, lineHeight: 1.4 }}>{step.what}</div>
+                      <div style={{ color: '#57534E', fontSize: 11, lineHeight: 1.4 }}>{step.what}</div>
                     </div>
                     {j < path.steps.length - 1 && (
-                      <ChevronRight size={10} style={{ color: '#9aa0a6', flexShrink: 0, marginTop: 4 }} />
+                      <ChevronRight size={10} style={{ color: '#A8A29E', flexShrink: 0, marginTop: 4 }} />
                     )}
                   </div>
                 ))}

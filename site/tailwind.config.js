@@ -4,15 +4,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        obsidian: {
-          base: '#060B14',
-          surface: '#0A1220',
-          card: 'rgba(255,255,255,0.045)',
+        warm: {
+          base: '#FFFBF5',
+          parchment: '#FFF8ED',
+          deep: '#FFF3E0',
+          surface: '#FFFFFF',
         },
-        glow: {
-          primary: '#38bdf8',
-          secondary: '#0ea5e9',
-          dim: 'rgba(56,189,248,0.15)',
+        indigo: {
+          primary: '#4F46E5',
+          deep: '#3730A3',
+          light: '#6366F1',
+          bg: '#EEF2FF',
+          bdr: '#C7D2FE',
         },
       },
       fontFamily: {

@@ -1,10 +1,9 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useRef, useEffect } from 'react'
 import { ExternalLink, GitBranch } from 'lucide-react'
 import { CATEGORY_COLORS } from '../data/patterns.js'
 import { REPO_BASE } from '../lib/constants.js'
 
-function ComplexityBar({ value, max = 5, color }) {
+function ComplexityBar({ value, max = 5 }) {
   return (
     <div style={{ display: 'flex', gap: 3, alignItems: 'center' }}>
       {Array.from({ length: max }).map((_, i) => (
@@ -14,8 +13,7 @@ function ComplexityBar({ value, max = 5, color }) {
             width: 20,
             height: 3,
             borderRadius: 99,
-            background: i < value ? '#4285F4' : '#e8e8e8',
-            transition: 'all 0.2s ease',
+            background: i < value ? '#3730A3' : '#F0E8D8',
           }}
         />
       ))}
@@ -26,39 +24,80 @@ function ComplexityBar({ value, max = 5, color }) {
 const COMPLEXITY_LABELS = { 1: 'Minimal', 2: 'Low', 3: 'Medium', 4: 'High', 5: 'Expert' }
 
 const TIER_CONFIG = {
-  1: { label: 'Tier 1', bg: '#eef3ff', border: '#c5d8ff', text: '#1967d2' },
-  2: { label: 'Tier 2', bg: '#fff8f0', border: '#fdd9b5', text: '#b06000' },
-  3: { label: 'Tier 3', bg: '#fdf3f3', border: '#fac5c5', text: '#c5221f' },
+  1: { label: 'Tier 1', bg: '#EEF2FF', border: '#C5D8FF', text: '#1967D2' },
+  2: { label: 'Tier 2', bg: '#FFF8F0', border: '#FDD9B5', text: '#B06000' },
+  3: { label: 'Tier 3', bg: '#FDF3F3', border: '#FAC5C5', text: '#C5221F' },
 }
 
 export default function PatternCard({ pattern, index, onClick }) {
-  const [hovered, setHovered] = useState(false)
+  const cardRef = useRef(null)
   const cat = CATEGORY_COLORS[pattern.category] || CATEGORY_COLORS.foundational
   const tier = TIER_CONFIG[pattern.tier] || TIER_CONFIG[1]
 
+  // Scroll entrance: IO reveals card with stagger
+  useEffect(() => {
+    const el = cardRef.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+        observer.unobserve(el)
+        const delay = index * 80
+        setTimeout(() => {
+          el.style.transition =
+            'opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1)'
+          el.style.opacity = '1'
+          el.style.transform = 'translateY(0)'
+          // Remove inline transform after entrance so CSS :hover can take over
+          setTimeout(() => { el.style.transform = '' }, 650)
+        }, delay)
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [index])
+
+  function handleClick(e) {
+    const el = cardRef.current
+    if (!el) { onClick(); return }
+
+    // Ripple at click position
+    const rect = el.getBoundingClientRect()
+    const ripple = document.createElement('div')
+    ripple.className = 'card-ripple'
+    ripple.style.left = `${e.clientX - rect.left - 20}px`
+    ripple.style.top  = `${e.clientY - rect.top  - 20}px`
+    el.appendChild(ripple)
+    setTimeout(() => ripple.remove(), 600)
+
+    // Border + scale flash
+    el.style.borderColor = '#3730A3'
+    el.style.transform   = 'scale(1.05)'
+    setTimeout(() => {
+      el.style.borderColor = ''
+      el.style.transform   = ''
+    }, 350)
+
+    onClick()
+  }
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.38, delay: Math.min(index % 6, 5) * 0.065 }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onClick={onClick}
+    <div
+      ref={cardRef}
+      className="pattern-card"
       style={{
-        position: 'relative',
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
-        background: '#ffffff',
-        border: hovered ? '1px solid #4285F4' : '1px solid #e8e8e8',
-        borderRadius: 16,
-        overflow: 'hidden',
-        boxShadow: 'none',
-        transition: 'border-color 0.18s ease',
-        cursor: 'pointer',
         padding: 20,
+        // Initial entrance state — revealed by IO
+        opacity: 0,
+        transform: 'translateY(32px)',
+        transition: 'none',
       }}
+      onClick={handleClick}
     >
       <div style={{ display: 'flex', flexDirection: 'column', gap: 13, flex: 1 }}>
 
@@ -68,9 +107,9 @@ export default function PatternCard({ pattern, index, onClick }) {
             fontFamily: 'JetBrains Mono, monospace',
             fontSize: 11,
             fontWeight: 700,
-            color: '#9aa0a6',
-            background: '#f8f9fa',
-            border: '1px solid #f1f3f4',
+            color: '#A8A29E',
+            background: '#FFF8ED',
+            border: '1px solid #F0E8D8',
             padding: '3px 8px',
             borderRadius: 5,
             letterSpacing: '0.1em',
@@ -82,9 +121,9 @@ export default function PatternCard({ pattern, index, onClick }) {
               display: 'inline-flex', alignItems: 'center', gap: 3,
               fontSize: 10, fontWeight: 600, letterSpacing: '0.05em',
               padding: '3px 9px', borderRadius: 99,
-              background: '#fafafa',
-              border: '1px solid #e0e0e0',
-              color: '#9aa0a6',
+              background: '#FFF8ED',
+              border: '1px solid #F0E8D8',
+              color: '#A8A29E',
             }}>
               <GitBranch size={8} />
               Diagram
@@ -107,7 +146,7 @@ export default function PatternCard({ pattern, index, onClick }) {
         {/* Name + category */}
         <div>
           <h3 style={{
-            color: '#202124',
+            color: '#1C1917',
             fontWeight: 700,
             fontSize: 16,
             letterSpacing: '-0.015em',
@@ -136,7 +175,7 @@ export default function PatternCard({ pattern, index, onClick }) {
 
         {/* Core concept */}
         <p style={{
-          color: '#5f6368',
+          color: '#57534E',
           fontSize: 12,
           lineHeight: 1.65,
           flex: 1,
@@ -149,8 +188,8 @@ export default function PatternCard({ pattern, index, onClick }) {
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
             {pattern.fintechUseCases.slice(0, 2).map(uc => (
               <span key={uc} style={{
-                background: '#f8f9fa', border: '1px solid #f1f3f4',
-                color: '#80868b', fontSize: 11, borderRadius: 6, padding: '5px 10px',
+                background: '#FFF8ED', border: '1px solid #F0E8D8',
+                color: '#A8A29E', fontSize: 11, borderRadius: 6, padding: '5px 10px',
               }}>{uc}</span>
             ))}
           </div>
@@ -162,29 +201,16 @@ export default function PatternCard({ pattern, index, onClick }) {
           alignItems: 'center',
           justifyContent: 'space-between',
           paddingTop: 12,
-          borderTop: '1px solid #e8e8e8',
+          borderTop: '1px solid #F0E8D8',
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
-            <ComplexityBar value={pattern.complexity} color="#4285F4" />
-            <span style={{ fontSize: 10, color: '#9aa0a6', fontWeight: 500 }}>
+            <ComplexityBar value={pattern.complexity} />
+            <span style={{ fontSize: 10, color: '#A8A29E', fontWeight: 500 }}>
               {COMPLEXITY_LABELS[pattern.complexity]}
             </span>
           </div>
           <div style={{ display: 'flex', gap: 5 }}>
-            <span
-              style={{
-                display: 'flex', alignItems: 'center', gap: 3,
-                fontSize: 12, fontWeight: 600,
-                color: hovered ? '#4285F4' : '#202124',
-                padding: '6px 18px', borderRadius: 99,
-                border: `1px solid ${hovered ? '#4285F4' : '#dadce0'}`,
-                background: '#ffffff',
-                transition: 'all 0.18s ease',
-                pointerEvents: 'none',
-              }}
-            >
-              View details
-            </span>
+            <span className="view-details-btn">View details</span>
             <a
               href={`${REPO_BASE}${pattern.notebookPath}`}
               target="_blank"
@@ -193,20 +219,20 @@ export default function PatternCard({ pattern, index, onClick }) {
               style={{
                 display: 'flex', alignItems: 'center', gap: 3,
                 fontSize: 10.5, fontWeight: 500,
-                color: '#9aa0a6',
+                color: '#A8A29E',
                 textDecoration: 'none',
                 padding: '4px 8px', borderRadius: 6,
-                background: '#f8f9fa',
-                border: '1px solid #f1f3f4',
+                background: '#FFF8ED',
+                border: '1px solid #F0E8D8',
                 transition: 'all 0.15s ease',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.color = '#202124'
-                e.currentTarget.style.borderColor = '#e8e8e8'
+                e.currentTarget.style.color = '#1C1917'
+                e.currentTarget.style.borderColor = '#E8DBC8'
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.color = '#9aa0a6'
-                e.currentTarget.style.borderColor = '#f1f3f4'
+                e.currentTarget.style.color = '#A8A29E'
+                e.currentTarget.style.borderColor = '#F0E8D8'
               }}
             >
               <ExternalLink size={9} strokeWidth={2.5} />
@@ -214,6 +240,6 @@ export default function PatternCard({ pattern, index, onClick }) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
