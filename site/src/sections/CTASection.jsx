@@ -26,7 +26,6 @@ const FOOTER_COLS = [
     links: [
       { label: 'GitHub Repository',  href: GITHUB_URL, external: true },
       { label: 'Contributing',       href: `${GITHUB_URL}/blob/main/CONTRIBUTING.md`, external: true },
-      { label: 'License',            href: `${GITHUB_URL}/blob/main/LICENSE`, external: true },
       { label: 'LinkedIn',           href: 'https://www.linkedin.com/in/sunil-p-sharma/', external: true },
     ],
   },
@@ -65,7 +64,6 @@ export default function CTASection() {
             RAG Patterns in Practice
           </div>
           <div className="footer-legal">
-            <a href={`${GITHUB_URL}/blob/main/LICENSE`} target="_blank" rel="noopener noreferrer">License</a>
             <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
         </div>

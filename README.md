@@ -5,7 +5,6 @@
 [![CI](https://github.com/sunilpradhansharma/production-rag-patterns-in-practice/actions/workflows/ci.yml/badge.svg)](https://github.com/sunilpradhansharma/production-rag-patterns-in-practice/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![Patterns: 26](https://img.shields.io/badge/RAG_patterns-26-purple.svg)](#pattern-catalog)
-[![License: Sunil Pradhan Sharma](https://img.shields.io/badge/license-Sunil%20Pradhan%20Sharma-green.svg)](https://www.linkedin.com/in/sunil-p-sharma/)
 
 > **Live site:** [sunilpradhansharma.github.io/production-rag-patterns-in-practice](https://sunilpradhansharma.github.io/production-rag-patterns-in-practice/)
 > Browse all 26 patterns, filter by category, view animated architecture diagrams, and jump directly to notebooks — no setup required.
@@ -1153,11 +1152,3 @@ Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before
 - Yan et al., "Corrective Retrieval Augmented Generation", ICLR 2024 — [arxiv.org/abs/2401.15884](https://arxiv.org/abs/2401.15884)
 - Edge et al., "From Local to Global: A Graph RAG Approach", Microsoft Research 2024 — [arxiv.org/abs/2404.16130](https://arxiv.org/abs/2404.16130)
 - Anthropic, "Introducing Contextual Retrieval", 2024 — [anthropic.com/news/contextual-retrieval](https://www.anthropic.com/news/contextual-retrieval)
-
----
-
-## License
-
-Copyright © Sunil Pradhan Sharma. All rights reserved.
-
-This repository is made available for personal and educational use. Any redistribution, commercial use, or derivative works require explicit written permission from the author.
